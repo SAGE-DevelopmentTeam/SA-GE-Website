@@ -221,7 +221,7 @@ const SAGE_GUIDE_DATA = {
 
         <h2>Four Primary Workspace Zones</h2>
         <ul>
-          <li><strong>1. Top Toolbar:</strong> File actions (Save, Undo, Redo), drawing tools (Brush, Box Fill, Bucket, Eraser, Eyedropper), visual overlay toggles (Warps, NPCs, Grid), Zoom dropdown, and the SMAPI Playtest launcher.</li>
+          <li><strong>1. Top Toolbar:</strong> File actions (Save, Undo, Redo), drawing tools (Brush, Box Fill, Bucket, Eraser, Eyedropper), visual overlay toggles (Warps, NPCs, Grid), Zoom dropdown, and Preferences.</li>
           <li><strong>2. Left Sidebar (Tileset Palette):</strong> Switch active tilesheets, select single tiles or multi-tile rectangular stamps, and zoom palette textures.</li>
           <li><strong>3. Central Canvas:</strong> Interactive hardware-accelerated tile painting viewport with live coordinate readouts and overlay visualizers.</li>
           <li><strong>4. Right Sidebar (Layers & Properties):</strong> Manage map layers, configure Map Properties, edit Tile Attributes & Actions, and inspect NPC spawns.</li>
@@ -515,25 +515,25 @@ const SAGE_GUIDE_DATA = {
       categoryId: "playtesting",
       title: "Testing With SMAPI",
       order: 1,
-      summary: "Launching Stardew Valley, live SMAPI console logs, and in-game map verification.",
-      keywords: ["playtesting", "smapi", "test map", "launch game", "debugging", "console log", "verification"],
+      summary: "Testing and verifying custom maps in Stardew Valley using Content Patcher and SMAPI.",
+      keywords: ["playtesting", "smapi", "test map", "content patcher", "debugging", "console log", "verification"],
       synonyms: ["how to test", "run game", "test mod", "in-game test"],
       related: ["common-problems", "maps-not-loading", "tileset-problems"],
       content: `
-        <p class="article-lead">Test your map mods directly from SA:GE with one-click SMAPI integration.</p>
+        <p class="article-lead">Test and verify your map mods in Stardew Valley using SMAPI and Content Patcher.</p>
 
-        <h2>One-Click Playtesting</h2>
+        <h2>Playtesting Workflow</h2>
         <ol>
-          <li>Ensure your project resides inside or is linked to your Stardew Valley <code>Mods/</code> folder.</li>
-          <li>Click the green <strong>▶ Playtest with SMAPI</strong> button on the top toolbar.</li>
-          <li>SA:GE launches <code>StardewModdingAPI.exe</code> in the background.</li>
+          <li>Save your project in SA:GE (<kbd>Ctrl+S</kbd>) so all TMX maps, tilesheets, and Content Patcher <code>content.json</code> definitions are synchronized.</li>
+          <li>Place or symlink your project folder inside your Stardew Valley <code>Mods/</code> directory.</li>
+          <li>Launch Stardew Valley with SMAPI (<code>StardewModdingAPI.exe</code>) to load your mod.</li>
         </ol>
 
         <h2>In-Game Debugging Console Commands</h2>
-        <p>In the SMAPI console window, use these handy vanilla commands to quickly inspect your map:</p>
+        <p>In the SMAPI console window, use these handy commands to quickly inspect and test your map:</p>
         <ul>
           <li><code>debug warp &lt;MapName&gt; &lt;X&gt; &lt;Y&gt;</code> — Instantly warps your farmer to any coordinate on your custom map.</li>
-          <li><code>patch summary</code> — Lists all active Content Patcher patches and checks for load warnings.</li>
+          <li><code>patch summary</code> — Lists all active Content Patcher patches and checks for load warnings or errors.</li>
         </ul>
       `
     },

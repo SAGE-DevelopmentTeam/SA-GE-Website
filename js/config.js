@@ -57,7 +57,7 @@ const SAGE_CONFIG = {
       displayVersion: "v1.0.0 Preview 1",
       releaseDate: "August 2026",
       title: "SA:GE 1.0.0 Preview 1",
-      summary: "Initial public preview release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and SMAPI test runner.",
+      summary: "Initial public preview release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and Content Patcher / SMAPI workflow.",
       downloadUrl: "https://github.com/sage-editor/sage/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
       installerUrl: "https://github.com/sage-editor/sage/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-Setup.exe",
       fileSizeBytes: 34857984,
@@ -92,7 +92,7 @@ const SAGE_CONFIG = {
             "Visual step-on warps inspector and destination coordinate markers",
             "NPC spawn placement pins with facing direction indicator",
             "Paths layer marker inspector (debris, tree spawners, lighting sconces)",
-            "SMAPI playtesting launcher integration",
+            "Content Patcher & SMAPI mod compatibility",
             "Auto-updater system querying official manifest"
           ],
           improvements: [
