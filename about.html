@@ -54,54 +54,54 @@
     <section class="section">
       <div class="container" style="max-width: 820px;">
         <div class="section-header" style="text-align: left; margin-bottom: 2.5rem;">
-          <span class="badge badge-emerald">Project Mission & Architecture</span>
+          <span class="badge badge-emerald">About the Project</span>
           <h2>About SA:GE</h2>
           <p style="font-size: 1.2rem; color: var(--text-main);">
-            Stardew Authoring : Game Editor is a standalone visual tool engineered to make modding Stardew Valley accessible, reliable, and visual.
+            Stardew Authoring : Game Editor is a visual tool for creating and editing Stardew Valley maps.
           </p>
         </div>
 
         <div class="article-body">
           <h2>What is SA:GE?</h2>
           <p>
-            <strong>SA:GE (Stardew Authoring : Game Editor)</strong> is a desktop application designed to bridge the gap between creative game design and the technical intricacies of Stardew Valley modding.
+            <strong>SA:GE (Stardew Authoring : Game Editor)</strong> is a visual desktop editor for creating and modifying Stardew Valley maps.
           </p>
           <p>
-            Modding Stardew Valley has historically required coordinating multiple disconnected tools: generic tile map editors, manual JSON authoring for Content Patcher, external command-line XNB texture unpackers, and custom coordinate calculation spreadsheets.
-          </p>
-          <p>
-            SA:GE brings these elements together into a cohesive, purpose-built editor centered around Stardew Valley's actual game specifications.
+            SA:GE provides an interface for placing tiles, organizing map layers, creating warps, placing NPC spawn points, and managing map objects visually without having to edit map files manually.
           </p>
 
           <h2>Who is SA:GE for?</h2>
           <ul>
-            <li><strong>Mod Creators & Map Designers:</strong> Artists and authors building new custom locations, farm layouts, expansions, or visual overhauls for Stardew Valley.</li>
-            <li><strong>Beginners:</strong> Creators who want to build their first custom farm or secret grove without needing to decipher raw TMX XML schemas or Content Patcher patch syntax.</li>
-            <li><strong>Experienced Modders:</strong> Authors who want automated seasonal tileset extraction, visual warp validation, and guaranteed clean relative file structures for Content Patcher and SMAPI.</li>
+            <li><strong>Mod Creators & Map Designers:</strong> Anyone creating custom locations, farm layouts, or map modifications for Stardew Valley.</li>
+            <li><strong>Beginners:</strong> Creators who want to design maps visually without editing map files by hand.</li>
+            <li><strong>Experienced Modders:</strong> Authors who want dedicated tools for layer management, tileset organization, and warp configuration.</li>
           </ul>
 
           <h2>Core Principles</h2>
           <div class="callout callout-tip">
-            <div class="callout-title">💡 “Tiled is the inspiration. Stardew Valley is the specification.”</div>
-            <p>SA:GE takes inspiration from traditional map editors like Tiled while tailoring every interface, layer rule, and asset inspector directly to Stardew Valley and Content Patcher.</p>
+            <div class="callout-title">💡 Focused on Stardew Valley</div>
+            <p>SA:GE is tailored directly to Stardew Valley map editing, providing dedicated tools for layers, warps, properties, and tilesets.</p>
           </div>
 
           <ul>
-            <li><strong>Non-Destructive Serialization:</strong> SA:GE respects existing TMX files. Any custom XML properties, object groups, or third-party mod metadata are preserved when saving.</li>
-            <li><strong>Content Patcher Native:</strong> Every project created in SA:GE is structured as a valid, distribution-ready Content Patcher mod pack.</li>
-            <li><strong>Zero Tracking, Privacy-First:</strong> SA:GE operates entirely locally on your computer with zero telemetry, zero analytics, and zero required online accounts.</li>
+            <li><strong>Visual-First Map Editing:</strong> Create and edit maps through a visual interface instead of manual file editing.</li>
+            <li><strong>Stardew-Specific Tools:</strong> Features designed around Stardew Valley map structures, such as map layers, warps, and NPC spawn placement.</li>
+            <li><strong>Local & Privacy-Focused:</strong> Runs locally on your computer with zero telemetry, zero analytics, and zero required accounts.</li>
           </ul>
 
           <h2>V1 Scope & Future Roadmap</h2>
           <p>
-            <strong>Version 1.0</strong> focuses specifically on the <strong>Visual Map Editor</strong>:
+            <strong>Version 1.0</strong> focuses on the <strong>Visual Map Editor</strong>:
           </p>
           <ul>
-            <li>Complete 2D tile canvas with 16×16 grid geometry</li>
-            <li>Full Stardew layer hierarchy (Back, Buildings, Paths, Front, AlwaysFront)</li>
-            <li>Automatic 4-season tilesheet extraction & missing asset safeguards</li>
-            <li>Visual Warps, NPC Spawns, and TMX Objects</li>
-            <li>Automatic Content Patcher & SMAPI Mod Synchronization</li>
+            <li>Visual Map Editor for Stardew Valley maps</li>
+            <li>Tileset and tile editing tools</li>
+            <li>Map layer visibility and editing controls</li>
+            <li>Warp creation and editing</li>
+            <li>Map objects and properties management</li>
+            <li>NPC spawn point placement</li>
+            <li>Project system and built-in guide</li>
+            <li>Playtesting integration and automatic updates</li>
           </ul>
           <p>
             Future major releases are planned to introduce visual modules for NPC Dialogue authoring, Event Scripting, and Custom Item definitions.

@@ -67,7 +67,7 @@
           <div class="hero-full-name">Stardew Authoring : Game Editor</div>
           <div class="hero-slogan">Stardew Valley modding, made visual.</div>
           <p style="max-width: 680px; margin: 0 auto; font-size: 1.15rem; color: var(--text-muted);">
-            The dedicated visual map authoring tool engineered specifically for Stardew Valley. Design custom maps, configure warps, manage dynamic seasonal tilesheets, and package Content Patcher mods for SMAPI — all in one unified workspace.
+            SA:GE is a visual tool for creating and editing Stardew Valley maps. Design custom locations, place tiles, set up warps, and manage map objects without having to edit map files manually.
           </p>
         </div>
 
@@ -103,82 +103,76 @@
     <section class="section section-alt" id="features">
       <div class="container">
         <div class="section-header">
-          <span class="badge badge-blue">V1 Map Editor Capabilities</span>
-          <h2>Built specifically for Stardew Valley</h2>
-          <p>Everything you need to build, edit, and package production-ready Content Patcher map mods.</p>
+          <span class="badge badge-blue">Map Editor Features</span>
+          <h2>Visual Map Editing for Stardew Valley</h2>
+          <p>Tools for creating, editing, and managing custom Stardew Valley maps.</p>
         </div>
 
         <div class="features-grid">
           <div class="feature-card">
             <div class="feature-icon-box">🗺️</div>
             <h3>Visual Map Editor</h3>
-            <p>Real-time hardware-accelerated 2D tile canvas with 16×16 grid rendering, live cursor coordinates, and smooth viewport navigation.</p>
+            <p>Create and edit Stardew Valley maps visually instead of working directly with map files.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">🎨</div>
             <h3>Tileset Management</h3>
-            <p>Automatic extraction of vanilla Stardew XNB tilesheets into optimized PNGs with multi-tileset TSX and GID management.</p>
+            <p>Manage and organize the tilesets used across your maps.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">📚</div>
-            <h3>Stardew Map Layers</h3>
-            <p>Dedicated support for standard Stardew layers (Back, Buildings, Paths, Front, AlwaysFront) with visibility toggles and editing locks.</p>
+            <h3>Map Layers</h3>
+            <p>Work with Stardew Valley map layers, with controls for layer visibility and editing.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">🖌️</div>
-            <h3>Tile Editing Suite</h3>
-            <p>Full suite of drawing tools: Brush (B), Box Fill (U), Bucket (G), Eraser (E), Eyedropper (I), and Marquee Selection (S) with undo/redo.</p>
+            <h3>Tile Editing</h3>
+            <p>Place and edit tiles on your maps using dedicated visual tools in the editor.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">🌀</div>
-            <h3>Visual Warps</h3>
-            <p>Point-and-click step-on warp authoring with destination map coordinate markers and purple overlay visualizers.</p>
+            <h3>Warps</h3>
+            <p>Create and edit map warps directly in the map editor.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">🧱</div>
-            <h3>Tile & Object Properties</h3>
-            <p>Inspect and toggle Passable, Water, Diggable, Action, and TouchAction attributes without editing raw XML strings.</p>
+            <h3>Objects & Properties</h3>
+            <p>Create and edit map objects and customize their properties.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">👤</div>
             <h3>NPC Spawn Placement</h3>
-            <p>Place character spawn pins on map tiles with directional facing indicators (Up, Right, Down, Left) and automated spawns.json syncing.</p>
+            <p>Place and edit NPC spawn points directly on your maps.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">📁</div>
+            <h3>Project System</h3>
+            <p>Create, open, save, and manage your SA:GE map projects.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">🧪</div>
-            <h3>SMAPI & Content Patcher Ready</h3>
-            <p>Maps and assets are automatically structured for standard Content Patcher workflows and seamless in-game testing with SMAPI.</p>
+            <h3>Playtesting</h3>
+            <p>Test your custom maps in Stardew Valley to verify layouts and changes.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">📖</div>
             <h3>Integrated Guide & Search</h3>
-            <p>Comprehensive in-app documentation with natural search to answer modding questions without technical jargon.</p>
+            <p>Access a built-in guide with search functionality to quickly find modding help and documentation.</p>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon-box">🔄</div>
             <h3>Automatic Updates</h3>
-            <p>Built-in update system that silently checks the official manifest and provides seamless one-click desktop updates.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box">🍂</div>
-            <h3>Seasonal Tilesheet Swapping</h3>
-            <p>Automatic 4-season asset resolution across Spring, Summer, Fall, and Winter to eliminate season transition crashes.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-box">📄</div>
-            <h3>Content Patcher Packaging</h3>
-            <p>Instant generation and synchronization of valid manifest.json and content.json files for immediate distribution.</p>
+            <p>Stay up to date with the built-in update system.</p>
           </div>
         </div>
 
@@ -201,13 +195,12 @@
             <span class="badge badge-purple" style="margin-bottom: 0.75rem;">Documentation & Reference</span>
             <h2>Integrated, Searchable Documentation</h2>
             <p>
-              Modding shouldn't require memorizing obscure terminology. SA:GE includes a comprehensive documentation system with natural language search designed to help you understand every tool, layer, and property.
+              SA:GE includes a built-in documentation guide with search designed to help you quickly find information on editor tools, map layers, and properties.
             </p>
             <ul class="guide-promo-list">
-              <li>Natural language search: queries like <em>"how do I teleport the player"</em> find Warps instantly</li>
-              <li>Contextual in-app guides for every layer and inspector panel</li>
-              <li>Diagnostic checklists for missing NPCs, black maps, and seasonal tilesets</li>
-              <li>Full TMX interchange and Content Patcher reference manuals</li>
+              <li>Search functionality for quick access to guides</li>
+              <li>Reference documentation for map layers and tile properties</li>
+              <li>Troubleshooting tips for common map and layout questions</li>
             </ul>
             <a href="guide.html" class="btn btn-primary">Open the Guide</a>
           </div>
@@ -215,15 +208,15 @@
           <div class="guide-promo-visual">
             <div class="guide-mock-search">
               <span>🔍</span>
-              <span>how do I teleport the player</span>
+              <span>warps</span>
             </div>
             <div class="guide-mock-result">
               <strong>🌀 Warps & Transitions</strong>
-              <span>Step-on warps, destination coordinates, and map linking</span>
+              <span>Creating and editing map warps and coordinates</span>
             </div>
             <div class="guide-mock-result">
-              <strong>🗺️ Map Properties: DefaultPosition</strong>
-              <span>Fallback spawn coordinates for incoming map transitions</span>
+              <strong>🗺️ Map Properties</strong>
+              <span>Configuring environment and map properties</span>
             </div>
           </div>
         </div>
@@ -253,18 +246,19 @@
             </header>
 
             <p class="release-summary" id="home-release-summary">
-              Official public release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and Content Patcher / SMAPI workflow in a self-contained portable package.
+              Official public release featuring the Visual Map Editor, tileset management, map layers, warps, object editing, and NPC spawn placement in a self-contained portable package.
             </p>
 
             <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #34D399;">Key Highlights:</h4>
             <ul class="release-highlights" id="home-release-highlights">
-              <li>Self-contained portable distribution — no separate .NET Runtime required</li>
-              <li>Hardware-accelerated 2D tile canvas with 16x16 grid and marquee selection</li>
-              <li>Full Stardew Valley layer system (Back, Buildings, Paths, Front, AlwaysFront)</li>
-              <li>Automatic 4-season tilesheet extraction & missing asset safeguards</li>
-              <li>Interactive Step-on Warp, Object, and NPC spawn location visualizers</li>
-              <li>Instant Content Patcher manifest and content.json generation</li>
-              <li>Built-in documentation guide with smart natural language search</li>
+              <li>Self-contained portable distribution — no separate .NET installation required</li>
+              <li>Visual Map Editor for Stardew Valley maps</li>
+              <li>Stardew Valley layer editing and visibility controls</li>
+              <li>Tile placement and drawing tools</li>
+              <li>Warp creation and editing</li>
+              <li>Object and property customization</li>
+              <li>NPC spawn point placement</li>
+              <li>Built-in documentation guide with search</li>
             </ul>
 
             <footer class="release-actions">

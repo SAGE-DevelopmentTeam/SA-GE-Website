@@ -17,7 +17,7 @@ const SAGE_CONFIG = {
     name: "SA:GE",
     fullName: "Stardew Authoring : Game Editor",
     slogan: "Stardew Valley modding, made visual.",
-    description: "The dedicated visual authoring tool and map editor built specifically for Stardew Valley modding and Content Patcher.",
+    description: "Visual map editor and authoring tool for Stardew Valley.",
     copyrightYear: new Date().getFullYear(),
   },
 
@@ -70,7 +70,7 @@ const SAGE_CONFIG = {
       displayVersion: "v1.0.0",
       releaseDate: "August 27, 2026",
       title: "SA:GE v1.0.0",
-      summary: "Official public release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and Content Patcher / SMAPI workflow in a self-contained portable package.",
+      summary: "Official public release featuring the Visual Map Editor, tileset management, map layers, warps, object editing, and NPC spawn placement in a self-contained portable package.",
       downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
       installerUrl: null,
       fileSizeBytes: 65813166,
@@ -80,13 +80,14 @@ const SAGE_CONFIG = {
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
-        "Self-contained portable distribution — no separate .NET Runtime required",
-        "Hardware-accelerated 2D tile canvas with 16x16 grid and marquee selection",
-        "Full Stardew Valley layer system (Back, Buildings, Paths, Front, AlwaysFront)",
-        "Automatic 4-season tilesheet extraction & missing asset safeguards",
-        "Interactive Step-on Warp, Object, and NPC spawn location visualizers",
-        "Instant Content Patcher manifest and content.json generation",
-        "Built-in documentation guide with smart natural language search"
+        "Self-contained portable distribution — no separate .NET installation required",
+        "Visual Map Editor for Stardew Valley maps",
+        "Map layer editing and visibility controls",
+        "Tile placement and drawing tools",
+        "Warp creation and editing",
+        "Object and property customization",
+        "NPC spawn point placement",
+        "Built-in documentation guide with search"
       ]
     },
 
@@ -99,26 +100,27 @@ const SAGE_CONFIG = {
         isLatest: true,
         tag: "v1.0.0",
         title: "SA:GE v1.0.0 Official Release",
-        summary: "The official public release of SA:GE with complete Map Editor capabilities and Content Patcher workflow for Windows x64.",
+        summary: "The official public release of SA:GE with Map Editor capabilities for Windows x64.",
         changes: {
           features: [
-            "Self-contained portable packaging (64-bit Windows)",
-            "Visual Map Editor with Brush, Box Fill, Bucket, Eraser, and Eyedropper tools",
-            "Multi-tileset manager supporting vanilla Stardew XNB and PNG tilesheets",
-            "Dynamic 4-season tilesheet swapping (Spring, Summer, Fall, Winter)",
-            "Visual step-on warps inspector and destination coordinate markers",
-            "NPC spawn placement pins with facing direction indicator",
-            "Paths layer marker inspector (debris, tree spawners, lighting sconces)",
-            "Content Patcher & SMAPI mod compatibility",
-            "Auto-updater system querying official website manifest"
+            "Self-contained portable package for 64-bit Windows",
+            "Visual Map Editor for Stardew Valley maps",
+            "Tileset management for map textures",
+            "Map layer visibility and editing tools",
+            "Tile editing tools (Brush, Box Fill, Bucket, Eraser, Eyedropper)",
+            "Warp creation and editing",
+            "Object and property editing",
+            "NPC spawn point placement",
+            "Project management system",
+            "Built-in guide with search",
+            "Automatic update system"
           ],
           improvements: [
-            "Non-destructive TMX serialization preserving custom properties and object groups",
-            "Automatic relative path sanitation for Content Patcher (zero ../ prefixes)",
-            "Dark-mode desktop user interface with customizable canvas grid colors"
+            "Visual interface designed for Stardew Valley map authoring",
+            "Dark mode desktop interface"
           ],
           fixes: [
-            "Official v1.0.0 production build"
+            "Official v1.0.0 release"
           ]
         },
         downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
