@@ -783,3 +783,36 @@ kbd {
   font-family: var(--font-mono);
   font-size: 0.85rem;
 }
+
+.issues-empty-state {
+  background: var(--bg-surface-card);
+  border: 1px dashed var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+.issues-empty-state h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.issues-empty-state p {
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+

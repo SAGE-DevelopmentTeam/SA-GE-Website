@@ -6,6 +6,8 @@
  * Retrieves release data from the official GitHub Releases API or the authoritative
  * website update manifest (update/manifest.json). Gracefully falls back to configured
  * release data if the API is rate-limited, private, or unreachable.
+ * 
+ * Public release destination is strictly the SA:GE website (releases.html / download.html).
  */
 
 // In-memory cache for the current session
@@ -139,13 +141,12 @@ function parseGitHubRelease(gh, config) {
     title: gh.name || `SA:GE ${tag}`,
     summary: gh.body ? extractSummaryFromBody(gh.body) : config.releases.fallback.summary,
     body: gh.body || "",
-    downloadUrl: zipUrl || gh.html_url || config.github.releasesUrl,
+    downloadUrl: zipUrl || "download.html",
     installerUrl: installerUrl,
     fileSizeBytes: zipSize || config.releases.fallback.fileSizeBytes,
     formattedSize: zipSize > 0 ? formatBytes(zipSize) : config.releases.fallback.formattedSize,
     sha256: config.releases.fallback.sha256,
     isPreRelease: isPre,
-    htmlUrl: gh.html_url || config.github.releasesUrl,
     highlights: config.releases.fallback.highlights
   };
 }
@@ -172,13 +173,13 @@ function hydrateDownloadPage(release, config) {
   if (fileSizeEl) fileSizeEl.textContent = release.formattedSize;
 
   if (primaryDlBtn) {
-    if (release.downloadUrl) {
+    if (release.downloadUrl && release.downloadUrl !== "#") {
       primaryDlBtn.href = release.downloadUrl;
       primaryDlBtn.setAttribute("title", `Download SA:GE ${release.displayVersion}`);
       primaryDlBtn.textContent = `⬇ Download SA:GE (64-bit ZIP)`;
     } else {
-      primaryDlBtn.href = config.github.releasesUrl;
-      primaryDlBtn.textContent = `View Releases on GitHub ↗`;
+      primaryDlBtn.href = "releases.html";
+      primaryDlBtn.textContent = `View Releases`;
     }
   }
 
@@ -200,7 +201,7 @@ function hydrateHomepageRelease(release, config) {
   if (homeDateEl) homeDateEl.textContent = release.releaseDate;
   if (homeTitleEl) homeTitleEl.textContent = release.title;
   if (homeSummaryEl) homeSummaryEl.textContent = release.summary;
-  if (homeDlBtn) homeDlBtn.href = release.downloadUrl || config.github.releasesUrl;
+  if (homeDlBtn) homeDlBtn.href = release.downloadUrl || "download.html";
 
   if (homeHighlightsList && release.highlights) {
     homeHighlightsList.innerHTML = release.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join("");
@@ -220,9 +221,8 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
   listToRender.forEach((rel, idx) => {
     const isLatest = idx === 0;
     const versionDisplay = rel.displayVersion || `v${rel.version}`;
-    const dlUrl = rel.downloadUrl || config.github.releasesUrl;
+    const dlUrl = rel.downloadUrl || "download.html";
     const dateStr = rel.releaseDate || rel.date || "August 2026";
-    const githubLink = rel.htmlUrl || config.github.releasesUrl;
 
     html += `
       <article class="release-card ${isLatest ? 'latest-release' : ''}">
@@ -282,10 +282,10 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
 
         <footer class="release-actions">
           <a href="${escapeHtml(dlUrl)}" class="btn btn-primary btn-sm">
-            ⬇ Download ${escapeHtml(versionDisplay)}
+            ⬇ Download ${escapeHtml(versionDisplay)} (ZIP)
           </a>
-          <a href="${escapeHtml(githubLink)}" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-sm">
-            View on GitHub ↗
+          <a href="guide.html" class="btn btn-secondary btn-sm">
+            Getting Started Guide →
           </a>
         </footer>
       </article>

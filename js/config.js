@@ -3,8 +3,8 @@
  * SA:GE (Stardew Authoring : Game Editor) — Centralized Site Configuration
  * ============================================================================
  * 
- * EDIT THIS FILE to update external links, GitHub repositories, download URLs,
- * issue templates, auto-updater manifests, and future backend endpoints.
+ * Single source of truth for external links, GitHub issue templates,
+ * download URLs, auto-updater manifests, and future backend endpoints.
  * 
  * Every page and script on the website references this central configuration object.
  */
@@ -22,17 +22,16 @@ const SAGE_CONFIG = {
   },
 
   // --------------------------------------------------------------------------
-  // 2. Official GitHub Integration & Repository Links
+  // 2. Official GitHub Integration & Issue Templates
   // --------------------------------------------------------------------------
   github: {
     // Official GitHub organization
     org: "SAGE-DevelopmentTeam",
 
-    // Desktop Application Repository (Private)
+    // Desktop Application Repository (Private codebase - not linked directly to public)
     repoName: "SA-GE",
-    repoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE",
 
-    // Official Website Repository
+    // Official Public Website Repository
     websiteRepoName: "SA-GE-Website",
     websiteRepoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Website",
 
@@ -44,12 +43,6 @@ const SAGE_CONFIG = {
 
     // Direct Feature Suggestion Issue Template URL (used on suggestions.html)
     suggestionUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/issues/new?template=feature_request.md&labels=enhancement",
-
-    // Direct link to official releases on GitHub
-    releasesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases",
-
-    // Community Discussions URL
-    discussionsUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/discussions",
 
     // Public GitHub API base and repository identifier (owner/repo)
     apiBase: "https://api.github.com",
