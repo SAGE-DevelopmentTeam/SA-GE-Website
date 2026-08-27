@@ -25,31 +25,46 @@ const SAGE_CONFIG = {
   // 2. Official GitHub Integration & Repository Links
   // --------------------------------------------------------------------------
   github: {
-    // Official repository root
-    repoUrl: "https://github.com/sage-editor/sage",
-    
-    // Direct link to releases page on GitHub
-    releasesUrl: "https://github.com/sage-editor/sage/releases",
-    
-    // Bug Report Issue Template URL (used on bugs.html and global CTAs)
-    bugReportUrl: "https://github.com/sage-editor/sage/issues/new?template=bug_report.md&labels=bug",
-    
-    // Suggestion / Feature Request Issue Template URL (used on suggestions.html)
-    suggestionUrl: "https://github.com/sage-editor/sage/issues/new?template=feature_request.md&labels=enhancement",
-    
+    // Official GitHub organization
+    org: "SAGE-DevelopmentTeam",
+
+    // Desktop Application Repository (Private)
+    repoName: "SA-GE",
+    repoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE",
+
+    // Official Website Repository
+    websiteRepoName: "SA-GE-Website",
+    websiteRepoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Website",
+
+    // Issues & Feedback Hub
+    issuesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/issues",
+
+    // Direct Bug Report Issue Template URL (used on bugs.html and global CTAs)
+    bugReportUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/issues/new?template=bug_report.md&labels=bug",
+
+    // Direct Feature Suggestion Issue Template URL (used on suggestions.html)
+    suggestionUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/issues/new?template=feature_request.md&labels=enhancement",
+
+    // Direct link to official releases on GitHub
+    releasesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases",
+
     // Community Discussions URL
-    discussionsUrl: "https://github.com/sage-editor/sage/discussions",
-    
-    // GitHub API repo identifier for optional issue & release previews (owner/repo)
-    apiRepo: "sage-editor/sage",
+    discussionsUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/discussions",
+
+    // Public GitHub API base and repository identifier (owner/repo)
+    apiBase: "https://api.github.com",
+    apiRepo: "SAGE-DevelopmentTeam/SA-GE",
   },
 
   // --------------------------------------------------------------------------
   // 3. Desktop Application & Release Information
   // --------------------------------------------------------------------------
   releases: {
-    // Relative or absolute URL to the authoritative auto-updater manifest
+    // Relative URL to the authoritative auto-updater manifest
     manifestUrl: "./update/manifest.json",
+
+    // Production manifest URL for external updater consumers
+    productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
     // Fallback release metadata used when manifest or GitHub API is unavailable
     fallback: {
@@ -58,8 +73,8 @@ const SAGE_CONFIG = {
       releaseDate: "August 2026",
       title: "SA:GE 1.0.0 Preview 1",
       summary: "Initial public preview release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and Content Patcher / SMAPI workflow.",
-      downloadUrl: "https://github.com/sage-editor/sage/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
-      installerUrl: "https://github.com/sage-editor/sage/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-Setup.exe",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
+      installerUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-Setup.exe",
       fileSizeBytes: 34857984,
       formattedSize: "33.2 MB",
       sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -104,7 +119,7 @@ const SAGE_CONFIG = {
             "Initial preview build"
           ]
         },
-        downloadUrl: "https://github.com/sage-editor/sage/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
         sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
       }
     ]
