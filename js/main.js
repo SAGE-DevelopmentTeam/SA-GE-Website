@@ -80,44 +80,80 @@ function getNestedConfigValue(obj, path) {
 
 /**
  * 3. Dynamic Statistics Loader
- * Displays "—" by default. If a real backend endpoint is configured in SAGE_CONFIG,
- * fetches live values safely and refreshes once per minute.
+ * - Downloads: real total download count across all SA-GE-Releases assets (GitHub API)
+ * - GitHub Stars: star count on the SA-GE-Releases repository (GitHub API)
+ * - Releases: total number of published SA:GE releases (GitHub API)
+ * Falls back to "—" gracefully on API failure or rate-limiting.
  */
 function initStatsLoader() {
   const downloadsEl = document.getElementById("stat-downloads");
-  const usersEl = document.getElementById("stat-users");
-  const modsEl = document.getElementById("stat-mods");
+  const starsEl     = document.getElementById("stat-stars");
+  const releasesEl  = document.getElementById("stat-releases");
 
-  if (!downloadsEl || !usersEl || !modsEl) return;
+  // Only run on pages that have the stats bar
+  if (!downloadsEl && !starsEl && !releasesEl) return;
 
-  const statsConfig = (typeof SAGE_CONFIG !== "undefined" && SAGE_CONFIG.statistics) ? SAGE_CONFIG.statistics : null;
+  const config       = (typeof SAGE_CONFIG !== "undefined") ? SAGE_CONFIG : null;
+  const apiBase      = config?.github?.apiBase        || "https://api.github.com";
+  const releasesRepo = config?.github?.releasesApiRepo || "SAGE-DevelopmentTeam/SA-GE-Releases";
 
-  // Set clean non-fabricated placeholder values initially
-  downloadsEl.textContent = statsConfig?.initial?.downloads || "—";
-  usersEl.textContent = statsConfig?.initial?.users || "—";
-  modsEl.textContent = statsConfig?.initial?.modsCreated || "—";
+  async function fetchStats() {
+    const releasesUrl = `${apiBase}/repos/${releasesRepo}/releases?per_page=100`;
+    const repoUrl     = `${apiBase}/repos/${releasesRepo}`;
 
-  // If a real statistics endpoint is configured, fetch dynamically
-  if (statsConfig && statsConfig.endpointUrl) {
-    async function fetchLiveStats() {
-      try {
-        const response = await fetch(statsConfig.endpointUrl, { cache: "no-cache" });
-        if (response.ok) {
-          const data = await response.json();
-          if (data.downloads !== undefined) downloadsEl.textContent = formatNumber(data.downloads);
-          if (data.users !== undefined) usersEl.textContent = formatNumber(data.users);
-          if (data.modsCreated !== undefined) modsEl.textContent = formatNumber(data.modsCreated);
+    const controller = new AbortController();
+    const timeoutId  = setTimeout(() => controller.abort(), 6000);
+
+    try {
+      // Fetch in parallel: all releases (downloads + count) + repo metadata (stars)
+      const [releasesRes, repoRes] = await Promise.all([
+        fetch(releasesUrl, { signal: controller.signal, headers: { "Accept": "application/vnd.github.v3+json" } }),
+        fetch(repoUrl,     { signal: controller.signal, headers: { "Accept": "application/vnd.github.v3+json" } }),
+      ]);
+
+      clearTimeout(timeoutId);
+
+      // Parse releases array — used for both downloads total and releases count
+      if (releasesRes.ok) {
+        const releases = await releasesRes.json();
+        if (Array.isArray(releases)) {
+          // Total downloads: sum download_count across every asset of every release
+          if (downloadsEl) {
+            let total = 0;
+            for (const release of releases) {
+              if (Array.isArray(release.assets)) {
+                for (const asset of release.assets) {
+                  total += asset.download_count || 0;
+                }
+              }
+            }
+            downloadsEl.textContent = formatNumber(total);
+          }
+
+          // Releases count
+          if (releasesEl) {
+            releasesEl.textContent = formatNumber(releases.length);
+          }
         }
-      } catch (err) {
-        // Keep clean "—" state on error without disrupting user
       }
-    }
 
-    fetchLiveStats();
-    // Poll approximately once per minute
-    setInterval(fetchLiveStats, statsConfig.pollIntervalMs || 60000);
+      // Stars on SA-GE-Releases repo
+      if (starsEl && repoRes.ok) {
+        const repoData = await repoRes.json();
+        if (typeof repoData.stargazers_count === "number") {
+          starsEl.textContent = formatNumber(repoData.stargazers_count);
+        }
+      }
+
+    } catch (err) {
+      clearTimeout(timeoutId);
+      // API unavailable or timed out — keep "—" placeholders, no fabricated data
+    }
   }
+
+  fetchStats();
 }
+
 
 function formatNumber(num) {
   if (typeof num !== "number") return String(num);
