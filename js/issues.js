@@ -3,20 +3,19 @@
  * SA:GE (Stardew Authoring : Game Editor) — GitHub Issues & Suggestions Integration
  * ============================================================================
  * 
- * Fetches genuine public issues from the official GitHub repository using the
- * unauthenticated public GitHub API. If no issues exist, or if the API is
- * rate-limited, unreachable, or private, displays a polished empty state.
+ * Dynamically retrieves genuine public issues from the official GitHub repository
+ * using the unauthenticated public GitHub API.
  * 
- * Strict Policy: Zero fabricated bugs, suggestions, numbers, or activity.
+ * - Bug Reports page: fetches and displays issues labeled 'bug'
+ * - Suggestions page: fetches and displays issues labeled 'enhancement'
+ * 
+ * Strict Policy: ZERO fabricated community submissions, issue numbers, or fake users.
  * Security: Zero credentials stored or sent; all external strings sanitized.
  */
 
 // In-memory cache for the current session to avoid redundant API requests
-const _issuesCache = {
-  bugs: null,
-  suggestions: null,
-  timestamp: 0
-};
+let _githubIssuesCache = null;
+let _githubIssuesCacheTime = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   initIssuesHub();
@@ -39,7 +38,7 @@ function initIssuesHub() {
 }
 
 /**
- * 1. Bug Reports Loader (GitHub API + Clean Empty State)
+ * 1. Load Live Bug Reports ('bug' label)
  */
 async function loadBugsList(container, config) {
   container.innerHTML = `
@@ -48,21 +47,27 @@ async function loadBugsList(container, config) {
     </div>
   `;
 
-  try {
-    const issues = await fetchGitHubIssues(config, "bug");
-    if (issues && issues.length > 0) {
-      renderLiveIssuesList(container, issues, "bug");
-      return;
-    }
-  } catch (err) {
-    // Graceful failover to empty state
+  const result = await fetchAllGitHubIssues(config);
+
+  if (result.status === "error") {
+    renderApiUnavailableState(container, config, "bug");
+    return;
   }
 
-  renderBugsEmptyState(container, config);
+  const bugIssues = (result.issues || []).filter(issue => {
+    if (!issue.labels || !Array.isArray(issue.labels)) return false;
+    return issue.labels.some(l => (l.name || "").toLowerCase().includes("bug"));
+  });
+
+  if (bugIssues.length > 0) {
+    renderLiveIssuesList(container, bugIssues, "bug");
+  } else {
+    renderEmptyState(container, config, "bug");
+  }
 }
 
 /**
- * 2. Suggestions Loader (GitHub API + Clean Empty State)
+ * 2. Load Live Community Suggestions ('enhancement' label)
  */
 async function loadSuggestionsList(container, config) {
   container.innerHTML = `
@@ -71,34 +76,42 @@ async function loadSuggestionsList(container, config) {
     </div>
   `;
 
-  try {
-    const issues = await fetchGitHubIssues(config, "enhancement");
-    if (issues && issues.length > 0) {
-      renderLiveIssuesList(container, issues, "enhancement");
-      return;
-    }
-  } catch (err) {
-    // Graceful failover to empty state
+  const result = await fetchAllGitHubIssues(config);
+
+  if (result.status === "error") {
+    renderApiUnavailableState(container, config, "enhancement");
+    return;
   }
 
-  renderSuggestionsEmptyState(container, config);
+  const suggestionIssues = (result.issues || []).filter(issue => {
+    if (!issue.labels || !Array.isArray(issue.labels)) return false;
+    return issue.labels.some(l => {
+      const name = (l.name || "").toLowerCase();
+      return name.includes("enhancement") || name.includes("feature") || name.includes("suggestion");
+    });
+  });
+
+  if (suggestionIssues.length > 0) {
+    renderLiveIssuesList(container, suggestionIssues, "enhancement");
+  } else {
+    renderEmptyState(container, config, "enhancement");
+  }
 }
 
 /**
- * 3. Fetch Issues from GitHub Public API with Timeout & Memory Caching
+ * 3. Fetch Issues from GitHub Public API with 4-Second Timeout & Session Cache
  */
-async function fetchGitHubIssues(config, label) {
-  const cacheKey = label === "bug" ? "bugs" : "suggestions";
+async function fetchAllGitHubIssues(config) {
   const now = Date.now();
 
-  // Return cached result if fresh (< 2 minutes old)
-  if (_issuesCache[cacheKey] && (now - _issuesCache.timestamp < 120000)) {
-    return _issuesCache[cacheKey];
+  // Return cached issues if fresh (< 2 minutes old)
+  if (_githubIssuesCache !== null && (now - _githubIssuesCacheTime < 120000)) {
+    return { status: "ok", issues: _githubIssuesCache };
   }
 
   const apiRepo = config.github?.apiRepo || "SAGE-DevelopmentTeam/SA-GE";
   const apiBase = config.github?.apiBase || "https://api.github.com";
-  const url = `${apiBase}/repos/${apiRepo}/issues?labels=${encodeURIComponent(label)}&state=all&per_page=10`;
+  const url = `${apiBase}/repos/${apiRepo}/issues?state=all&per_page=30`;
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 4000);
@@ -113,50 +126,45 @@ async function fetchGitHubIssues(config, label) {
 
     clearTimeout(timeoutId);
 
-    if (!response.ok) {
-      return null;
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data)) {
+        // Exclude pull requests
+        const issuesOnly = data.filter(item => !item.pull_request);
+        _githubIssuesCache = issuesOnly;
+        _githubIssuesCacheTime = now;
+        return { status: "ok", issues: issuesOnly };
+      }
     }
 
-    const data = await response.json();
-    if (Array.isArray(data)) {
-      // Filter out pull requests if returned by GitHub issues API
-      const issuesOnly = data.filter(item => !item.pull_request);
-      _issuesCache[cacheKey] = issuesOnly;
-      _issuesCache.timestamp = now;
-      return issuesOnly;
-    }
-  } catch (e) {
+    // Rate-limited, 404 (private repo), or other HTTP error
+    return { status: "error", issues: [] };
+  } catch (err) {
     // Network / timeout / abort error
+    return { status: "error", issues: [] };
   } finally {
     clearTimeout(timeoutId);
   }
-
-  return null;
 }
 
 /**
- * 4. Render Live Issues Retrieved from GitHub API
+ * 4. Render Live Genuine GitHub Issues
  */
-function renderLiveIssuesList(container, issues, type) {
-  if (!issues || issues.length === 0) {
-    if (type === "bug") {
-      renderBugsEmptyState(container, window.SAGE_CONFIG);
-    } else {
-      renderSuggestionsEmptyState(container, window.SAGE_CONFIG);
-    }
-    return;
-  }
-
+function renderLiveIssuesList(container, issues, primaryType) {
   let html = "";
   issues.forEach(issue => {
     const isOpen = issue.state === "open";
     const stateBadgeClass = isOpen ? "badge-blue" : "badge-emerald";
     const stateLabel = isOpen ? "Open" : "Closed";
-    const updatedDate = formatDate(issue.updated_at || issue.created_at);
+    const createdDate = formatDate(issue.created_at);
+    const updatedDate = formatDate(issue.updated_at);
 
-    // Filter relevant secondary labels
+    // Filter secondary labels for display
     const labelsHtml = (issue.labels || [])
-      .filter(l => l.name.toLowerCase() !== type)
+      .filter(l => {
+        const name = (l.name || "").toLowerCase();
+        return !name.includes(primaryType);
+      })
       .slice(0, 2)
       .map(l => `<span class="badge badge-slate">${escapeHtml(l.name)}</span>`)
       .join(" ");
@@ -168,7 +176,7 @@ function renderLiveIssuesList(container, issues, type) {
           <span class="issue-title">${escapeHtml(issue.title)}</span>
           <span class="issue-number">#${issue.number}</span>
           ${labelsHtml}
-          ${updatedDate ? `<span style="font-size: 0.8rem; color: var(--text-dim); margin-left: 0.25rem;">${updatedDate}</span>` : ""}
+          ${createdDate ? `<span style="font-size: 0.8rem; color: var(--text-dim); margin-left: 0.25rem;">${createdDate}</span>` : ""}
         </div>
         <a href="${escapeHtml(issue.html_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
           View on GitHub ↗
@@ -181,39 +189,65 @@ function renderLiveIssuesList(container, issues, type) {
 }
 
 /**
- * 5. Polished Bug Reports Empty State (Zero Fabricated Content)
+ * 5. Clean Empty State (When 0 real issues exist)
  */
-function renderBugsEmptyState(container, config) {
-  const bugReportUrl = config?.github?.bugReportUrl || "#";
-
-  container.innerHTML = `
-    <div class="issues-empty-state">
-      <div class="empty-state-icon">📋</div>
-      <h4>No Tracked Bug Reports</h4>
-      <p>There are currently no active public bug reports. If you have encountered an unexpected error, crash, or visual glitch in SA:GE, please let us know.</p>
-      <a href="${escapeHtml(bugReportUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-        Report a Bug on GitHub ↗
-      </a>
-    </div>
-  `;
+function renderEmptyState(container, config, type) {
+  if (type === "bug") {
+    const bugReportUrl = config?.github?.bugReportUrl || "#";
+    container.innerHTML = `
+      <div class="issues-empty-state">
+        <div class="empty-state-icon">📋</div>
+        <h4>No bug reports yet.</h4>
+        <p>There are currently no active public bug reports on GitHub. If you have encountered a crash, glitch, or unexpected behavior in SA:GE, submit a report.</p>
+        <a href="${escapeHtml(bugReportUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          Report a Bug on GitHub ↗
+        </a>
+      </div>
+    `;
+  } else {
+    const suggestionUrl = config?.github?.suggestionUrl || "#";
+    container.innerHTML = `
+      <div class="issues-empty-state">
+        <div class="empty-state-icon">💡</div>
+        <h4>No suggestions yet.</h4>
+        <p>No community feature suggestions are currently open on GitHub. Have a feature request, shortcut proposal, or tool idea? Submit your suggestion!</p>
+        <a href="${escapeHtml(suggestionUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          Submit a Suggestion on GitHub ↗
+        </a>
+      </div>
+    `;
+  }
 }
 
 /**
- * 6. Polished Suggestions Empty State (Zero Fabricated Content)
+ * 6. Clean API Unavailable / Offline State
  */
-function renderSuggestionsEmptyState(container, config) {
-  const suggestionUrl = config?.github?.suggestionUrl || "#";
-
-  container.innerHTML = `
-    <div class="issues-empty-state">
-      <div class="empty-state-icon">💡</div>
-      <h4>No Suggestions Yet</h4>
-      <p>No community feature suggestions are currently open. Have an idea, workflow improvement, or tool request for SA:GE? Share your proposal!</p>
-      <a href="${escapeHtml(suggestionUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-        Submit a Suggestion on GitHub ↗
-      </a>
-    </div>
-  `;
+function renderApiUnavailableState(container, config, type) {
+  if (type === "bug") {
+    const bugReportUrl = config?.github?.bugReportUrl || "#";
+    container.innerHTML = `
+      <div class="issues-empty-state">
+        <div class="empty-state-icon">📋</div>
+        <h4>No bug reports yet.</h4>
+        <p>There are currently no active public bug reports. If you encounter an issue or error in SA:GE, you can submit a report on GitHub.</p>
+        <a href="${escapeHtml(bugReportUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          Report a Bug on GitHub ↗
+        </a>
+      </div>
+    `;
+  } else {
+    const suggestionUrl = config?.github?.suggestionUrl || "#";
+    container.innerHTML = `
+      <div class="issues-empty-state">
+        <div class="empty-state-icon">💡</div>
+        <h4>No suggestions yet.</h4>
+        <p>No community feature suggestions are currently open. If you have an idea or enhancement for SA:GE, submit your proposal on GitHub.</p>
+        <a href="${escapeHtml(suggestionUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          Submit a Suggestion on GitHub ↗
+        </a>
+      </div>
+    `;
+  }
 }
 
 function formatDate(isoStr) {
