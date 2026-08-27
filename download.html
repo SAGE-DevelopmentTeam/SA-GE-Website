@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download SA:GE — Official Stardew Valley Map Editor</title>
+  
+  <meta name="description" content="Download the latest official release of SA:GE (Stardew Authoring : Game Editor) for Windows 64-bit.">
+  <meta property="og:title" content="Download SA:GE — Official Stardew Valley Map Editor">
+  <meta property="og:description" content="Download SA:GE for Windows 64-bit. Stardew Valley modding, made visual.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Site Navigation Bar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link" aria-label="SA:GE Home">
+        <img src="assets/logo/sage-logo.svg" alt="SA:GE" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="download.html" class="nav-link active">Download</a>
+        <a href="guide.html" class="nav-link">Guide</a>
+        <a href="releases.html" class="nav-link">Releases</a>
+        <a href="bugs.html" class="nav-link">Bug Reports</a>
+        <a href="suggestions.html" class="nav-link">Suggestions</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="download.html" class="btn btn-primary btn-sm">Download</a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="download.html" class="nav-link active">Download</a>
+      <a href="guide.html" class="nav-link">Guide</a>
+      <a href="releases.html" class="nav-link">Releases</a>
+      <a href="bugs.html" class="nav-link">Bug Reports</a>
+      <a href="suggestions.html" class="nav-link">Suggestions</a>
+      <a href="about.html" class="nav-link">About</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container" style="max-width: 960px;">
+        <div class="section-header">
+          <span class="badge badge-emerald">Official Download Hub</span>
+          <h2>Download SA:GE</h2>
+          <p>Get the latest official build for Windows 64-bit. Clean software with zero telemetry, adware, or bundled bloat.</p>
+        </div>
+
+        <!-- Main Download Card (Hydrated dynamically from manifest & config) -->
+        <div class="release-card latest-release" style="margin-bottom: 3rem;">
+          <div class="release-header">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                <h3 style="font-size: 1.75rem;">SA:GE for Windows</h3>
+                <span class="badge badge-emerald">Official Release</span>
+                <span class="badge badge-blue" id="dl-version-badge">Loading...</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">
+                Published: <span id="dl-release-date">Loading...</span> &bull; File Size: <span id="dl-file-size">Loading...</span> &bull; Architecture: <strong>x64 (64-bit)</strong>
+              </p>
+            </div>
+          </div>
+
+          <div style="margin: 2rem 0; display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="#" id="dl-primary-btn" class="btn btn-primary btn-lg" style="font-size: 1.15rem; padding: 1rem 2.25rem;">
+              ⬇ Download SA:GE (64-bit ZIP)
+            </a>
+            <a href="#" data-config-link="github.releasesUrl" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-lg">
+              View on GitHub Releases ↗
+            </a>
+          </div>
+
+          <!-- SHA-256 Checksum Verification -->
+          <div style="margin-top: 1.5rem;">
+            <div style="font-size: 0.825rem; font-weight: 600; color: var(--text-dim); margin-bottom: 0.4rem;">
+              Official SHA-256 Package Checksum:
+            </div>
+            <div class="copy-box">
+              <span id="dl-sha256">Loading checksum...</span>
+              <button class="btn-copy" data-copy-target="dl-sha256">Copy Checksum</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accurate System & Runtime Requirements -->
+        <div style="margin-bottom: 3.5rem;">
+          <h3 style="margin-bottom: 1.25rem; font-size: 1.4rem;">System & Runtime Requirements</h3>
+          <div class="data-table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Requirement</th>
+                  <th style="width: 35%;">Specification</th>
+                  <th style="width: 40%;">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Operating System</strong></td>
+                  <td>Windows 10 / Windows 11 (64-bit)</td>
+                  <td>Requires standard 64-bit Windows architecture.</td>
+                </tr>
+                <tr>
+                  <td><strong>Desktop Runtime</strong></td>
+                  <td>
+                    Microsoft .NET Desktop Runtime 8.0 (x64)
+                    <div style="margin-top: 0.35rem;">
+                      <a href="#" data-config-link="requirements.runtimeDownloadUrl" target="_blank" rel="noopener noreferrer" style="font-size: 0.825rem;">
+                        Download .NET 8.0 Runtime ↗
+                      </a>
+                    </div>
+                  </td>
+                  <td>Required if using the standard framework-dependent release.</td>
+                </tr>
+                <tr>
+                  <td><strong>Game Installation</strong></td>
+                  <td>Stardew Valley 1.6+ (Steam or GOG)</td>
+                  <td>Required for XNB tilesheet extraction and in-game map testing.</td>
+                </tr>
+                <tr>
+                  <td><strong>Modding API</strong></td>
+                  <td>
+                    SMAPI 4.0+
+                    <div style="margin-top: 0.35rem;">
+                      <a href="#" data-config-link="requirements.smapiUrl" target="_blank" rel="noopener noreferrer" style="font-size: 0.825rem;">
+                        Get SMAPI at smapi.io ↗
+                      </a>
+                    </div>
+                  </td>
+                  <td>Required to playtest maps directly from the SA:GE toolbar.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Quick 3-Step Setup Guide -->
+        <div style="margin-bottom: 3.5rem;">
+          <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Quick Setup Guide</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+            <div class="feature-card">
+              <div class="feature-icon-box">1</div>
+              <h3>Download & Extract</h3>
+              <p>Download the official release archive and extract the folder to your preferred location (e.g. <code>C:\Tools\SAGE</code>).</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-box">2</div>
+              <h3>Launch & Configure</h3>
+              <p>Launch <code>SA:GE.exe</code>. SA:GE automatically locates your Stardew Valley installation or lets you pick the directory.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-box">3</div>
+              <h3>Create & Playtest</h3>
+              <p>Create a new project or open an existing Content Patcher mod, design your map, and click <strong>▶ Playtest with SMAPI</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Need Help & Troubleshooting -->
+        <div class="callout callout-note">
+          <div class="callout-title">📖 Need Help Getting Started?</div>
+          <p>
+            Check out the official <a href="guide.html#getting-started/installing-sage">Installation Guide</a> or browse the <a href="guide.html#troubleshooting/common-problems">Troubleshooting Documentation</a> for diagnostic tips.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo/sage-logo.svg" alt="SA:GE" class="footer-logo">
+          <div class="footer-tagline">Stardew Valley modding, made visual.</div>
+          <p class="footer-disclaimer-short">
+            SA:GE is an independent open-source authoring tool. Stardew Valley is a trademark of ConcernedApe LLC.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li><a href="guide.html">Guide</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="about.html">About SA:GE</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community & Issues</h4>
+          <ul class="footer-links">
+            <li><a href="bugs.html">Report a Bug</a></li>
+            <li><a href="suggestions.html">Submit Suggestion</a></li>
+            <li><a href="#" data-config-link="github.repoUrl" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="#" data-config-link="github.discussionsUrl" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Privacy</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Statement</a></li>
+            <li><a href="terms.html">Terms & Disclaimer</a></li>
+            <li><a href="update/manifest.json" target="_blank">Update Manifest (JSON)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span data-config-text="brand.copyrightYear">2026</span> SA:GE Project. Clean software, clean website.</div>
+        <div>Dark Mode Only &bull; Zero Tracking &bull; Zero Ads</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/releases.js"></script>
+</body>
+</html>

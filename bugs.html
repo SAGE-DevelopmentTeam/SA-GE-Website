@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bug Reports — SA:GE</title>
+  
+  <meta name="description" content="Report bugs and track issues for SA:GE (Stardew Authoring : Game Editor) via GitHub Issues.">
+  <meta property="og:title" content="Bug Reports — SA:GE">
+  <meta property="og:description" content="Found an issue in SA:GE? Submit bug reports and follow resolution progress on GitHub.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Site Navigation Bar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link" aria-label="SA:GE Home">
+        <img src="assets/logo/sage-logo.svg" alt="SA:GE" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="download.html" class="nav-link">Download</a>
+        <a href="guide.html" class="nav-link">Guide</a>
+        <a href="releases.html" class="nav-link">Releases</a>
+        <a href="bugs.html" class="nav-link active">Bug Reports</a>
+        <a href="suggestions.html" class="nav-link">Suggestions</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="download.html" class="btn btn-primary btn-sm">Download</a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="download.html" class="nav-link">Download</a>
+      <a href="guide.html" class="nav-link">Guide</a>
+      <a href="releases.html" class="nav-link">Releases</a>
+      <a href="bugs.html" class="nav-link active">Bug Reports</a>
+      <a href="suggestions.html" class="nav-link">Suggestions</a>
+      <a href="about.html" class="nav-link">About</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container" style="max-width: 900px;">
+        <div class="section-header">
+          <span class="badge badge-amber">Issue Tracking</span>
+          <h2>Found a bug in SA:GE?</h2>
+          <p>
+            We appreciate your help in making SA:GE reliable and rock-solid. All bug tracking is managed publicly on our official GitHub repository.
+          </p>
+        </div>
+
+        <!-- Primary Bug Report Action Card -->
+        <div class="release-card" style="text-align: center; padding: 3rem 2rem; margin-bottom: 3.5rem; background: var(--bg-surface-elevated);">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🐛</div>
+          <h3 style="font-size: 1.6rem; margin-bottom: 0.75rem;">Submit a Bug Report on GitHub</h3>
+          <p style="max-width: 600px; margin: 0 auto 2rem; font-size: 1rem; color: var(--text-muted);">
+            Use our structured GitHub Issue template to report unexpected crashes, visual rendering glitches, or serialization issues.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="#" data-config-link="github.bugReportUrl" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+              Report a Bug on GitHub ↗
+            </a>
+            <a href="guide.html#troubleshooting/common-problems" class="btn btn-secondary btn-lg">
+              Browse Troubleshooting Guide
+            </a>
+          </div>
+        </div>
+
+        <!-- Tips for a Great Bug Report -->
+        <div style="margin-bottom: 3.5rem;">
+          <h3 style="font-size: 1.35rem; margin-bottom: 1.25rem;">Before Submitting an Issue</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+            <div class="feature-card">
+              <div class="feature-icon-box">1</div>
+              <h3>Check for Updates</h3>
+              <p>Verify that you are running the latest SA:GE build via the <a href="download.html">Download Page</a> or built-in auto updater.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon-box">2</div>
+              <h3>Inspect SMAPI Logs</h3>
+              <p>If experiencing in-game errors, check the SMAPI console terminal or generate a log at <a href="https://smapi.io/log" target="_blank" rel="noopener noreferrer">smapi.io/log</a>.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon-box">3</div>
+              <h3>Include Steps to Reproduce</h3>
+              <p>Briefly describe the exact steps taken before the error occurred, along with any relevant map or tileset details.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Bug Reports List Preview -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+            <h3 style="font-size: 1.35rem;">Tracked Bug Reports</h3>
+            <a href="#" data-config-link="github.repoUrl" target="_blank" rel="noopener noreferrer" style="font-size: 0.875rem;">
+              View All on GitHub ↗
+            </a>
+          </div>
+
+          <div id="bugs-issue-list" class="issues-list">
+            <!-- Rendered by js/issues.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo/sage-logo.svg" alt="SA:GE" class="footer-logo">
+          <div class="footer-tagline">Stardew Valley modding, made visual.</div>
+          <p class="footer-disclaimer-short">
+            SA:GE is an independent open-source authoring tool. Stardew Valley is a trademark of ConcernedApe LLC.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li><a href="guide.html">Guide</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="about.html">About SA:GE</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community & Issues</h4>
+          <ul class="footer-links">
+            <li><a href="bugs.html">Report a Bug</a></li>
+            <li><a href="suggestions.html">Submit Suggestion</a></li>
+            <li><a href="#" data-config-link="github.repoUrl" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="#" data-config-link="github.discussionsUrl" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Privacy</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Statement</a></li>
+            <li><a href="terms.html">Terms & Disclaimer</a></li>
+            <li><a href="update/manifest.json" target="_blank">Update Manifest (JSON)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span data-config-text="brand.copyrightYear">2026</span> SA:GE Project. Clean software, clean website.</div>
+        <div>Dark Mode Only &bull; Zero Tracking &bull; Zero Ads</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/issues.js"></script>
+</body>
+</html>

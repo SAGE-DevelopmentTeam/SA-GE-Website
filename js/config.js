@@ -1,0 +1,167 @@
+/**
+ * ============================================================================
+ * SA:GE (Stardew Authoring : Game Editor) — Centralized Site Configuration
+ * ============================================================================
+ * 
+ * EDIT THIS FILE to update external links, GitHub repositories, download URLs,
+ * issue templates, auto-updater manifests, and future backend endpoints.
+ * 
+ * Every page and script on the website references this central configuration object.
+ */
+
+const SAGE_CONFIG = {
+  // --------------------------------------------------------------------------
+  // 1. Branding & Metadata
+  // --------------------------------------------------------------------------
+  brand: {
+    name: "SA:GE",
+    fullName: "Stardew Authoring : Game Editor",
+    slogan: "Stardew Valley modding, made visual.",
+    description: "The dedicated visual authoring tool and map editor built specifically for Stardew Valley modding and Content Patcher.",
+    copyrightYear: new Date().getFullYear(),
+  },
+
+  // --------------------------------------------------------------------------
+  // 2. Official GitHub Integration & Repository Links
+  // --------------------------------------------------------------------------
+  github: {
+    // Official repository root
+    repoUrl: "https://github.com/sage-editor/sage",
+    
+    // Direct link to releases page on GitHub
+    releasesUrl: "https://github.com/sage-editor/sage/releases",
+    
+    // Bug Report Issue Template URL (used on bugs.html and global CTAs)
+    bugReportUrl: "https://github.com/sage-editor/sage/issues/new?template=bug_report.md&labels=bug",
+    
+    // Suggestion / Feature Request Issue Template URL (used on suggestions.html)
+    suggestionUrl: "https://github.com/sage-editor/sage/issues/new?template=feature_request.md&labels=enhancement",
+    
+    // Community Discussions URL
+    discussionsUrl: "https://github.com/sage-editor/sage/discussions",
+    
+    // GitHub API repo identifier for optional issue & release previews (owner/repo)
+    apiRepo: "sage-editor/sage",
+  },
+
+  // --------------------------------------------------------------------------
+  // 3. Desktop Application & Release Information
+  // --------------------------------------------------------------------------
+  releases: {
+    // Relative or absolute URL to the authoritative auto-updater manifest
+    manifestUrl: "./update/manifest.json",
+
+    // Fallback release metadata used when manifest or GitHub API is unavailable
+    fallback: {
+      version: "1.0.0-preview.1",
+      displayVersion: "v1.0.0 Preview 1",
+      releaseDate: "August 2026",
+      title: "SA:GE 1.0.0 Preview 1",
+      summary: "Initial public preview release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and SMAPI test runner.",
+      downloadUrl: "https://github.com/sage-editor/sage/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
+      installerUrl: "https://github.com/sage-editor/sage/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-Setup.exe",
+      fileSizeBytes: 34857984,
+      formattedSize: "33.2 MB",
+      sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      isPreRelease: true,
+      highlights: [
+        "Hardware-accelerated 2D tile canvas with 16x16 grid and marquee selection",
+        "Full Stardew Valley layer system (Back, Buildings, Paths, Front, AlwaysFront)",
+        "Automatic 4-season tilesheet extraction & missing asset safeguards",
+        "Interactive Step-on Warp, Object, and NPC spawn location visualizers",
+        "Instant Content Patcher manifest and content.json generation",
+        "Built-in documentation guide with smart natural language search"
+      ]
+    },
+
+    // Changelog history archive (reverse chronological order)
+    history: [
+      {
+        version: "1.0.0-preview.1",
+        displayVersion: "v1.0.0 Preview 1",
+        date: "August 27, 2026",
+        isLatest: true,
+        tag: "v1.0.0-preview.1",
+        title: "Initial Preview Release",
+        summary: "The initial public release of SA:GE with full Map Editor capabilities and Content Patcher workflow.",
+        changes: {
+          features: [
+            "Visual Map Editor with Brush, Box Fill, Bucket, Eraser, and Eyedropper tools",
+            "Multi-tileset manager supporting vanilla Stardew XNB and PNG tilesheets",
+            "Dynamic 4-season tilesheet swapping (Spring, Summer, Fall, Winter)",
+            "Visual step-on warps inspector and destination coordinate markers",
+            "NPC spawn placement pins with facing direction indicator",
+            "Paths layer marker inspector (debris, tree spawners, lighting sconces)",
+            "SMAPI playtesting launcher integration",
+            "Auto-updater system querying official manifest"
+          ],
+          improvements: [
+            "Non-destructive TMX serialization preserving custom properties and object groups",
+            "Automatic relative path sanitation for Content Patcher (zero ../ prefixes)",
+            "Dark-mode desktop user interface with customizable canvas grid colors"
+          ],
+          fixes: [
+            "Initial preview build"
+          ]
+        },
+        downloadUrl: "https://github.com/sage-editor/sage/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
+        sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+
+  // --------------------------------------------------------------------------
+  // 4. Runtime & System Requirements (Accurately matching SA:GE build)
+  // --------------------------------------------------------------------------
+  requirements: {
+    os: "Windows 10 / Windows 11 (64-bit)",
+    runtime: "Microsoft .NET Desktop Runtime 8.0 (x64)",
+    runtimeDownloadUrl: "https://dotnet.microsoft.com/download/dotnet/8.0/runtime",
+    gameRequirement: "Stardew Valley 1.6+ (Steam or GOG edition)",
+    smapiRequirement: "SMAPI 4.0+ (Required for playtesting and mod execution)",
+    smapiUrl: "https://smapi.io",
+    hardware: "Any standard x64 PC with 4 GB RAM and DirectX 9 / OpenGL capable graphics",
+  },
+
+  // --------------------------------------------------------------------------
+  // 5. Dynamic Statistics Endpoint Configuration
+  // --------------------------------------------------------------------------
+  statistics: {
+    // URL to future statistics backend (Set to null or valid URL when live)
+    // When null or unreachable, the UI displays the clean "—" placeholder state.
+    endpointUrl: null,
+
+    // How often to poll the statistics endpoint in milliseconds (60 seconds = 60000ms)
+    pollIntervalMs: 60000,
+
+    // Initial placeholder values (Display "—" to ensure NO fabricated data is shown)
+    initial: {
+      downloads: "—",
+      users: "—",
+      modsCreated: "—"
+    }
+  },
+
+  // --------------------------------------------------------------------------
+  // 6. Navigation Links (Centralized across Header & Footer)
+  // --------------------------------------------------------------------------
+  nav: [
+    { label: "Home", href: "index.html" },
+    { label: "Download", href: "download.html" },
+    { label: "Guide", href: "guide.html" },
+    { label: "Releases", href: "releases.html" },
+    { label: "Bug Reports", href: "bugs.html" },
+    { label: "Suggestions", href: "suggestions.html" },
+    { label: "About", href: "about.html" }
+  ]
+};
+
+// Make globally accessible in browser environments
+if (typeof window !== "undefined") {
+  window.SAGE_CONFIG = SAGE_CONFIG;
+}
+
+// Support CommonJS/module exports if imported in Node/tests
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = SAGE_CONFIG;
+}

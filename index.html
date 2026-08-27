@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SA:GE — Stardew Authoring : Game Editor | Official Website</title>
+  
+  <!-- SEO & Open Graph Metadata -->
+  <meta name="description" content="SA:GE (Stardew Authoring : Game Editor) — Stardew Valley modding, made visual. The dedicated visual map editor and authoring tool for Stardew Valley Content Patcher mods.">
+  <meta property="og:title" content="SA:GE — Stardew Authoring : Game Editor">
+  <meta property="og:description" content="Stardew Valley modding, made visual. Dedicated visual map authoring tool for Content Patcher.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/map-editor-preview.png">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Site Navigation Bar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link" aria-label="SA:GE Home">
+        <img src="assets/logo/sage-logo.svg" alt="SA:GE" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="download.html" class="nav-link">Download</a>
+        <a href="guide.html" class="nav-link">Guide</a>
+        <a href="releases.html" class="nav-link">Releases</a>
+        <a href="bugs.html" class="nav-link">Bug Reports</a>
+        <a href="suggestions.html" class="nav-link">Suggestions</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="download.html" class="btn btn-primary btn-sm">Download</a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="download.html" class="nav-link">Download</a>
+      <a href="guide.html" class="nav-link">Guide</a>
+      <a href="releases.html" class="nav-link">Releases</a>
+      <a href="bugs.html" class="nav-link">Bug Reports</a>
+      <a href="suggestions.html" class="nav-link">Suggestions</a>
+      <a href="about.html" class="nav-link">About</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge-container">
+          <span class="badge badge-emerald">Stardew Valley 1.6+ Compatible</span>
+        </div>
+
+        <div class="hero-title-group">
+          <h1 class="hero-main-title">SA<span class="brand-colon">:</span>GE</h1>
+          <div class="hero-full-name">Stardew Authoring : Game Editor</div>
+          <div class="hero-slogan">Stardew Valley modding, made visual.</div>
+          <p style="max-width: 680px; margin: 0 auto; font-size: 1.15rem; color: var(--text-muted);">
+            The dedicated visual map authoring tool engineered specifically for Stardew Valley. Design custom maps, configure warps, manage dynamic seasonal tilesheets, and test with SMAPI — all in one unified workspace.
+          </p>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="download.html" class="btn btn-primary btn-lg">Download SA:GE</a>
+          <a href="guide.html" class="btn btn-secondary btn-lg">Explore the Guide</a>
+          <a href="#" data-config-link="github.repoUrl" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-lg">
+            GitHub Repository ↗
+          </a>
+        </div>
+
+        <!-- UI Workspace Screenshot Preview -->
+        <div class="hero-preview-container">
+          <img src="assets/images/map-editor-preview.png" alt="SA:GE Map Editor Interface Screenshot" class="hero-preview-img" loading="eager" width="1920" height="1080">
+        </div>
+
+        <!-- Statistics Bar (Clean "—" Placeholder until backend connection) -->
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-value" id="stat-downloads">—</div>
+            <div class="stat-label">Downloads</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="stat-users">—</div>
+            <div class="stat-label">Users</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="stat-mods">—</div>
+            <div class="stat-label">Mods Created</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Features Section -->
+    <section class="section section-alt" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-blue">V1 Map Editor Capabilities</span>
+          <h2>Built specifically for Stardew Valley</h2>
+          <p>Everything you need to build, edit, and package production-ready Content Patcher map mods.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-box">🗺️</div>
+            <h3>Visual Map Editor</h3>
+            <p>Real-time hardware-accelerated 2D tile canvas with 16×16 grid rendering, live cursor coordinates, and smooth viewport navigation.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🎨</div>
+            <h3>Tileset Management</h3>
+            <p>Automatic extraction of vanilla Stardew XNB tilesheets into optimized PNGs with multi-tileset TSX and GID management.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">📚</div>
+            <h3>Stardew Map Layers</h3>
+            <p>Dedicated support for standard Stardew layers (Back, Buildings, Paths, Front, AlwaysFront) with visibility toggles and editing locks.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🖌️</div>
+            <h3>Tile Editing Suite</h3>
+            <p>Full suite of drawing tools: Brush (B), Box Fill (U), Bucket (G), Eraser (E), Eyedropper (I), and Marquee Selection (S) with undo/redo.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🌀</div>
+            <h3>Visual Warps</h3>
+            <p>Point-and-click step-on warp authoring with destination map coordinate markers and purple overlay visualizers.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🧱</div>
+            <h3>Tile & Object Properties</h3>
+            <p>Inspect and toggle Passable, Water, Diggable, Action, and TouchAction attributes without editing raw XML strings.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">👤</div>
+            <h3>NPC Spawn Placement</h3>
+            <p>Place character spawn pins on map tiles with directional facing indicators (Up, Right, Down, Left) and automated spawns.json syncing.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🧪</div>
+            <h3>SMAPI Playtesting</h3>
+            <p>Launch Stardew Valley with SMAPI directly from the toolbar to immediately test and verify map changes in-game.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">📖</div>
+            <h3>Integrated Guide & Search</h3>
+            <p>Comprehensive in-app documentation with natural search to answer modding questions without technical jargon.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🔄</div>
+            <h3>Automatic Updates</h3>
+            <p>Built-in update system that silently checks the official manifest and provides seamless one-click desktop updates.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">🍂</div>
+            <h3>Seasonal Tilesheet Swapping</h3>
+            <p>Automatic 4-season asset resolution across Spring, Summer, Fall, and Winter to eliminate season transition crashes.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box">📄</div>
+            <h3>Content Patcher Packaging</h3>
+            <p>Instant generation and synchronization of valid manifest.json and content.json files for immediate distribution.</p>
+          </div>
+        </div>
+
+        <!-- Future Roadmap Notice -->
+        <div class="roadmap-notice-card">
+          <div style="font-size: 1.75rem;">🔭</div>
+          <div>
+            <h4>Future Expansion Roadmap</h4>
+            <p>V1 establishes the core Map Editor foundation. Future major releases are planned to introduce dedicated visual editors for NPC Dialogue & Schedules, Event Scripting, and Custom Items.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guide Promotion Section -->
+    <section class="section">
+      <div class="container">
+        <div class="guide-promo-card">
+          <div class="guide-promo-content">
+            <span class="badge badge-purple" style="margin-bottom: 0.75rem;">Documentation & Reference</span>
+            <h2>Integrated, Searchable Documentation</h2>
+            <p>
+              Modding shouldn't require memorizing obscure terminology. SA:GE includes a comprehensive documentation system with natural language search designed to help you understand every tool, layer, and property.
+            </p>
+            <ul class="guide-promo-list">
+              <li>Natural language search: queries like <em>"how do I teleport the player"</em> find Warps instantly</li>
+              <li>Contextual in-app guides for every layer and inspector panel</li>
+              <li>Diagnostic checklists for missing NPCs, black maps, and seasonal tilesets</li>
+              <li>Full TMX interchange and Content Patcher reference manuals</li>
+            </ul>
+            <a href="guide.html" class="btn btn-primary">Open the Guide</a>
+          </div>
+
+          <div class="guide-promo-visual">
+            <div class="guide-mock-search">
+              <span>🔍</span>
+              <span>how do I teleport the player</span>
+            </div>
+            <div class="guide-mock-result">
+              <strong>🌀 Warps & Transitions</strong>
+              <span>Step-on warps, destination coordinates, and map linking</span>
+            </div>
+            <div class="guide-mock-result">
+              <strong>🗺️ Map Properties: DefaultPosition</strong>
+              <span>Fallback spawn coordinates for incoming map transitions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Release Section -->
+    <section class="section section-alt" id="latest-release">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-emerald">Release Spotlight</span>
+          <h2>Latest Available Release</h2>
+          <p>Download the latest official build of SA:GE.</p>
+        </div>
+
+        <div style="max-width: 820px; margin: 0 auto;">
+          <article class="release-card latest-release">
+            <header class="release-header">
+              <div class="release-title-area">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+                  <h3 id="home-release-title">SA:GE 1.0.0 Preview 1</h3>
+                  <span class="badge badge-emerald">★ Latest Release</span>
+                  <span class="badge badge-blue" id="home-release-version">v1.0.0 Preview 1</span>
+                </div>
+                <div class="release-date">Published: <span id="home-release-date">August 2026</span></div>
+              </div>
+            </header>
+
+            <p class="release-summary" id="home-release-summary">
+              Initial public preview release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and SMAPI test runner.
+            </p>
+
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #34D399;">Key Highlights:</h4>
+            <ul class="release-highlights" id="home-release-highlights">
+              <li>Hardware-accelerated 2D tile canvas with 16x16 grid and marquee selection</li>
+              <li>Full Stardew Valley layer system (Back, Buildings, Paths, Front, AlwaysFront)</li>
+              <li>Automatic 4-season tilesheet extraction & missing asset safeguards</li>
+              <li>Interactive Step-on Warp, Object, and NPC spawn location visualizers</li>
+              <li>Instant Content Patcher manifest and content.json generation</li>
+              <li>Built-in documentation guide with smart natural language search</li>
+            </ul>
+
+            <footer class="release-actions">
+              <a href="download.html" id="home-release-dl-btn" class="btn btn-primary">
+                ⬇ Download SA:GE
+              </a>
+              <a href="releases.html" class="btn btn-outline">
+                Full Release Notes →
+              </a>
+              <a href="#" data-config-link="github.releasesUrl" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+                GitHub Releases ↗
+              </a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo/sage-logo.svg" alt="SA:GE" class="footer-logo">
+          <div class="footer-tagline">Stardew Valley modding, made visual.</div>
+          <p class="footer-disclaimer-short">
+            SA:GE is an independent open-source authoring tool. Stardew Valley is a trademark of ConcernedApe LLC. This project is not affiliated with or endorsed by ConcernedApe.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li><a href="guide.html">Guide</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="about.html">About SA:GE</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community & Issues</h4>
+          <ul class="footer-links">
+            <li><a href="bugs.html">Report a Bug</a></li>
+            <li><a href="suggestions.html">Submit Suggestion</a></li>
+            <li><a href="#" data-config-link="github.repoUrl" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="#" data-config-link="github.discussionsUrl" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Privacy</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Statement</a></li>
+            <li><a href="terms.html">Terms & Disclaimer</a></li>
+            <li><a href="update/manifest.json" target="_blank">Update Manifest (JSON)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span data-config-text="brand.copyrightYear">2026</span> SA:GE Project. Clean software, clean website.</div>
+        <div>Dark Mode Only &bull; Zero Tracking &bull; Zero Ads</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Central Configuration & Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/releases.js"></script>
+</body>
+</html>

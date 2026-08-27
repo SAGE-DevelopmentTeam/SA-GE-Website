@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About SA:GE — Stardew Authoring : Game Editor</title>
+  
+  <meta name="description" content="Learn about SA:GE (Stardew Authoring : Game Editor), its purpose, architecture, and open-source mission.">
+  <meta property="og:title" content="About SA:GE — Stardew Authoring : Game Editor">
+  <meta property="og:description" content="The dedicated visual authoring tool built specifically for Stardew Valley modding.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Site Navigation Bar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link" aria-label="SA:GE Home">
+        <img src="assets/logo/sage-logo.svg" alt="SA:GE" class="brand-logo-img">
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="download.html" class="nav-link">Download</a>
+        <a href="guide.html" class="nav-link">Guide</a>
+        <a href="releases.html" class="nav-link">Releases</a>
+        <a href="bugs.html" class="nav-link">Bug Reports</a>
+        <a href="suggestions.html" class="nav-link">Suggestions</a>
+        <a href="about.html" class="nav-link active">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="download.html" class="btn btn-primary btn-sm">Download</a>
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" aria-label="Mobile Navigation">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="download.html" class="nav-link">Download</a>
+      <a href="guide.html" class="nav-link">Guide</a>
+      <a href="releases.html" class="nav-link">Releases</a>
+      <a href="bugs.html" class="nav-link">Bug Reports</a>
+      <a href="suggestions.html" class="nav-link">Suggestions</a>
+      <a href="about.html" class="nav-link active">About</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container" style="max-width: 820px;">
+        <div class="section-header" style="text-align: left; margin-bottom: 2.5rem;">
+          <span class="badge badge-emerald">Project Mission & Architecture</span>
+          <h2>About SA:GE</h2>
+          <p style="font-size: 1.2rem; color: var(--text-main);">
+            Stardew Authoring : Game Editor is a standalone visual tool engineered to make modding Stardew Valley accessible, reliable, and visual.
+          </p>
+        </div>
+
+        <div class="article-body">
+          <h2>What is SA:GE?</h2>
+          <p>
+            <strong>SA:GE (Stardew Authoring : Game Editor)</strong> is a desktop application designed to bridge the gap between creative game design and the technical intricacies of Stardew Valley modding.
+          </p>
+          <p>
+            Modding Stardew Valley has historically required coordinating multiple disconnected tools: generic tile map editors, manual JSON authoring for Content Patcher, external command-line XNB texture unpackers, and custom coordinate calculation spreadsheets.
+          </p>
+          <p>
+            SA:GE brings these elements together into a cohesive, purpose-built editor centered around Stardew Valley's actual game specifications.
+          </p>
+
+          <h2>Who is SA:GE for?</h2>
+          <ul>
+            <li><strong>Mod Creators & Map Designers:</strong> Artists and authors building new custom locations, farm layouts, expansions, or visual overhauls for Stardew Valley.</li>
+            <li><strong>Beginners:</strong> Creators who want to build their first custom farm or secret grove without needing to decipher raw TMX XML schemas or Content Patcher patch syntax.</li>
+            <li><strong>Experienced Modders:</strong> Authors who want rapid SMAPI playtesting, automated seasonal tileset extraction, and guaranteed clean relative file structures.</li>
+          </ul>
+
+          <h2>Core Principles</h2>
+          <div class="callout callout-tip">
+            <div class="callout-title">💡 “Tiled is the inspiration. Stardew Valley is the specification.”</div>
+            <p>SA:GE takes inspiration from traditional map editors like Tiled while tailoring every interface, layer rule, and asset inspector directly to Stardew Valley and Content Patcher.</p>
+          </div>
+
+          <ul>
+            <li><strong>Non-Destructive Serialization:</strong> SA:GE respects existing TMX files. Any custom XML properties, object groups, or third-party mod metadata are preserved when saving.</li>
+            <li><strong>Content Patcher Native:</strong> Every project created in SA:GE is structured as a valid, distribution-ready Content Patcher mod pack.</li>
+            <li><strong>Zero Tracking, Privacy-First:</strong> SA:GE operates entirely locally on your computer with zero telemetry, zero analytics, and zero required online accounts.</li>
+          </ul>
+
+          <h2>V1 Scope & Future Roadmap</h2>
+          <p>
+            <strong>Version 1.0</strong> focuses specifically on the <strong>Visual Map Editor</strong>:
+          </p>
+          <ul>
+            <li>Complete 2D tile canvas with 16×16 grid geometry</li>
+            <li>Full Stardew layer hierarchy (Back, Buildings, Paths, Front, AlwaysFront)</li>
+            <li>Automatic 4-season tilesheet extraction & missing asset safeguards</li>
+            <li>Visual Warps, NPC Spawns, and TMX Objects</li>
+            <li>Instant SMAPI Playtesting</li>
+          </ul>
+          <p>
+            Future major releases are planned to introduce visual modules for NPC Dialogue authoring, Event Scripting, and Custom Item definitions.
+          </p>
+
+          <h2>Disclaimer</h2>
+          <div class="callout callout-note">
+            <div class="callout-title">ℹ️ Trademark & Legal Notice</div>
+            <p>
+              SA:GE is an independent fan-made open-source tool and is not affiliated with, authorized, maintained, or endorsed by ConcernedApe LLC. <em>Stardew Valley</em> is a registered trademark of ConcernedApe LLC.
+            </p>
+          </div>
+
+          <div style="margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="download.html" class="btn btn-primary">Download SA:GE</a>
+            <a href="guide.html" class="btn btn-secondary">Read the Documentation</a>
+            <a href="#" data-config-link="github.repoUrl" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+              GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo/sage-logo.svg" alt="SA:GE" class="footer-logo">
+          <div class="footer-tagline">Stardew Valley modding, made visual.</div>
+          <p class="footer-disclaimer-short">
+            SA:GE is an independent open-source authoring tool. Stardew Valley is a trademark of ConcernedApe LLC.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li><a href="guide.html">Guide</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="about.html">About SA:GE</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community & Issues</h4>
+          <ul class="footer-links">
+            <li><a href="bugs.html">Report a Bug</a></li>
+            <li><a href="suggestions.html">Submit Suggestion</a></li>
+            <li><a href="#" data-config-link="github.repoUrl" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="#" data-config-link="github.discussionsUrl" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal & Privacy</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Statement</a></li>
+            <li><a href="terms.html">Terms & Disclaimer</a></li>
+            <li><a href="update/manifest.json" target="_blank">Update Manifest (JSON)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span data-config-text="brand.copyrightYear">2026</span> SA:GE Project. Clean software, clean website.</div>
+        <div>Dark Mode Only &bull; Zero Tracking &bull; Zero Ads</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
