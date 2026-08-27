@@ -66,17 +66,17 @@
               <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
                 <h3 style="font-size: 1.75rem;">SA:GE for Windows</h3>
                 <span class="badge badge-emerald">Official Release</span>
-                <span class="badge badge-blue" id="dl-version-badge">Loading...</span>
+                <span class="badge badge-blue" id="dl-version-badge">v1.0.0</span>
               </div>
               <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">
-                Published: <span id="dl-release-date">Loading...</span> &bull; File Size: <span id="dl-file-size">Loading...</span> &bull; Architecture: <strong>x64 (64-bit)</strong>
+                Published: <span id="dl-release-date">August 27, 2026</span> &bull; File Size: <span id="dl-file-size">62.8 MB</span> &bull; Package: <strong>Portable ZIP</strong> &bull; Architecture: <strong>x64 (64-bit)</strong>
               </p>
             </div>
           </div>
 
           <div style="margin: 2rem 0; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-            <a href="#" id="dl-primary-btn" class="btn btn-primary btn-lg" style="font-size: 1.15rem; padding: 1rem 2.25rem;">
-              ⬇ Download SA:GE (64-bit ZIP)
+            <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip" id="dl-primary-btn" class="btn btn-primary btn-lg" style="font-size: 1.15rem; padding: 1rem 2.25rem;">
+              ⬇ Download SA:GE (Portable ZIP)
             </a>
             <a href="releases.html" class="btn btn-secondary btn-lg">
               View Release Notes →
@@ -89,7 +89,7 @@
               Official SHA-256 Package Checksum:
             </div>
             <div class="copy-box">
-              <span id="dl-sha256">Loading checksum...</span>
+              <span id="dl-sha256">7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930</span>
               <button class="btn-copy" data-copy-target="dl-sha256">Copy Checksum</button>
             </div>
           </div>
@@ -115,15 +115,8 @@
                 </tr>
                 <tr>
                   <td><strong>Desktop Runtime</strong></td>
-                  <td>
-                    Microsoft .NET Desktop Runtime 8.0 (x64)
-                    <div style="margin-top: 0.35rem;">
-                      <a href="#" data-config-link="requirements.runtimeDownloadUrl" target="_blank" rel="noopener noreferrer" style="font-size: 0.825rem;">
-                        Download .NET 8.0 Runtime ↗
-                      </a>
-                    </div>
-                  </td>
-                  <td>Required if using the standard framework-dependent release.</td>
+                  <td>Self-Contained</td>
+                  <td>Included in the Portable ZIP. No separate .NET Desktop Runtime installation required.</td>
                 </tr>
                 <tr>
                   <td><strong>Game Installation</strong></td>
@@ -154,13 +147,13 @@
             <div class="feature-card">
               <div class="feature-icon-box">1</div>
               <h3>Download & Extract</h3>
-              <p>Download the official release archive and extract the folder to your preferred location (e.g. <code>C:\Tools\SAGE</code>).</p>
+              <p>Download the official <code>SAGE-v1.0.0-Portable.zip</code> and extract the archive to your preferred location (e.g. <code>C:\Tools\SAGE</code>).</p>
             </div>
 
             <div class="feature-card">
               <div class="feature-icon-box">2</div>
-              <h3>Launch & Configure</h3>
-              <p>Launch <code>SA:GE.exe</code>. SA:GE automatically locates your Stardew Valley installation or lets you pick the directory.</p>
+              <h3>Run Instantly</h3>
+              <p>Launch <code>SA:GE.exe</code>. Because it is self-contained, no installer or runtime setup is necessary.</p>
             </div>
 
             <div class="feature-card">

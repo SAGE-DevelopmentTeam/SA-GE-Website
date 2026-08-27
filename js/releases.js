@@ -5,7 +5,7 @@
  * 
  * Retrieves release data from the official GitHub Releases API or the authoritative
  * website update manifest (update/manifest.json). Gracefully falls back to configured
- * release data if the API is rate-limited, private, or unreachable.
+ * release data if the API is rate-limited or unreachable.
  * 
  * Public release destination is strictly the SA:GE website (releases.html / download.html).
  */
@@ -25,7 +25,7 @@ async function initReleasesData() {
   let latestRelease = config.releases.fallback;
   let allReleases = config.releases.history || [];
 
-  // 1. Try fetching from GitHub Releases public API
+  // 1. Try fetching from GitHub Releases public API (SA-GE-Releases)
   const ghReleases = await fetchGitHubReleases(config);
   if (ghReleases && ghReleases.length > 0) {
     const parsedReleases = ghReleases.map(gh => parseGitHubRelease(gh, config));
@@ -42,10 +42,10 @@ async function initReleasesData() {
             version: manifest.version,
             displayVersion: `v${manifest.version}`,
             releaseDate: manifest.pubDate ? formatDate(manifest.pubDate) : config.releases.fallback.releaseDate,
-            title: manifest.name || `SA:GE ${manifest.version}`,
+            title: manifest.name || `SA:GE v${manifest.version}`,
             summary: config.releases.fallback.summary,
             downloadUrl: manifest.downloadUrl || config.releases.fallback.downloadUrl,
-            installerUrl: config.releases.fallback.installerUrl,
+            installerUrl: null,
             fileSizeBytes: manifest.size || config.releases.fallback.fileSizeBytes,
             formattedSize: manifest.size ? formatBytes(manifest.size) : config.releases.fallback.formattedSize,
             sha256: manifest.sha256 || config.releases.fallback.sha256,
@@ -78,7 +78,7 @@ async function fetchGitHubReleases(config) {
     return _releasesCache;
   }
 
-  const apiRepo = config.github?.apiRepo || "SAGE-DevelopmentTeam/SA-GE";
+  const apiRepo = config.github?.releasesApiRepo || "SAGE-DevelopmentTeam/SA-GE-Releases";
   const apiBase = config.github?.apiBase || "https://api.github.com";
   const url = `${apiBase}/repos/${apiRepo}/releases?per_page=10`;
 
@@ -120,7 +120,6 @@ function parseGitHubRelease(gh, config) {
   
   let zipUrl = "";
   let zipSize = 0;
-  let installerUrl = "";
 
   if (Array.isArray(gh.assets)) {
     for (const asset of gh.assets) {
@@ -128,8 +127,6 @@ function parseGitHubRelease(gh, config) {
       if (name.endsWith(".zip")) {
         zipUrl = asset.browser_download_url || "";
         zipSize = asset.size || 0;
-      } else if (name.endsWith(".exe")) {
-        installerUrl = asset.browser_download_url || "";
       }
     }
   }
@@ -141,8 +138,8 @@ function parseGitHubRelease(gh, config) {
     title: gh.name || `SA:GE ${tag}`,
     summary: gh.body ? extractSummaryFromBody(gh.body) : config.releases.fallback.summary,
     body: gh.body || "",
-    downloadUrl: zipUrl || "download.html",
-    installerUrl: installerUrl,
+    downloadUrl: zipUrl || config.releases.fallback.downloadUrl,
+    installerUrl: null,
     fileSizeBytes: zipSize || config.releases.fallback.fileSizeBytes,
     formattedSize: zipSize > 0 ? formatBytes(zipSize) : config.releases.fallback.formattedSize,
     sha256: config.releases.fallback.sha256,
@@ -173,17 +170,15 @@ function hydrateDownloadPage(release, config) {
   if (fileSizeEl) fileSizeEl.textContent = release.formattedSize;
 
   if (primaryDlBtn) {
-    if (release.downloadUrl && release.downloadUrl !== "#") {
-      primaryDlBtn.href = release.downloadUrl;
-      primaryDlBtn.setAttribute("title", `Download SA:GE ${release.displayVersion}`);
-      primaryDlBtn.textContent = `⬇ Download SA:GE (64-bit ZIP)`;
-    } else {
-      primaryDlBtn.href = "releases.html";
-      primaryDlBtn.textContent = `View Releases`;
-    }
+    const downloadUrl = release.downloadUrl || config.releases.fallback.downloadUrl;
+    primaryDlBtn.href = downloadUrl;
+    primaryDlBtn.setAttribute("title", `Download SA:GE ${release.displayVersion} (Portable ZIP)`);
+    primaryDlBtn.textContent = `⬇ Download SA:GE (Portable ZIP)`;
   }
 
-  if (shaChecksumEl) shaChecksumEl.textContent = release.sha256 || "—";
+  if (shaChecksumEl) {
+    shaChecksumEl.textContent = release.sha256 || config.releases.fallback.sha256;
+  }
 }
 
 /**
@@ -201,7 +196,10 @@ function hydrateHomepageRelease(release, config) {
   if (homeDateEl) homeDateEl.textContent = release.releaseDate;
   if (homeTitleEl) homeTitleEl.textContent = release.title;
   if (homeSummaryEl) homeSummaryEl.textContent = release.summary;
-  if (homeDlBtn) homeDlBtn.href = release.downloadUrl || "download.html";
+  if (homeDlBtn) {
+    homeDlBtn.href = release.downloadUrl || config.releases.fallback.downloadUrl;
+    homeDlBtn.textContent = `⬇ Download SA:GE ${release.displayVersion}`;
+  }
 
   if (homeHighlightsList && release.highlights) {
     homeHighlightsList.innerHTML = release.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join("");
@@ -221,8 +219,9 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
   listToRender.forEach((rel, idx) => {
     const isLatest = idx === 0;
     const versionDisplay = rel.displayVersion || `v${rel.version}`;
-    const dlUrl = rel.downloadUrl || "download.html";
-    const dateStr = rel.releaseDate || rel.date || "August 2026";
+    const dlUrl = rel.downloadUrl || config.releases.fallback.downloadUrl;
+    const dateStr = rel.releaseDate || rel.date || "August 27, 2026";
+    const shaChecksum = rel.sha256 || config.releases.fallback.sha256;
 
     html += `
       <article class="release-card ${isLatest ? 'latest-release' : ''}">
@@ -235,7 +234,7 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
               </span>
               <span class="badge badge-blue">${escapeHtml(versionDisplay)}</span>
             </div>
-            <div class="release-date">Published on ${escapeHtml(dateStr)}</div>
+            <div class="release-date">Published on ${escapeHtml(dateStr)} &bull; Windows x64 &bull; Portable ZIP</div>
           </div>
         </header>
 
@@ -244,7 +243,7 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
         ${rel.changes ? `
           <div class="release-changelog">
             ${rel.changes.features && rel.changes.features.length > 0 ? `
-              <h4 style="margin: 1rem 0 0.5rem; color: #34D399;">✨ New Features & Capabilities</h4>
+              <h4 style="margin: 1rem 0 0.5rem; color: #34D399;">✨ Features & Capabilities</h4>
               <ul class="release-highlights">
                 ${rel.changes.features.map(f => `<li>${escapeHtml(f)}</li>`).join("")}
               </ul>
@@ -258,7 +257,7 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
             ` : ""}
 
             ${rel.changes.fixes && rel.changes.fixes.length > 0 ? `
-              <h4 style="margin: 1.25rem 0 0.5rem; color: #A78BFA;">🛠️ Bug Fixes & Stability</h4>
+              <h4 style="margin: 1.25rem 0 0.5rem; color: #A78BFA;">🛠️ Build & Stability</h4>
               <ul class="release-highlights">
                 ${rel.changes.fixes.map(fx => `<li>${escapeHtml(fx)}</li>`).join("")}
               </ul>
@@ -270,19 +269,19 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
           </div>
         ` : "")}
 
-        ${rel.sha256 ? `
+        ${shaChecksum ? `
           <div style="margin: 1.5rem 0 1rem;">
             <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-dim); margin-bottom: 0.35rem;">SHA-256 Checksum:</div>
             <div class="copy-box">
-              <span id="sha-${idx}">${escapeHtml(rel.sha256)}</span>
-              <button class="btn-copy" data-copy-target="sha-${idx}">Copy</button>
+              <span id="sha-${idx}">${escapeHtml(shaChecksum)}</span>
+              <button class="btn-copy" data-copy-target="sha-${idx}">Copy Checksum</button>
             </div>
           </div>
         ` : ""}
 
         <footer class="release-actions">
           <a href="${escapeHtml(dlUrl)}" class="btn btn-primary btn-sm">
-            ⬇ Download ${escapeHtml(versionDisplay)} (ZIP)
+            ⬇ Download ${escapeHtml(versionDisplay)} (Portable ZIP)
           </a>
           <a href="guide.html" class="btn btn-secondary btn-sm">
             Getting Started Guide →

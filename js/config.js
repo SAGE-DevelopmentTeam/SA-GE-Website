@@ -31,6 +31,10 @@ const SAGE_CONFIG = {
     // Desktop Application Repository (Private codebase - not linked directly to public)
     repoName: "SA-GE",
 
+    // Official Public Releases Repository
+    releasesRepoName: "SA-GE-Releases",
+    releasesRepoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases",
+
     // Official Public Website Repository
     websiteRepoName: "SA-GE-Website",
     websiteRepoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Website",
@@ -47,10 +51,11 @@ const SAGE_CONFIG = {
     // Public GitHub API base and repository identifier (owner/repo)
     apiBase: "https://api.github.com",
     apiRepo: "SAGE-DevelopmentTeam/SA-GE",
+    releasesApiRepo: "SAGE-DevelopmentTeam/SA-GE-Releases",
   },
 
   // --------------------------------------------------------------------------
-  // 3. Desktop Application & Release Information
+  // 3. Desktop Application & Official Release Information
   // --------------------------------------------------------------------------
   releases: {
     // Relative URL to the authoritative auto-updater manifest
@@ -59,20 +64,23 @@ const SAGE_CONFIG = {
     // Production manifest URL for external updater consumers
     productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
-    // Fallback release metadata used when manifest or GitHub API is unavailable
+    // Current official release metadata (v1.0.0)
     fallback: {
-      version: "1.0.0-preview.1",
-      displayVersion: "v1.0.0 Preview 1",
-      releaseDate: "August 2026",
-      title: "SA:GE 1.0.0 Preview 1",
-      summary: "Initial public preview release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and Content Patcher / SMAPI workflow.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
-      installerUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-Setup.exe",
-      fileSizeBytes: 34857984,
-      formattedSize: "33.2 MB",
-      sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      isPreRelease: true,
+      version: "1.0.0",
+      displayVersion: "v1.0.0",
+      releaseDate: "August 27, 2026",
+      title: "SA:GE v1.0.0",
+      summary: "Official public release featuring the Visual Map Editor, Stardew layer stack, seasonal tileset manager, warp visualizer, and Content Patcher / SMAPI workflow in a self-contained portable package.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
+      installerUrl: null,
+      fileSizeBytes: 65813166,
+      formattedSize: "62.8 MB",
+      sha256: "7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930",
+      platform: "Windows x64",
+      distribution: "Portable ZIP",
+      isPreRelease: false,
       highlights: [
+        "Self-contained portable distribution — no separate .NET Runtime required",
         "Hardware-accelerated 2D tile canvas with 16x16 grid and marquee selection",
         "Full Stardew Valley layer system (Back, Buildings, Paths, Front, AlwaysFront)",
         "Automatic 4-season tilesheet extraction & missing asset safeguards",
@@ -85,15 +93,16 @@ const SAGE_CONFIG = {
     // Changelog history archive (reverse chronological order)
     history: [
       {
-        version: "1.0.0-preview.1",
-        displayVersion: "v1.0.0 Preview 1",
+        version: "1.0.0",
+        displayVersion: "v1.0.0",
         date: "August 27, 2026",
         isLatest: true,
-        tag: "v1.0.0-preview.1",
-        title: "Initial Preview Release",
-        summary: "The initial public release of SA:GE with full Map Editor capabilities and Content Patcher workflow.",
+        tag: "v1.0.0",
+        title: "SA:GE v1.0.0 Official Release",
+        summary: "The official public release of SA:GE with complete Map Editor capabilities and Content Patcher workflow for Windows x64.",
         changes: {
           features: [
+            "Self-contained portable packaging (64-bit Windows)",
             "Visual Map Editor with Brush, Box Fill, Bucket, Eraser, and Eyedropper tools",
             "Multi-tileset manager supporting vanilla Stardew XNB and PNG tilesheets",
             "Dynamic 4-season tilesheet swapping (Spring, Summer, Fall, Winter)",
@@ -101,7 +110,7 @@ const SAGE_CONFIG = {
             "NPC spawn placement pins with facing direction indicator",
             "Paths layer marker inspector (debris, tree spawners, lighting sconces)",
             "Content Patcher & SMAPI mod compatibility",
-            "Auto-updater system querying official manifest"
+            "Auto-updater system querying official website manifest"
           ],
           improvements: [
             "Non-destructive TMX serialization preserving custom properties and object groups",
@@ -109,11 +118,11 @@ const SAGE_CONFIG = {
             "Dark-mode desktop user interface with customizable canvas grid colors"
           ],
           fixes: [
-            "Initial preview build"
+            "Official v1.0.0 production build"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.0.0-preview.1/SAGE-v1.0.0-preview.1-win-x64.zip",
-        sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
+        sha256: "7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930"
       }
     ]
   },
@@ -123,10 +132,9 @@ const SAGE_CONFIG = {
   // --------------------------------------------------------------------------
   requirements: {
     os: "Windows 10 / Windows 11 (64-bit)",
-    runtime: "Microsoft .NET Desktop Runtime 8.0 (x64)",
-    runtimeDownloadUrl: "https://dotnet.microsoft.com/download/dotnet/8.0/runtime",
+    runtime: "Self-Contained (Included in Portable ZIP — No separate .NET installation required)",
     gameRequirement: "Stardew Valley 1.6+ (Steam or GOG edition)",
-    smapiRequirement: "SMAPI 4.0+ (Required for playtesting and mod execution)",
+    smapiRequirement: "SMAPI 4.0+ (Required for in-game mod execution)",
     smapiUrl: "https://smapi.io",
     hardware: "Any standard x64 PC with 4 GB RAM and DirectX 9 / OpenGL capable graphics",
   },

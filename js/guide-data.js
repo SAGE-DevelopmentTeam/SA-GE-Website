@@ -92,7 +92,7 @@ const SAGE_GUIDE_DATA = {
               </tr>
               <tr>
                 <td>Runtime</td>
-                <td>Microsoft .NET Desktop Runtime 8.0 (x64)</td>
+                <td>Self-Contained (Included in Portable ZIP)</td>
               </tr>
               <tr>
                 <td>Stardew Valley</td>
@@ -108,8 +108,8 @@ const SAGE_GUIDE_DATA = {
 
         <h2>Installation Steps</h2>
         <ol>
-          <li>Navigate to the <a href="download.html">Download Page</a> and download the latest release ZIP or Installer.</li>
-          <li>Extract the archive to your preferred location (e.g. <code>C:\\Tools\\SAGE</code>) or run the setup wizard.</li>
+          <li>Navigate to the <a href="download.html">Download Page</a> and download the official Portable ZIP.</li>
+          <li>Extract the archive to your preferred location (e.g. <code>C:\\Tools\\SAGE</code>).</li>
           <li>Launch <code>SA:GE.exe</code>. Upon first launch, SA:GE automatically attempts to detect your Stardew Valley game directory via the Steam registry.</li>
         </ol>
 
