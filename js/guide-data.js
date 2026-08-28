@@ -53,11 +53,11 @@ const SAGE_GUIDE_DATA = {
       synonyms: ["introduction", "basics", "purpose", "concept", "faq"],
       related: ["installing-sage", "creating-a-project", "map-editor-overview"],
       content: `
-        <p class="article-lead"><strong>SA:GE (Stardew Authoring : Game Editor)</strong> is a visual desktop application for creating and editing maps for <em>Stardew Valley</em>.</p>
+        <p class="article-lead"><strong>SA:GE (Stardew Authoring : Game Editor)</strong> is a Stardew Valley modding tool. It is a visual authoring tool designed to make mod creation more accessible without requiring code. The current release is primarily focused on visual map editing.</p>
         
         <div class="callout callout-tip">
-          <div class="callout-title">💡 Focused on Stardew Valley</div>
-          <p>SA:GE is tailored directly to Stardew Valley map editing, providing dedicated tools for layers, warps, properties, and tilesets.</p>
+          <div class="callout-title">💡 Map Editor & Smart Tiles</div>
+          <p>SA:GE is tailored directly to Stardew Valley map editing, providing dedicated tools for layers, warps, properties, tilesets, and Smart Tiles.</p>
         </div>
 
         <h2>Why SA:GE Exists</h2>
