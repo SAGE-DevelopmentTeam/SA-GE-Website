@@ -1,11 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "1.0.0",
-  "name": "SA:GE v1.0.0",
+  "version": "1.1.0",
+  "name": "SA:GE v1.1.0 — Smart Tiles",
   "pubDate": "2026-08-27T12:00:00Z",
-  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
-  "size": 65813166,
-  "sha256": "7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930",
+  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
+  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v1.1.0",
+  "size": null,
+  "sha256": null,
   "isMandatory": false,
-  "releaseNotes": "### SA:GE v1.0.0 Official Release\n\nOfficial public release of **SA:GE (Stardew Authoring : Game Editor)** for Windows x64!\n\n#### Highlights\n* **Self-Contained Portable Release**: Fully self-contained package — no separate .NET installation required.\n* **Visual Map Editor**: Visual map editor for creating and editing Stardew Valley maps.\n* **Tileset Management**: Manage and organize tilesets used by your maps.\n* **Map Layers**: Layer editing and visibility controls for Stardew Valley map layers.\n* **Tile Editing Tools**: Place and edit tiles with dedicated visual tools.\n* **Warps**: Create and edit map warps directly in the editor.\n* **Objects & Properties**: Create and edit map objects and customize properties.\n* **NPC Spawn Placement**: Place and edit character spawn points on maps.\n* **Integrated Guide**: Built-in documentation guide with search.\n* **Automatic Updates**: Update checking via official website manifest."
+  "releaseNotes": "### SA:GE v1.1.0 — Smart Tiles\n\n#### What's New\n\nV1.1.0 introduces the redesigned manual Smart Tile configuration system, universal topology, tile variations, configurable variation frequency, and expanded Smart Tile painting controls.\n\n#### Key Highlights\n* **Smart Tile System**: Manual terrain configuration — assign tiles from your tileset to each topology position.\n* **Universal 3×3 Topology**: Center, edges, outer corners, and four L-shaped inner-corner configurations.\n* **Multiple Tile Variations**: Assign several visually distinct tiles to any position.\n* **Variation Frequency Controls**: Control how often each variation is selected while painting.\n* **1×, 2×, and 3× Brush Sizes**: Paint terrain at different scales.\n* **Improved Blob Painting**: Larger strokes correctly distribute variations.\n* **Redesigned Configuration UI**: Single topology editor with larger windows and clearer controls.\n* **Self-Contained Portable Release**: No separate .NET installation required."
 }

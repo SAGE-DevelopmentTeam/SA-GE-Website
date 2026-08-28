@@ -28,12 +28,9 @@ const SAGE_CONFIG = {
     // Official GitHub organization
     org: "SAGE-DevelopmentTeam",
 
-    // Desktop Application Repository (Private codebase - not linked directly to public)
+    // Desktop Application Repository (Private — source code; also hosts official releases/tags)
     repoName: "SA-GE",
-
-    // Official Public Releases Repository
-    releasesRepoName: "SA-GE-Releases",
-    releasesRepoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases",
+    repoReleasesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases",
 
     // Official Public Website Repository
     websiteRepoName: "SA-GE-Website",
@@ -48,10 +45,15 @@ const SAGE_CONFIG = {
     // Direct Feature Suggestion Issue Template URL (used on suggestions.html)
     suggestionUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/issues/new?template=feature_request.md&labels=enhancement",
 
-    // Public GitHub API base and repository identifier (owner/repo)
+    // Public GitHub API base
     apiBase: "https://api.github.com",
+
+    // SA-GE main repo identifier — releases are tagged here (private; API used only for release page links)
     apiRepo: "SAGE-DevelopmentTeam/SA-GE",
-    releasesApiRepo: "SAGE-DevelopmentTeam/SA-GE-Releases",
+
+    // Separate public repository used ONLY for download statistics (stars, download counts).
+    // NOTE: Do NOT use this repo as the download source for users — releases live in SA-GE.
+    statsApiRepo: "SAGE-DevelopmentTeam/SA-GE",
   },
 
   // --------------------------------------------------------------------------
@@ -68,10 +70,10 @@ const SAGE_CONFIG = {
     fallback: {
       version: "1.1.0",
       displayVersion: "v1.1.0",
-      releaseDate: "August 28, 2026",
+      releaseDate: "August 27, 2026",
       title: "SA:GE v1.1.0 — Smart Tiles",
-      summary: "V1.1.0 introduces the Smart Tile system — a manual terrain configuration system built around Stardew Valley's tile families, with multiple tile variations, per-variation frequency controls, universal 3×3 topology, L-shaped inner corners, and 1×–3× brush sizes.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
+      summary: "V1.1.0 introduces the redesigned manual Smart Tile configuration system, universal topology, tile variations, configurable variation frequency, and expanded Smart Tile painting controls.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
       releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v1.1.0",
       installerUrl: null,
       fileSizeBytes: null,
@@ -97,11 +99,11 @@ const SAGE_CONFIG = {
       {
         version: "1.1.0",
         displayVersion: "v1.1.0",
-        date: "August 28, 2026",
+        date: "August 27, 2026",
         isLatest: true,
         tag: "v1.1.0",
         title: "SA:GE v1.1.0 — Smart Tiles",
-        summary: "V1.1.0 introduces the Smart Tile system — a manual terrain configuration system built around Stardew Valley's tile families, with multiple tile variations, per-variation frequency controls, universal 3×3 topology, L-shaped inner corners, and 1×–3× brush sizes.",
+        summary: "V1.1.0 introduces the redesigned manual Smart Tile configuration system, universal topology, tile variations, configurable variation frequency, and expanded Smart Tile painting controls.",
         changes: {
           features: [
             "Smart Tile system with manual tile assignment — choose exactly which tiles belong to each rule",
@@ -120,7 +122,7 @@ const SAGE_CONFIG = {
           ],
           fixes: []
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v1.1.0",
         sha256: null
       },
@@ -154,7 +156,7 @@ const SAGE_CONFIG = {
             "Official v1.0.0 release"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
         sha256: "7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930"
       }
     ]

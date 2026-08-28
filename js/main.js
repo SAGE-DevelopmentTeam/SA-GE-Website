@@ -80,10 +80,13 @@ function getNestedConfigValue(obj, path) {
 
 /**
  * 3. Dynamic Statistics Loader
- * - Downloads: real total download count across all SA-GE-Releases assets (GitHub API)
- * - GitHub Stars: star count on the SA-GE-Releases repository (GitHub API)
+ * - Downloads: real total download count across all SA-GE assets (GitHub API)
+ * - GitHub Stars: star count on the SA-GE repository (GitHub API)
  * - Releases: total number of published SA:GE releases (GitHub API)
  * Falls back to "—" gracefully on API failure or rate-limiting.
+ *
+ * Note: statsApiRepo (SA-GE) is a public mirror used for download
+ * tracking. It is distinct from the SA-GE repo that hosts the official releases.
  */
 function initStatsLoader() {
   const downloadsEl = document.getElementById("stat-downloads");
@@ -94,12 +97,12 @@ function initStatsLoader() {
   if (!downloadsEl && !starsEl && !releasesEl) return;
 
   const config       = (typeof SAGE_CONFIG !== "undefined") ? SAGE_CONFIG : null;
-  const apiBase      = config?.github?.apiBase        || "https://api.github.com";
-  const releasesRepo = config?.github?.releasesApiRepo || "SAGE-DevelopmentTeam/SA-GE-Releases";
+  const apiBase      = config?.github?.apiBase     || "https://api.github.com";
+  const statsRepo    = config?.github?.statsApiRepo || "SAGE-DevelopmentTeam/SA-GE";
 
   async function fetchStats() {
-    const releasesUrl = `${apiBase}/repos/${releasesRepo}/releases?per_page=100`;
-    const repoUrl     = `${apiBase}/repos/${releasesRepo}`;
+    const releasesUrl = `${apiBase}/repos/${statsRepo}/releases?per_page=100`;
+    const repoUrl     = `${apiBase}/repos/${statsRepo}`;
 
     const controller = new AbortController();
     const timeoutId  = setTimeout(() => controller.abort(), 6000);
@@ -137,7 +140,7 @@ function initStatsLoader() {
         }
       }
 
-      // Stars on SA-GE-Releases repo
+      // Stars on SA-GE repo
       if (starsEl && repoRes.ok) {
         const repoData = await repoRes.json();
         if (typeof repoData.stargazers_count === "number") {

@@ -1,18 +1,17 @@
 /**
  * ============================================================================
- * SA:GE (Stardew Authoring : Game Editor) — Releases & Auto-Update Hydration
+ * SA:GE (Stardew Authoring : Game Editor) — Releases & Update Hydration
  * ============================================================================
- * 
- * Retrieves release data from the official GitHub Releases API or the authoritative
- * website update manifest (update/manifest.json). Gracefully falls back to configured
- * release data if the API is rate-limited or unreachable.
- * 
- * Public release destination is strictly the SA:GE website (releases.html / download.html).
+ *
+ * Hydrates release-related page sections using the authoritative data in
+ * js/config.js. No external API calls for release metadata — the official
+ * SA:GE releases are tagged in the SA-GE repository (private), so any
+ * unauthenticated GitHub API call would fail silently. config.js is the
+ * single source of truth for current and historical release information.
+ *
+ * The update manifest (update/manifest.json) is checked as a secondary
+ * signal only when it declares a genuinely newer version than config.js.
  */
-
-// In-memory cache for the current session
-let _releasesCache = null;
-let _releasesCacheTime = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   initReleasesData();
@@ -22,168 +21,57 @@ async function initReleasesData() {
   const config = window.SAGE_CONFIG;
   if (!config) return;
 
-  // Start with the authoritative configured release as the source of truth
+  // config.releases.fallback is the authoritative current release.
+  // config.releases.history is the complete ordered archive.
+  // No GitHub API call is made for release metadata — the repo is private.
   let latestRelease = config.releases.fallback;
-  let allReleases = config.releases.history || [];
+  let allReleases   = config.releases.history || [];
 
-  // 1. Try fetching from GitHub Releases public API (SA-GE-Releases)
-  const ghReleases = await fetchGitHubReleases(config);
-  if (ghReleases && ghReleases.length > 0) {
-    const parsedReleases = ghReleases.map(gh => parseGitHubRelease(gh, config));
-    const apiLatest = parsedReleases[0];
-
-    // Only use the API's "latest" if it is genuinely newer than what config.js declares.
-    // This prevents a stale GitHub release from downgrading the configured version.
-    // config.releases.fallback is always authoritative for the current release.
-    if (isVersionNewer(apiLatest.version, config.releases.fallback.version)) {
-      latestRelease = apiLatest;
-      allReleases = parsedReleases;
-    } else {
-      // config.fallback is current or newer — use it as latest.
-      // Merge API history as supplementary archive data, deduplicated against config.history.
-      latestRelease = config.releases.fallback;
-      const configVersions = new Set((config.releases.history || []).map(r => r.version));
-      const apiExtras = parsedReleases.filter(r => !configVersions.has(r.version));
-      allReleases = [...(config.releases.history || []), ...apiExtras];
-    }
-  } else {
-    // 2. Fallback: Try fetching official update manifest
-    try {
-      const manifestResponse = await fetch(config.releases.manifestUrl, { cache: "no-cache" });
-      if (manifestResponse.ok) {
-        const manifest = await manifestResponse.json();
-        if (manifest.version && isVersionNewer(manifest.version, config.releases.fallback.version)) {
-          latestRelease = {
-            version: manifest.version,
-            displayVersion: `v${manifest.version}`,
-            releaseDate: manifest.pubDate ? formatDate(manifest.pubDate) : config.releases.fallback.releaseDate,
-            title: manifest.name || `SA:GE v${manifest.version}`,
-            summary: config.releases.fallback.summary,
-            downloadUrl: manifest.downloadUrl || config.releases.fallback.downloadUrl,
-            installerUrl: null,
-            fileSizeBytes: manifest.size || config.releases.fallback.fileSizeBytes,
-            formattedSize: manifest.size ? formatBytes(manifest.size) : config.releases.fallback.formattedSize,
-            sha256: manifest.sha256 || config.releases.fallback.sha256,
-            isPreRelease: manifest.version.includes("preview") || manifest.version.includes("beta"),
-            highlights: config.releases.fallback.highlights
-          };
-        }
-        // If manifest is older or same as config.fallback, keep config.fallback
+  // Optional: check the hosted update manifest for a newer version signal.
+  // Only accepts it if it declares a version strictly newer than config.
+  try {
+    const manifestResponse = await fetch(config.releases.manifestUrl, { cache: "no-cache" });
+    if (manifestResponse.ok) {
+      const manifest = await manifestResponse.json();
+      if (manifest.version && isVersionNewer(manifest.version, config.releases.fallback.version)) {
+        latestRelease = {
+          version:        manifest.version,
+          displayVersion: `v${manifest.version}`,
+          releaseDate:    manifest.pubDate ? formatDate(manifest.pubDate) : config.releases.fallback.releaseDate,
+          title:          manifest.name || `SA:GE v${manifest.version}`,
+          summary:        config.releases.fallback.summary,
+          downloadUrl:    manifest.downloadUrl || config.releases.fallback.downloadUrl,
+          releasePageUrl: manifest.releasePageUrl || config.releases.fallback.releasePageUrl || null,
+          installerUrl:   null,
+          fileSizeBytes:  manifest.size || null,
+          formattedSize:  manifest.size ? formatBytes(manifest.size) : null,
+          sha256:         manifest.sha256 || null,
+          isPreRelease:   /preview|beta/.test(manifest.version),
+          highlights:     config.releases.fallback.highlights
+        };
       }
-    } catch (e) {
-      // Offline / local file protocol — keep config.fallback
     }
+  } catch (_) {
+    // Manifest unreachable (local file:// protocol, offline, etc.) — keep config.fallback.
   }
 
-  // Hydrate Download Page if present
+  // Hydrate page sections — each function is a no-op if its container is absent.
   hydrateDownloadPage(latestRelease, config);
-
-  // Hydrate Homepage Latest Release Section if present
   hydrateHomepageRelease(latestRelease, config);
-
-  // Hydrate Releases Archive Page if present
   hydrateReleasesArchive(latestRelease, allReleases, config);
 }
 
 /**
- * Compares two semver-style version strings (e.g. "1.1.0" vs "1.0.0").
- * Returns true if versionA is strictly newer than versionB.
+ * Returns true if versionA is strictly newer than versionB (semver comparison).
  */
 function isVersionNewer(versionA, versionB) {
   if (!versionA || !versionB) return false;
-  const parseV = v => v.replace(/^v/, "").split(".").map(n => parseInt(n, 10) || 0);
-  const [aMajor, aMinor, aPatch] = parseV(versionA);
-  const [bMajor, bMinor, bPatch] = parseV(versionB);
-  if (aMajor !== bMajor) return aMajor > bMajor;
-  if (aMinor !== bMinor) return aMinor > bMinor;
-  return aPatch > bPatch;
-}
-
-
-/**
- * Fetch releases from GitHub API with 4-second timeout & session caching
- */
-async function fetchGitHubReleases(config) {
-  const now = Date.now();
-  if (_releasesCache && (now - _releasesCacheTime < 120000)) {
-    return _releasesCache;
-  }
-
-  const apiRepo = config.github?.releasesApiRepo || "SAGE-DevelopmentTeam/SA-GE-Releases";
-  const apiBase = config.github?.apiBase || "https://api.github.com";
-  const url = `${apiBase}/repos/${apiRepo}/releases?per_page=10`;
-
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 4000);
-
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: { "Accept": "application/vnd.github.v3+json" }
-    });
-
-    clearTimeout(timeoutId);
-
-    if (response.ok) {
-      const data = await response.json();
-      if (Array.isArray(data) && data.length > 0) {
-        _releasesCache = data;
-        _releasesCacheTime = now;
-        return data;
-      }
-    }
-  } catch (err) {
-    // Graceful fallback
-  } finally {
-    clearTimeout(timeoutId);
-  }
-
-  return null;
-}
-
-/**
- * Parses a raw GitHub Release object into a normalized release model
- */
-function parseGitHubRelease(gh, config) {
-  const isPre = Boolean(gh.prerelease);
-  const tag = gh.tag_name || "v1.0.0";
-  const version = tag.replace(/^v/, "");
-  
-  let zipUrl = "";
-  let zipSize = 0;
-
-  if (Array.isArray(gh.assets)) {
-    for (const asset of gh.assets) {
-      const name = asset.name ? asset.name.toLowerCase() : "";
-      if (name.endsWith(".zip")) {
-        zipUrl = asset.browser_download_url || "";
-        zipSize = asset.size || 0;
-      }
-    }
-  }
-
-  return {
-    version: version,
-    displayVersion: tag,
-    releaseDate: gh.published_at ? formatDate(gh.published_at) : config.releases.fallback.releaseDate,
-    title: gh.name || `SA:GE ${tag}`,
-    summary: gh.body ? extractSummaryFromBody(gh.body) : config.releases.fallback.summary,
-    body: gh.body || "",
-    downloadUrl: zipUrl || config.releases.fallback.downloadUrl,
-    installerUrl: null,
-    fileSizeBytes: zipSize || config.releases.fallback.fileSizeBytes,
-    formattedSize: zipSize > 0 ? formatBytes(zipSize) : config.releases.fallback.formattedSize,
-    sha256: config.releases.fallback.sha256,
-    isPreRelease: isPre,
-    highlights: config.releases.fallback.highlights
-  };
-}
-
-function extractSummaryFromBody(body) {
-  if (!body) return "";
-  const lines = body.split("\n").map(l => l.trim()).filter(Boolean);
-  const firstPara = lines.find(l => !l.startsWith("#") && !l.startsWith("*") && !l.startsWith("-"));
-  return firstPara || lines[0] || "";
+  const parse = v => v.replace(/^v/, "").split(".").map(n => parseInt(n, 10) || 0);
+  const [aMaj, aMin, aPat] = parse(versionA);
+  const [bMaj, bMin, bPat] = parse(versionB);
+  if (aMaj !== bMaj) return aMaj > bMaj;
+  if (aMin !== bMin) return aMin > bMin;
+  return aPat > bPat;
 }
 
 /**
@@ -338,11 +226,10 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
           <a href="${escapeHtml(releasePageUrl)}" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
             View Release on GitHub ↗
           </a>
-          ` : `
-          <a href="guide.html" class="btn btn-secondary btn-sm">
+          ` : ""}
+          <a href="./guide.html" class="btn btn-secondary btn-sm">
             Getting Started Guide →
           </a>
-          `}
         </footer>
       </article>
     `;
