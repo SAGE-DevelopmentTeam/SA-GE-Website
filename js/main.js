@@ -80,13 +80,10 @@ function getNestedConfigValue(obj, path) {
 
 /**
  * 3. Dynamic Statistics Loader
- * - Downloads: real total download count across all SA-GE assets (GitHub API)
- * - GitHub Stars: star count on the SA-GE repository (GitHub API)
+ * - Downloads: real total download count across all SA-GE-Releases assets (GitHub API)
+ * - GitHub Stars: star count on the SA-GE repository (with SA-GE-Releases fallback if private)
  * - Releases: total number of published SA:GE releases (GitHub API)
  * Falls back to "—" gracefully on API failure or rate-limiting.
- *
- * Note: statsApiRepo (SA-GE) is a public mirror used for download
- * tracking. It is distinct from the SA-GE repo that hosts the official releases.
  */
 function initStatsLoader() {
   const downloadsEl = document.getElementById("stat-downloads");
@@ -103,30 +100,31 @@ function initStatsLoader() {
     releasesEl.textContent = config.releases.history.length;
   }
 
-  const apiBase      = config?.github?.apiBase     || "https://api.github.com";
-  const statsRepo    = config?.github?.statsApiRepo || "SAGE-DevelopmentTeam/SA-GE";
+  const apiBase      = config?.github?.apiBase        || "https://api.github.com";
+  const mainRepo     = config?.github?.apiRepo        || "SAGE-DevelopmentTeam/SA-GE";
+  const releasesRepo = config?.github?.releasesApiRepo || "SAGE-DevelopmentTeam/SA-GE-Releases";
 
   async function fetchStats() {
-    const releasesUrl = `${apiBase}/repos/${statsRepo}/releases?per_page=100`;
-    const repoUrl     = `${apiBase}/repos/${statsRepo}`;
+    const releasesUrl = `${apiBase}/repos/${releasesRepo}/releases?per_page=100`;
+    const mainRepoUrl = `${apiBase}/repos/${mainRepo}`;
+    const relRepoUrl  = `${apiBase}/repos/${releasesRepo}`;
 
     const controller = new AbortController();
     const timeoutId  = setTimeout(() => controller.abort(), 6000);
 
     try {
-      // Fetch in parallel: all releases (downloads + count) + repo metadata (stars)
-      const [releasesRes, repoRes] = await Promise.all([
-        fetch(releasesUrl, { signal: controller.signal, headers: { "Accept": "application/vnd.github.v3+json" } }),
-        fetch(repoUrl,     { signal: controller.signal, headers: { "Accept": "application/vnd.github.v3+json" } }),
+      // Fetch releases (for downloads/release count) and main repo metadata (for stars)
+      const [releasesRes, mainRepoRes] = await Promise.all([
+        fetch(releasesUrl, { signal: controller.signal, headers: { "Accept": "application/vnd.github.v3+json" } }).catch(() => null),
+        fetch(mainRepoUrl, { signal: controller.signal, headers: { "Accept": "application/vnd.github.v3+json" } }).catch(() => null),
       ]);
 
       clearTimeout(timeoutId);
 
-      // Parse releases array — used for both downloads total and releases count
-      if (releasesRes.ok) {
+      // Parse releases array from SA-GE-Releases for asset download counts & release count
+      if (releasesRes && releasesRes.ok) {
         const releases = await releasesRes.json();
         if (Array.isArray(releases)) {
-          // Total downloads: sum download_count across every asset of every release
           if (downloadsEl) {
             let total = 0;
             for (const release of releases) {
@@ -139,24 +137,38 @@ function initStatsLoader() {
             downloadsEl.textContent = formatNumber(total);
           }
 
-          // Releases count
           if (releasesEl) {
             releasesEl.textContent = formatNumber(releases.length);
           }
         }
       }
 
-      // Stars on SA-GE repo
-      if (starsEl && repoRes.ok) {
-        const repoData = await repoRes.json();
-        if (typeof repoData.stargazers_count === "number") {
-          starsEl.textContent = formatNumber(repoData.stargazers_count);
+      // Stars from SA-GE main repo (or fallback to SA-GE-Releases if SA-GE is private / 404)
+      if (starsEl) {
+        let starsSet = false;
+        if (mainRepoRes && mainRepoRes.ok) {
+          const repoData = await mainRepoRes.json();
+          if (typeof repoData.stargazers_count === "number") {
+            starsEl.textContent = formatNumber(repoData.stargazers_count);
+            starsSet = true;
+          }
+        }
+
+        if (!starsSet) {
+          try {
+            const relRepoRes = await fetch(relRepoUrl, { headers: { "Accept": "application/vnd.github.v3+json" } });
+            if (relRepoRes.ok) {
+              const relRepoData = await relRepoRes.json();
+              if (typeof relRepoData.stargazers_count === "number") {
+                starsEl.textContent = formatNumber(relRepoData.stargazers_count);
+              }
+            }
+          } catch (_) {}
         }
       }
 
     } catch (err) {
       clearTimeout(timeoutId);
-      // API unavailable or timed out — keep "—" placeholders, no fabricated data
     }
   }
 

@@ -28,9 +28,13 @@ const SAGE_CONFIG = {
     // Official GitHub organization
     org: "SAGE-DevelopmentTeam",
 
-    // Desktop Application Repository (Private — source code; also hosts official releases/tags)
+    // Desktop Application Repository (Private — source code)
     repoName: "SA-GE",
     repoReleasesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases",
+
+    // Official Public Releases Repository
+    releasesRepoName: "SA-GE-Releases",
+    releasesRepoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases",
 
     // Official Public Website Repository
     websiteRepoName: "SA-GE-Website",
@@ -48,12 +52,11 @@ const SAGE_CONFIG = {
     // Public GitHub API base
     apiBase: "https://api.github.com",
 
-    // SA-GE main repo identifier — releases are tagged here (private; API used only for release page links)
+    // Repository for main project / stargazers
     apiRepo: "SAGE-DevelopmentTeam/SA-GE",
 
-    // Separate public repository used ONLY for download statistics (stars, download counts).
-    // NOTE: Do NOT use this repo as the download source for users — releases live in SA-GE.
-    statsApiRepo: "SAGE-DevelopmentTeam/SA-GE",
+    // Public releases repository for asset download counts
+    releasesApiRepo: "SAGE-DevelopmentTeam/SA-GE-Releases",
   },
 
   // --------------------------------------------------------------------------
