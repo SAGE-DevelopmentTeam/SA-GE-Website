@@ -97,6 +97,12 @@ function initStatsLoader() {
   if (!downloadsEl && !starsEl && !releasesEl) return;
 
   const config       = (typeof SAGE_CONFIG !== "undefined") ? SAGE_CONFIG : null;
+  
+  // Set initial release count statistic from local config.js data
+  if (releasesEl && config?.releases?.history) {
+    releasesEl.textContent = config.releases.history.length;
+  }
+
   const apiBase      = config?.github?.apiBase     || "https://api.github.com";
   const statsRepo    = config?.github?.statsApiRepo || "SAGE-DevelopmentTeam/SA-GE";
 

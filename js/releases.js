@@ -158,7 +158,7 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
     const isLatest = idx === 0;
     const versionDisplay = rel.displayVersion || `v${rel.version}`;
     const dlUrl = rel.downloadUrl || config.releases.fallback.downloadUrl;
-    const dateStr = rel.releaseDate || rel.date || "August 27, 2026";
+    const dateStr = rel.releaseDate || rel.date || "August 28, 2026";
     const shaChecksum = rel.sha256 || null; // Only show SHA if explicitly provided; null = omit
     const releasePageUrl = rel.releasePageUrl || null;
 

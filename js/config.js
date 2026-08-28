@@ -70,7 +70,7 @@ const SAGE_CONFIG = {
     fallback: {
       version: "1.1.0",
       displayVersion: "v1.1.0",
-      releaseDate: "August 27, 2026",
+      releaseDate: "August 28, 2026",
       title: "SA:GE v1.1.0 — Smart Tiles",
       summary: "V1.1.0 introduces the redesigned manual Smart Tile configuration system, universal topology, tile variations, configurable variation frequency, and expanded Smart Tile painting controls.",
       downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
@@ -99,7 +99,7 @@ const SAGE_CONFIG = {
       {
         version: "1.1.0",
         displayVersion: "v1.1.0",
-        date: "August 27, 2026",
+        date: "August 28, 2026",
         isLatest: true,
         tag: "v1.1.0",
         title: "SA:GE v1.1.0 — Smart Tiles",
