@@ -164,10 +164,21 @@ function hydrateDownloadPage(release, config) {
   const fileSizeEl = document.getElementById("dl-file-size");
   const primaryDlBtn = document.getElementById("dl-primary-btn");
   const shaChecksumEl = document.getElementById("dl-sha256");
+  const shaBoxEl = document.getElementById("dl-sha256-box");
 
   if (versionBadge) versionBadge.textContent = release.displayVersion;
   if (releaseDateEl) releaseDateEl.textContent = release.releaseDate;
-  if (fileSizeEl) fileSizeEl.textContent = release.formattedSize;
+  if (fileSizeEl) {
+    if (release.formattedSize) {
+      fileSizeEl.textContent = release.formattedSize;
+    } else {
+      // Hide the file size portion gracefully when unknown
+      const sizeParent = fileSizeEl.closest
+        ? fileSizeEl.parentElement
+        : null;
+      fileSizeEl.textContent = "—";
+    }
+  }
 
   if (primaryDlBtn) {
     const downloadUrl = release.downloadUrl || config.releases.fallback.downloadUrl;
@@ -177,9 +188,17 @@ function hydrateDownloadPage(release, config) {
   }
 
   if (shaChecksumEl) {
-    shaChecksumEl.textContent = release.sha256 || config.releases.fallback.sha256;
+    const sha = release.sha256 || null;
+    if (sha) {
+      shaChecksumEl.textContent = sha;
+    } else {
+      // Hide the entire checksum section when no SHA is available for this release
+      const shaSection = document.getElementById("dl-sha256-section");
+      if (shaSection) shaSection.style.display = "none";
+    }
   }
 }
+
 
 /**
  * Hydrates index.html Latest Release section
@@ -221,7 +240,8 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
     const versionDisplay = rel.displayVersion || `v${rel.version}`;
     const dlUrl = rel.downloadUrl || config.releases.fallback.downloadUrl;
     const dateStr = rel.releaseDate || rel.date || "August 27, 2026";
-    const shaChecksum = rel.sha256 || config.releases.fallback.sha256;
+    const shaChecksum = rel.sha256 || null; // Only show SHA if explicitly provided; null = omit
+    const releasePageUrl = rel.releasePageUrl || null;
 
     html += `
       <article class="release-card ${isLatest ? 'latest-release' : ''}">
@@ -243,21 +263,21 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
         ${rel.changes ? `
           <div class="release-changelog">
             ${rel.changes.features && rel.changes.features.length > 0 ? `
-              <h4 style="margin: 1rem 0 0.5rem; color: #34D399;">✨ Features & Capabilities</h4>
+              <h4 style="margin: 1rem 0 0.5rem; color: #34D399;">✨ Features &amp; Capabilities</h4>
               <ul class="release-highlights">
                 ${rel.changes.features.map(f => `<li>${escapeHtml(f)}</li>`).join("")}
               </ul>
             ` : ""}
 
             ${rel.changes.improvements && rel.changes.improvements.length > 0 ? `
-              <h4 style="margin: 1.25rem 0 0.5rem; color: #60A5FA;">⚡ Improvements & Architecture</h4>
+              <h4 style="margin: 1.25rem 0 0.5rem; color: #60A5FA;">⚡ Improvements &amp; Architecture</h4>
               <ul class="release-highlights">
                 ${rel.changes.improvements.map(i => `<li>${escapeHtml(i)}</li>`).join("")}
               </ul>
             ` : ""}
 
             ${rel.changes.fixes && rel.changes.fixes.length > 0 ? `
-              <h4 style="margin: 1.25rem 0 0.5rem; color: #A78BFA;">🛠️ Build & Stability</h4>
+              <h4 style="margin: 1.25rem 0 0.5rem; color: #A78BFA;">🛠️ Build &amp; Stability</h4>
               <ul class="release-highlights">
                 ${rel.changes.fixes.map(fx => `<li>${escapeHtml(fx)}</li>`).join("")}
               </ul>
@@ -283,9 +303,15 @@ function hydrateReleasesArchive(latestRelease, allReleases, config) {
           <a href="${escapeHtml(dlUrl)}" class="btn btn-primary btn-sm">
             ⬇ Download ${escapeHtml(versionDisplay)} (Portable ZIP)
           </a>
+          ${releasePageUrl ? `
+          <a href="${escapeHtml(releasePageUrl)}" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
+            View Release on GitHub ↗
+          </a>
+          ` : `
           <a href="guide.html" class="btn btn-secondary btn-sm">
             Getting Started Guide →
           </a>
+          `}
         </footer>
       </article>
     `;

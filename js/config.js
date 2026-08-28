@@ -64,40 +64,71 @@ const SAGE_CONFIG = {
     // Production manifest URL for external updater consumers
     productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
-    // Current official release metadata (v1.0.0)
+    // Current official release metadata (v1.1.0)
     fallback: {
-      version: "1.0.0",
-      displayVersion: "v1.0.0",
-      releaseDate: "August 27, 2026",
-      title: "SA:GE v1.0.0",
-      summary: "Official public release featuring the Visual Map Editor, tileset management, map layers, warps, object editing, and NPC spawn placement in a self-contained portable package.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
+      version: "1.1.0",
+      displayVersion: "v1.1.0",
+      releaseDate: "August 28, 2026",
+      title: "SA:GE v1.1.0 — Smart Tiles",
+      summary: "V1.1.0 introduces the Smart Tile system — a manual terrain configuration system built around Stardew Valley's tile families, with multiple tile variations, per-variation frequency controls, universal 3×3 topology, L-shaped inner corners, and 1×–3× brush sizes.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
+      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v1.1.0",
       installerUrl: null,
-      fileSizeBytes: 65813166,
-      formattedSize: "62.8 MB",
-      sha256: "7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930",
+      fileSizeBytes: null,
+      formattedSize: null,
+      sha256: null,
       platform: "Windows x64",
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
-        "Self-contained portable distribution — no separate .NET installation required",
-        "Visual Map Editor for Stardew Valley maps",
-        "Map layer editing and visibility controls",
-        "Tile placement and drawing tools",
-        "Warp creation and editing",
-        "Object and property customization",
-        "NPC spawn point placement",
-        "Built-in documentation guide with search"
+        "Smart Tiles — manual terrain configuration for Stardew Valley tile families",
+        "Universal 3×3 topology with L-shaped inner corners",
+        "Multiple tile variations per Smart Tile position",
+        "Per-variation frequency controls for natural-looking terrain",
+        "1×, 2×, and 3× Smart Tile brush sizes",
+        "Improved blob painting for correct variation distribution",
+        "Improved Smart Tile configuration UI",
+        "Self-contained portable distribution — no separate .NET installation required"
       ]
     },
 
     // Changelog history archive (reverse chronological order)
     history: [
       {
+        version: "1.1.0",
+        displayVersion: "v1.1.0",
+        date: "August 28, 2026",
+        isLatest: true,
+        tag: "v1.1.0",
+        title: "SA:GE v1.1.0 — Smart Tiles",
+        summary: "V1.1.0 introduces the Smart Tile system — a manual terrain configuration system built around Stardew Valley's tile families, with multiple tile variations, per-variation frequency controls, universal 3×3 topology, L-shaped inner corners, and 1×–3× brush sizes.",
+        changes: {
+          features: [
+            "Smart Tile system with manual tile assignment — choose exactly which tiles belong to each rule",
+            "Universal 3×3 topology: center, outer edges, outer corners, and L-shaped inner corners",
+            "Multiple tile variations per Smart Tile position (e.g. several visually distinct center tiles)",
+            "Per-variation frequency controls for natural-looking, non-repetitive terrain",
+            "1×, 2×, and 3× Smart Tile brush sizes",
+            "Improved blob painting — larger strokes correctly distribute variations instead of producing incorrect patterns"
+          ],
+          improvements: [
+            "Redesigned Smart Tile configuration UI focused on a single topology editor",
+            "Larger Smart Tile windows and clearer controls",
+            "Taller brush-size controls",
+            "Improved Paint / Configure buttons and trash-can delete icon",
+            "Clearer tile-selection visualization"
+          ],
+          fixes: []
+        },
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v1.1.0",
+        sha256: null
+      },
+      {
         version: "1.0.0",
         displayVersion: "v1.0.0",
         date: "August 27, 2026",
-        isLatest: true,
+        isLatest: false,
         tag: "v1.0.0",
         title: "SA:GE v1.0.0 Official Release",
         summary: "The official public release of SA:GE with Map Editor capabilities for Windows x64.",

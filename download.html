@@ -66,16 +66,16 @@
               <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
                 <h3 style="font-size: 1.75rem;">SA:GE for Windows</h3>
                 <span class="badge badge-emerald">Official Release</span>
-                <span class="badge badge-blue" id="dl-version-badge">v1.0.0</span>
+                <span class="badge badge-blue" id="dl-version-badge">v1.1.0</span>
               </div>
               <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">
-                Published: <span id="dl-release-date">August 27, 2026</span> &bull; File Size: <span id="dl-file-size">62.8 MB</span> &bull; Package: <strong>Portable ZIP</strong> &bull; Architecture: <strong>x64 (64-bit)</strong>
+                Published: <span id="dl-release-date">August 28, 2026</span> &bull; File Size: <span id="dl-file-size">—</span> &bull; Package: <strong>Portable ZIP</strong> &bull; Architecture: <strong>x64 (64-bit)</strong>
               </p>
             </div>
           </div>
 
           <div style="margin: 2rem 0; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-            <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip" id="dl-primary-btn" class="btn btn-primary btn-lg" style="font-size: 1.15rem; padding: 1rem 2.25rem;">
+            <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip" id="dl-primary-btn" class="btn btn-primary btn-lg" style="font-size: 1.15rem; padding: 1rem 2.25rem;">
               ⬇ Download SA:GE (Portable ZIP)
             </a>
             <a href="releases.html" class="btn btn-secondary btn-lg">
@@ -83,13 +83,13 @@
             </a>
           </div>
 
-          <!-- SHA-256 Checksum Verification -->
-          <div style="margin-top: 1.5rem;">
+          <!-- SHA-256 Checksum Verification (hidden by JS if unavailable for this release) -->
+          <div id="dl-sha256-section" style="margin-top: 1.5rem;">
             <div style="font-size: 0.825rem; font-weight: 600; color: var(--text-dim); margin-bottom: 0.4rem;">
               Official SHA-256 Package Checksum:
             </div>
-            <div class="copy-box">
-              <span id="dl-sha256">7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930</span>
+            <div class="copy-box" id="dl-sha256-box">
+              <span id="dl-sha256"></span>
               <button class="btn-copy" data-copy-target="dl-sha256">Copy Checksum</button>
             </div>
           </div>
@@ -147,7 +147,7 @@
             <div class="feature-card">
               <div class="feature-icon-box">1</div>
               <h3>Download & Extract</h3>
-              <p>Download the official <code>SAGE-v1.0.0-Portable.zip</code> and extract the archive to your preferred location (e.g. <code>C:\Tools\SAGE</code>).</p>
+              <p>Download the official <code>SAGE-v1.1.0-Portable.zip</code> and extract the archive to your preferred location (e.g. <code>C:\Tools\SAGE</code>).</p>
             </div>
 
             <div class="feature-card">
