@@ -22,6 +22,7 @@ async function initReleasesData() {
   const config = window.SAGE_CONFIG;
   if (!config) return;
 
+  // Start with the authoritative configured release as the source of truth
   let latestRelease = config.releases.fallback;
   let allReleases = config.releases.history || [];
 
@@ -29,15 +30,29 @@ async function initReleasesData() {
   const ghReleases = await fetchGitHubReleases(config);
   if (ghReleases && ghReleases.length > 0) {
     const parsedReleases = ghReleases.map(gh => parseGitHubRelease(gh, config));
-    latestRelease = parsedReleases[0];
-    allReleases = parsedReleases;
+    const apiLatest = parsedReleases[0];
+
+    // Only use the API's "latest" if it is genuinely newer than what config.js declares.
+    // This prevents a stale GitHub release from downgrading the configured version.
+    // config.releases.fallback is always authoritative for the current release.
+    if (isVersionNewer(apiLatest.version, config.releases.fallback.version)) {
+      latestRelease = apiLatest;
+      allReleases = parsedReleases;
+    } else {
+      // config.fallback is current or newer — use it as latest.
+      // Merge API history as supplementary archive data, deduplicated against config.history.
+      latestRelease = config.releases.fallback;
+      const configVersions = new Set((config.releases.history || []).map(r => r.version));
+      const apiExtras = parsedReleases.filter(r => !configVersions.has(r.version));
+      allReleases = [...(config.releases.history || []), ...apiExtras];
+    }
   } else {
     // 2. Fallback: Try fetching official update manifest
     try {
       const manifestResponse = await fetch(config.releases.manifestUrl, { cache: "no-cache" });
       if (manifestResponse.ok) {
         const manifest = await manifestResponse.json();
-        if (manifest.version) {
+        if (manifest.version && isVersionNewer(manifest.version, config.releases.fallback.version)) {
           latestRelease = {
             version: manifest.version,
             displayVersion: `v${manifest.version}`,
@@ -53,9 +68,10 @@ async function initReleasesData() {
             highlights: config.releases.fallback.highlights
           };
         }
+        // If manifest is older or same as config.fallback, keep config.fallback
       }
     } catch (e) {
-      // Offline / local file protocol fallback
+      // Offline / local file protocol — keep config.fallback
     }
   }
 
@@ -68,6 +84,21 @@ async function initReleasesData() {
   // Hydrate Releases Archive Page if present
   hydrateReleasesArchive(latestRelease, allReleases, config);
 }
+
+/**
+ * Compares two semver-style version strings (e.g. "1.1.0" vs "1.0.0").
+ * Returns true if versionA is strictly newer than versionB.
+ */
+function isVersionNewer(versionA, versionB) {
+  if (!versionA || !versionB) return false;
+  const parseV = v => v.replace(/^v/, "").split(".").map(n => parseInt(n, 10) || 0);
+  const [aMajor, aMinor, aPatch] = parseV(versionA);
+  const [bMajor, bMinor, bPatch] = parseV(versionB);
+  if (aMajor !== bMajor) return aMajor > bMajor;
+  if (aMinor !== bMinor) return aMinor > bMinor;
+  return aPatch > bPatch;
+}
+
 
 /**
  * Fetch releases from GitHub API with 4-second timeout & session caching

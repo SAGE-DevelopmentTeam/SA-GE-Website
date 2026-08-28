@@ -20,6 +20,12 @@ const SAGE_GUIDE_DATA = {
       description: "Complete guide to visual tile painting, layer systems, warps, and NPC spawns."
     },
     {
+      id: "smart-tiles",
+      name: "Smart Tiles",
+      icon: "🌿",
+      description: "Configuring and painting terrain with the Smart Tile system. New in V1.1.0."
+    },
+    {
       id: "playtesting",
       name: "Playtesting",
       icon: "🧪",
@@ -445,7 +451,216 @@ const SAGE_GUIDE_DATA = {
     },
 
     // ------------------------------------------------------------------------
-    // 3. Playtesting
+    // 3. Smart Tiles (V1.1.0)
+    // ------------------------------------------------------------------------
+    {
+      id: "smart-tiles-overview",
+      categoryId: "smart-tiles",
+      title: "Smart Tiles Overview",
+      order: 1,
+      summary: "What Smart Tiles are, when to use them, and the manual configuration workflow.",
+      keywords: ["smart tiles", "terrain", "auto tile", "manual configuration", "topology", "v1.1.0"],
+      synonyms: ["smart tile", "terrain tiles", "auto terrain", "tile family"],
+      related: ["smart-tiles-topology", "smart-tiles-variations", "smart-tiles-brush", "tile-editing", "tilesets"],
+      content: `
+        <p class="article-lead"><strong>Smart Tiles</strong> (added in V1.1.0) let you define a reusable terrain configuration — once configured, painting with the Smart Tile tool automatically places the correct tile for each position in your terrain shape.</p>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Manual Configuration</div>
+          <p>Smart Tiles use a <strong>manual</strong> workflow. You explicitly assign which tiles from your tileset belong to each position. SA:GE does not attempt to automatically discover tile families or analyse the tilesheet — you are always in full control of which tiles are used.</p>
+        </div>
+
+        <h2>When to Use Smart Tiles</h2>
+        <p>Smart Tiles are well-suited for terrain that needs connected edges and corners, such as:</p>
+        <ul>
+          <li>Grass borders and terrain edges</li>
+          <li>Dirt paths and ground surfaces</li>
+          <li>Water edges and shorelines</li>
+          <li>Cliff or wall outlines</li>
+          <li>Any terrain that uses corner, edge, and inner-corner tiles</li>
+          <li>Terrain where visual variety (multiple tile variations) is desirable</li>
+        </ul>
+        <p>For simple, non-connected tile placement, the standard Brush tool is usually sufficient. Smart Tiles are most useful when your terrain requires automatic topology handling across edges and corners.</p>
+
+        <h2>Smart Tile Configuration Workflow</h2>
+        <ol>
+          <li>Open the Map Editor with a project and tileset loaded.</li>
+          <li>Open or create a Smart Tile from the Smart Tiles panel.</li>
+          <li>The Smart Tile configuration window opens, showing the topology editor.</li>
+          <li>Select a position in the topology (e.g. <strong>Center</strong>, <strong>Top Edge</strong>, <strong>Top-Left Corner</strong>).</li>
+          <li>Click tiles in the tileset palette to assign them to that position. You can assign multiple tile variations to any single position.</li>
+          <li>Optionally adjust the <strong>frequency</strong> (weight) of each variation to control how often it appears when painting.</li>
+          <li>Repeat for all relevant positions in the topology.</li>
+          <li>Save the Smart Tile configuration.</li>
+          <li>Select the <strong>Smart Tile Paint</strong> tool and choose a brush size (1×, 2×, or 3×).</li>
+          <li>Paint terrain on the map. SA:GE automatically places the correct tile for each position based on neighboring terrain.</li>
+        </ol>
+
+        <div class="callout callout-note">
+          <div class="callout-title">ℹ️ Not All Positions Are Required</div>
+          <p>You do not need to configure every position in the topology. Positions left empty will simply not be painted for that topology slot. Configure the positions relevant to your terrain type.</p>
+        </div>
+      `
+    },
+    {
+      id: "smart-tiles-topology",
+      categoryId: "smart-tiles",
+      title: "Smart Tile Topology",
+      order: 2,
+      summary: "The universal 3×3 grid topology and the four L-shaped inner-corner configurations.",
+      keywords: ["topology", "3x3 grid", "corners", "edges", "inner corners", "l-shape", "center"],
+      synonyms: ["tile layout", "grid positions", "corner types", "terrain topology"],
+      related: ["smart-tiles-overview", "smart-tiles-variations", "smart-tiles-brush"],
+      content: `
+        <p class="article-lead">All Smart Tiles in SA:GE share a <strong>universal topology</strong> — a single set of positions that covers every terrain configuration you are likely to need.</p>
+
+        <h2>The 3×3 Main Grid</h2>
+        <p>The primary topology is a 3×3 grid representing exterior positions:</p>
+
+        <div class="data-table-container" style="max-width: 380px;">
+          <table class="data-table" style="text-align: center; font-size: 0.9rem;">
+            <tbody>
+              <tr>
+                <td style="padding: 0.6rem 1rem; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);">Top-Left<br><small>Corner</small></td>
+                <td style="padding: 0.6rem 1rem; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);">Top<br><small>Edge</small></td>
+                <td style="padding: 0.6rem 1rem; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);">Top-Right<br><small>Corner</small></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.6rem 1rem; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);">Left<br><small>Edge</small></td>
+                <td style="padding: 0.6rem 1rem; background: rgba(96,165,250,0.2); border: 1px solid rgba(96,165,250,0.4);"><strong>Center</strong></td>
+                <td style="padding: 0.6rem 1rem; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);">Right<br><small>Edge</small></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.6rem 1rem; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);">Bottom-Left<br><small>Corner</small></td>
+                <td style="padding: 0.6rem 1rem; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);">Bottom<br><small>Edge</small></td>
+                <td style="padding: 0.6rem 1rem; background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);">Bottom-Right<br><small>Corner</small></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top: 1rem;">Each cell in the grid represents a distinct terrain position:</p>
+        <ul>
+          <li><strong>Center:</strong> Interior tiles fully surrounded by the same terrain.</li>
+          <li><strong>Edges (Top, Bottom, Left, Right):</strong> Tiles along a straight outer edge of the terrain.</li>
+          <li><strong>Outer Corners (four positions):</strong> Tiles at the outer corner of a terrain region, where two straight edges meet at a right angle.</li>
+        </ul>
+
+        <h2>Inner Corner Configurations</h2>
+        <p>In addition to the 3×3 exterior grid, four <strong>inner corner</strong> (L-shaped) configurations handle the inside corners of terrain — where two terrain edges curve inward around an enclosed area.</p>
+        <p>Inner corners appear when a terrain blob has a concave indentation. There are four rotations:</p>
+        <ul>
+          <li><strong>Inner Corner — Top-Left:</strong> Used where terrain curves inward at the top-left inside of the blob.</li>
+          <li><strong>Inner Corner — Top-Right:</strong> Inward curve at the top-right inside.</li>
+          <li><strong>Inner Corner — Bottom-Left:</strong> Inward curve at the bottom-left inside.</li>
+          <li><strong>Inner Corner — Bottom-Right:</strong> Inward curve at the bottom-right inside.</li>
+        </ul>
+
+        <div class="callout callout-note">
+          <div class="callout-title">ℹ️ Why Inner Corners Matter</div>
+          <p>Without inner corners, concave terrain shapes would show visually incorrect tiles. Configuring inner corners ensures your terrain looks correct even when you paint complex blob shapes or irregular outlines.</p>
+        </div>
+
+        <h2>Positioning in Stardew Valley Tilesets</h2>
+        <p>Stardew Valley tilesets typically arrange terrain tiles in a way that maps directly to this topology. The outer-corner and edge positions generally appear in an expected rectangular region of the tilesheet, and the inner-corner tiles are usually nearby. You assign the correct tiles from your palette to each topology position manually.</p>
+      `
+    },
+    {
+      id: "smart-tiles-variations",
+      categoryId: "smart-tiles",
+      title: "Tile Variations & Frequency",
+      order: 3,
+      summary: "Assigning multiple tile variations to a single position and controlling how often each appears.",
+      keywords: ["variations", "frequency", "weight", "randomness", "multiple tiles", "variation"],
+      synonyms: ["random tiles", "probability", "varied terrain", "tile weight", "variation frequency"],
+      related: ["smart-tiles-overview", "smart-tiles-topology", "smart-tiles-brush"],
+      content: `
+        <p class="article-lead">Any position in the Smart Tile topology can hold <strong>multiple tile variations</strong>. When painting, SA:GE selects from these variations based on their configured frequency, resulting in more natural-looking terrain.</p>
+
+        <h2>Adding Variations</h2>
+        <p>To add variations to a topology position:</p>
+        <ol>
+          <li>Select the position (e.g. <strong>Center</strong>) in the topology editor.</li>
+          <li>Click tiles in the tileset palette. Each clicked tile is added as a variation for that position.</li>
+          <li>A list of assigned variations appears for the selected position.</li>
+          <li>Adjust the <strong>frequency</strong> slider for each variation to control its selection weight.</li>
+        </ol>
+
+        <h2>Understanding Frequency</h2>
+        <p>The frequency value is a <strong>relative weight</strong>, not a guaranteed percentage. For example:</p>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr><th>Variation</th><th>Frequency</th><th>Approximate likelihood</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Grass Variant A</td><td>60</td><td>Most common</td></tr>
+              <tr><td>Grass Variant B</td><td>25</td><td>Occasional</td></tr>
+              <tr><td>Grass Variant C</td><td>15</td><td>Rare</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Higher-frequency tiles appear more often while painting. This allows a Center position to produce a mix of subtle tile variants, making large terrain areas look more natural and less repetitive.</p>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Practical Tip</div>
+          <p>Use a high-frequency plain tile as the base variation and add lower-frequency detail tiles (small rocks, flowers, grass tufts) to create terrain that feels lively without being distracting.</p>
+        </div>
+      `
+    },
+    {
+      id: "smart-tiles-brush",
+      categoryId: "smart-tiles",
+      title: "Smart Tile Brush Sizes",
+      order: 4,
+      summary: "Painting terrain with 1×, 2×, and 3× Smart Tile brush sizes.",
+      keywords: ["brush size", "1x", "2x", "3x", "painting", "blob painting"],
+      synonyms: ["brush", "paint size", "stroke size", "smart tile paint"],
+      related: ["smart-tiles-overview", "smart-tiles-topology", "smart-tiles-variations"],
+      content: `
+        <p class="article-lead">The Smart Tile Paint tool supports three brush sizes: <strong>1×</strong>, <strong>2×</strong>, and <strong>3×</strong>. Larger brush sizes let you cover more area per stroke while the Smart Tile system still handles topology automatically.</p>
+
+        <h2>Brush Size Comparison</h2>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr><th>Brush Size</th><th>Footprint</th><th>Best For</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1×</strong></td>
+                <td>Single tile</td>
+                <td>Precise placement, fine detail work, small terrain patches</td>
+              </tr>
+              <tr>
+                <td><strong>2×</strong></td>
+                <td>2×2 tile area</td>
+                <td>Medium terrain shapes, moderate-sized blobs</td>
+              </tr>
+              <tr>
+                <td><strong>3×</strong></td>
+                <td>3×3 tile area</td>
+                <td>Large terrain blobs, filling broad areas quickly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Topology Remains Accurate at All Sizes</h2>
+        <p>Regardless of brush size, the Smart Tile system evaluates each painted tile's position relative to the terrain blob and assigns the correct topology tile (edge, corner, inner corner, center). Larger brushes do not break or distort the topology.</p>
+
+        <h2>Blob Painting</h2>
+        <p>V1.1.0 includes improvements to blob painting behaviour. When painting larger strokes, tile variations are distributed naturally across the painted area rather than appearing in unnatural straight lines. This ensures large terrain regions look consistent with the frequency weighting you configured.</p>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Workflow Suggestion</div>
+          <p>Use the <strong>3× brush</strong> to lay down the bulk of your terrain quickly, then switch to <strong>1×</strong> for precise edge cleanup and detail adjustments.</p>
+        </div>
+      `
+    },
+
+    // ------------------------------------------------------------------------
+    // 4. Playtesting
     // ------------------------------------------------------------------------
     {
       id: "testing-with-smapi",
