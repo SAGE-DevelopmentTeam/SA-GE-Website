@@ -4,7 +4,15 @@
  * ============================================================================
  */
 
-document.addEventListener("DOMContentLoaded", () => {
+function onReady(fn) {
+  if (document.readyState !== "loading") {
+    fn();
+  } else {
+    document.addEventListener("DOMContentLoaded", fn);
+  }
+}
+
+onReady(() => {
   initNavigation();
   initDynamicConfigLinks();
   initStatsLoader();
@@ -83,21 +91,54 @@ function getNestedConfigValue(obj, path) {
  * - Downloads: real total download count across all SA-GE-Releases assets (GitHub API)
  * - GitHub Stars: star count on the SA-GE repository (with SA-GE-Releases fallback if private)
  * - Releases: total number of published SA:GE releases (GitHub API)
- * Falls back to "—" gracefully on API failure or rate-limiting.
+ *
+ * Uses localStorage caching + dynamic config fallbacks to guarantee smooth,
+ * instant rendering without rate-limit issues on GitHub Pages.
  */
 function initStatsLoader() {
   const downloadsEl = document.getElementById("stat-downloads");
   const starsEl     = document.getElementById("stat-stars");
   const releasesEl  = document.getElementById("stat-releases");
 
-  // Only run on pages that have the stats bar
   if (!downloadsEl && !starsEl && !releasesEl) return;
 
   const config       = (typeof SAGE_CONFIG !== "undefined") ? SAGE_CONFIG : null;
-  
-  // Set initial release count statistic from local config.js data
-  if (releasesEl && config?.releases?.history) {
-    releasesEl.textContent = config.releases.history.length;
+  const CACHE_KEY    = "sage_github_stats_cache";
+  const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes cache window
+
+  function updateDOM(downloadsVal, starsVal, releasesVal) {
+    if (downloadsEl && downloadsVal !== undefined && downloadsVal !== null) {
+      downloadsEl.textContent = formatNumber(downloadsVal);
+    }
+    if (starsEl && starsVal !== undefined && starsVal !== null) {
+      starsEl.textContent = formatNumber(starsVal);
+    }
+    if (releasesEl && releasesVal !== undefined && releasesVal !== null) {
+      releasesEl.textContent = formatNumber(releasesVal);
+    }
+  }
+
+  // 1. Load from localStorage cache immediately if available
+  let cachedData = null;
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (raw) {
+      cachedData = JSON.parse(raw);
+    }
+  } catch (_) {}
+
+  if (cachedData && typeof cachedData === "object") {
+    updateDOM(cachedData.downloads, cachedData.stars, cachedData.releases);
+
+    // If cache is fresh, skip network call to conserve rate-limit quota
+    if (Date.now() - (cachedData.timestamp || 0) < CACHE_TTL_MS) {
+      return;
+    }
+  } else {
+    // Set initial baseline from local config history if no cache exists
+    if (releasesEl && config?.releases?.history) {
+      releasesEl.textContent = config.releases.history.length;
+    }
   }
 
   const apiBase      = config?.github?.apiBase        || "https://api.github.com";
@@ -112,59 +153,71 @@ function initStatsLoader() {
     const controller = new AbortController();
     const timeoutId  = setTimeout(() => controller.abort(), 6000);
 
+    let freshDownloads = cachedData?.downloads ?? null;
+    let freshReleases  = cachedData?.releases ?? (config?.releases?.history?.length || 2);
+    let freshStars     = cachedData?.stars ?? 0;
+    let updated        = false;
+
     try {
-      // Fetch releases (for downloads/release count) and main repo metadata (for stars)
+      // Use standard fetch without custom Accept headers to avoid CORS preflight issues
       const [releasesRes, mainRepoRes] = await Promise.all([
-        fetch(releasesUrl, { signal: controller.signal, headers: { "Accept": "application/vnd.github.v3+json" } }).catch(() => null),
-        fetch(mainRepoUrl, { signal: controller.signal, headers: { "Accept": "application/vnd.github.v3+json" } }).catch(() => null),
+        fetch(releasesUrl, { signal: controller.signal }).catch(() => null),
+        fetch(mainRepoUrl, { signal: controller.signal }).catch(() => null),
       ]);
 
       clearTimeout(timeoutId);
 
-      // Parse releases array from SA-GE-Releases for asset download counts & release count
+      // Parse releases array from SA-GE-Releases
       if (releasesRes && releasesRes.ok) {
         const releases = await releasesRes.json();
         if (Array.isArray(releases)) {
-          if (downloadsEl) {
-            let total = 0;
-            for (const release of releases) {
-              if (Array.isArray(release.assets)) {
-                for (const asset of release.assets) {
-                  total += asset.download_count || 0;
-                }
+          let total = 0;
+          for (const release of releases) {
+            if (Array.isArray(release.assets)) {
+              for (const asset of release.assets) {
+                total += asset.download_count || 0;
               }
             }
-            downloadsEl.textContent = formatNumber(total);
           }
-
-          if (releasesEl) {
-            releasesEl.textContent = formatNumber(releases.length);
-          }
+          freshDownloads = total;
+          freshReleases = releases.length;
+          updated = true;
         }
       }
 
       // Stars from SA-GE main repo (or fallback to SA-GE-Releases if SA-GE is private / 404)
-      if (starsEl) {
-        let starsSet = false;
-        if (mainRepoRes && mainRepoRes.ok) {
-          const repoData = await mainRepoRes.json();
-          if (typeof repoData.stargazers_count === "number") {
-            starsEl.textContent = formatNumber(repoData.stargazers_count);
-            starsSet = true;
-          }
+      if (mainRepoRes && mainRepoRes.ok) {
+        const repoData = await mainRepoRes.json();
+        if (typeof repoData.stargazers_count === "number") {
+          freshStars = repoData.stargazers_count;
+          updated = true;
         }
-
-        if (!starsSet) {
-          try {
-            const relRepoRes = await fetch(relRepoUrl, { headers: { "Accept": "application/vnd.github.v3+json" } });
-            if (relRepoRes.ok) {
-              const relRepoData = await relRepoRes.json();
-              if (typeof relRepoData.stargazers_count === "number") {
-                starsEl.textContent = formatNumber(relRepoData.stargazers_count);
-              }
+      } else {
+        // Fallback for stars if main repo returns 404/403
+        try {
+          const relRepoRes = await fetch(relRepoUrl).catch(() => null);
+          if (relRepoRes && relRepoRes.ok) {
+            const relRepoData = await relRepoRes.json();
+            if (typeof relRepoData.stargazers_count === "number") {
+              freshStars = relRepoData.stargazers_count;
+              updated = true;
             }
-          } catch (_) {}
-        }
+          }
+        } catch (_) {}
+      }
+
+      // Apply updated values and store in localStorage
+      if (updated || freshDownloads !== null) {
+        updateDOM(freshDownloads ?? 0, freshStars, freshReleases);
+
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({
+            downloads: freshDownloads ?? 0,
+            stars: freshStars,
+            releases: freshReleases,
+            timestamp: Date.now()
+          }));
+        } catch (_) {}
       }
 
     } catch (err) {
