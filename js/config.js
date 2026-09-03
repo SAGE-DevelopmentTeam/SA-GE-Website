@@ -17,7 +17,7 @@ const SAGE_CONFIG = {
     name: "SA:GE",
     fullName: "Stardew Authoring : Game Editor",
     slogan: "Stardew Valley modding, made visual.",
-    description: "Visual map editor and authoring tool for Stardew Valley.",
+    description: "Visual modding suite and authoring tool for Stardew Valley.",
     copyrightYear: new Date().getFullYear(),
   },
 
@@ -69,30 +69,34 @@ const SAGE_CONFIG = {
     // Production manifest URL for external updater consumers
     productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
-    // Current official release metadata (v1.1.0)
+    // Current official release metadata (v2.0.0)
     fallback: {
-      version: "1.1.0",
-      displayVersion: "v1.1.0",
-      releaseDate: "August 28, 2026",
-      title: "SA:GE v1.1.0 — Smart Tiles",
-      summary: "V1.1.0 introduces the redesigned manual Smart Tile configuration system, universal topology, tile variations, configurable variation frequency, and expanded Smart Tile painting controls.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
-      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v1.1.0",
+      version: "2.0.0",
+      displayVersion: "v2.0.0",
+      releaseDate: "September 3, 2026",
+      title: "SA:GE V2.0.0",
+      summary: "SA:GE V2 introduces a complete visual workflow for creating and managing Stardew Valley mod content without requiring users to manually edit raw files.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v2.0.0/SA-GE-2.0.0-win-x64.zip",
+      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v2.0.0",
       installerUrl: null,
-      fileSizeBytes: null,
-      formattedSize: null,
-      sha256: null,
+      fileSizeBytes: 70207527,
+      formattedSize: "67.0 MB",
+      sha256: "d40500bda97b897ae1fbdc2d1141bf7a31ec01ed74187f8775aa7d4e709da49f",
       platform: "Windows x64",
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
-        "Smart Tiles — manual terrain configuration for Stardew Valley tile families",
-        "Universal 3×3 topology with L-shaped inner corners",
-        "Multiple tile variations per Smart Tile position",
-        "Per-variation frequency controls for natural-looking terrain",
-        "1×, 2×, and 3× Smart Tile brush sizes",
-        "Improved blob painting for correct variation distribution",
-        "Improved Smart Tile configuration UI",
+        "Complete Item workflow — create and edit custom items, properties, categories, prices, and sprite textures",
+        "Complete Character workflow — author custom NPCs with portraits, sprites, dialogues, schedules, and gift preferences",
+        "Complete Map workflow — visual map authoring, multi-directory map discovery, warps, and Smart Tile painting",
+        "Asset management — visual asset organization with automatic path resolution and live previews",
+        "Project workflow — create, open, save, and reload projects with dirty/unsaved-change protection",
+        "Project validation — pre-deployment integrity engine checking textures, map files, and entity IDs",
+        "Direct deployment — one-click deployment directly to the Stardew Valley Mods directory",
+        "Content Patcher synchronization — automatic standard Content Patcher (1.29+ / 2.0+) format generation",
+        "Character and Map integration — NPC spawn point synchronization and map linking",
+        "Integrated Guide & Settings — searchable in-app documentation and customized preferences",
+        "Automatic update system — offline-first startup, semantic version checking, and integrity checks",
         "Self-contained portable distribution — no separate .NET installation required"
       ]
     },
@@ -100,10 +104,50 @@ const SAGE_CONFIG = {
     // Changelog history archive (reverse chronological order)
     history: [
       {
+        version: "2.0.0",
+        displayVersion: "v2.0.0",
+        date: "September 3, 2026",
+        isLatest: true,
+        tag: "v2.0.0",
+        title: "SA:GE V2.0.0",
+        summary: "SA:GE V2 introduces a complete visual workflow for creating and managing Stardew Valley mod content without requiring users to manually edit raw files.",
+        changes: {
+          features: [
+            "Complete Item workflow — create and edit custom items, properties, categories, prices, and sprite textures",
+            "Complete Character workflow — author custom NPCs with portraits, sprites, dialogues, schedules, and gift preferences",
+            "Complete Map workflow — visual map authoring, multi-directory map discovery, warps, and Smart Tile painting",
+            "Asset management — visual asset organization with automatic path resolution and live previews",
+            "Project workflow — create, open, save, and reload projects with dirty/unsaved-change protection",
+            "Project validation — pre-deployment integrity engine checking textures, map files, and entity IDs",
+            "Direct deployment — one-click deployment directly to the Stardew Valley Mods directory",
+            "Content Patcher synchronization — automatic standard Content Patcher (1.29+ / 2.0+) format generation",
+            "Character and Map integration — NPC spawn point synchronization and companion spawns.json extraction",
+            "Integrated Guide & Settings — searchable in-app documentation and customized preferences",
+            "Automatic update system — offline-first startup, semantic version checking, and integrity checks"
+          ],
+          improvements: [
+            "Cohesive single-window workspace with unified navigation across Items, Characters, Maps, Assets, Guide, and Settings",
+            "Robust unsaved-changes protection with Save, Discard, and Cancel prompts across all editors",
+            "Pre-deployment validation gating preventing broken mods from being deployed",
+            "Automatic asset path sanitization and canonical relative path normalization",
+            "Standardized Content Patcher format generation preserving user project sources"
+          ],
+          fixes: [
+            "Fixed validation crash on null/empty project paths",
+            "Fixed legacy build-output paths in asset references",
+            "Safeguarded UI resource lookups against missing brush keys",
+            "Fixed stale patch cleanup in Content Patcher synchronization on entity deletion"
+          ]
+        },
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v2.0.0/SA-GE-2.0.0-win-x64.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v2.0.0",
+        sha256: "d40500bda97b897ae1fbdc2d1141bf7a31ec01ed74187f8775aa7d4e709da49f"
+      },
+      {
         version: "1.1.0",
         displayVersion: "v1.1.0",
         date: "August 28, 2026",
-        isLatest: true,
+        isLatest: false,
         tag: "v1.1.0",
         title: "SA:GE v1.1.0 — Smart Tiles",
         summary: "V1.1.0 introduces the redesigned manual Smart Tile configuration system, universal topology, tile variations, configurable variation frequency, and expanded Smart Tile painting controls.",

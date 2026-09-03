@@ -53,19 +53,20 @@ const SAGE_GUIDE_DATA = {
       synonyms: ["introduction", "basics", "purpose", "concept", "faq"],
       related: ["installing-sage", "creating-a-project", "map-editor-overview"],
       content: `
-        <p class="article-lead"><strong>SA:GE (Stardew Authoring : Game Editor)</strong> is a Stardew Valley modding tool. It is a visual authoring tool designed to make mod creation more accessible without requiring code. The current release is primarily focused on visual map editing.</p>
+        <p class="article-lead"><strong>SA:GE (Stardew Authoring : Game Editor)</strong> is a visual authoring tool designed to make Stardew Valley mod creation accessible without requiring code. SA:GE provides complete visual workflows for Items, Characters, Maps, Assets, Project Validation, and Mod Deployment.</p>
         
         <div class="callout callout-tip">
-          <div class="callout-title">💡 Map Editor & Smart Tiles</div>
-          <p>SA:GE is tailored directly to Stardew Valley map editing, providing dedicated tools for layers, warps, properties, tilesets, and Smart Tiles.</p>
+          <div class="callout-title">💡 Complete Modding Suite</div>
+          <p>SA:GE is tailored directly to Stardew Valley modding, providing dedicated visual editors for custom items, NPCs, dialogues, schedules, map layers, tilesets, warps, and Smart Tiles.</p>
         </div>
 
         <h2>Why SA:GE Exists</h2>
-        <p>Creating and editing Stardew Valley maps can be complex when working directly with raw files. SA:GE provides a visual editor designed around Stardew Valley's map structure.</p>
+        <p>Creating and managing Stardew Valley mod content can be complex when editing raw JSON and map files by hand. SA:GE provides a cohesive visual workspace designed around Stardew Valley modding structures.</p>
         <ul>
-          <li><strong>Visual Map Editor:</strong> Create and edit maps visually instead of working directly with map files.</li>
-          <li><strong>Layers & Tilesets:</strong> Manage map layers, tilesets, and tile attributes with dedicated tools.</li>
-          <li><strong>Warps & NPC Spawns:</strong> Place and configure warps, map objects, and NPC spawn locations directly on map tiles.</li>
+          <li><strong>Item Editor:</strong> Author custom items with pricing, categories, edibility, context tags, and textures.</li>
+          <li><strong>Character Editor:</strong> Create NPCs with portraits, sprites, dialogues, schedules, and gift tastes.</li>
+          <li><strong>Visual Map Editor:</strong> Design custom maps with layers, tilesets, warps, and Smart Tiles.</li>
+          <li><strong>Project Validation & Deployment:</strong> Verify assets and deploy directly to the Stardew Valley Mods directory.</li>
         </ul>
       `
     },
