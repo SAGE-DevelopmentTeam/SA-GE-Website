@@ -30,7 +30,7 @@ const SAGE_CONFIG = {
 
     // Desktop Application Repository (Private — source code)
     repoName: "SA-GE",
-    repoReleasesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases",
+    repoReleasesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases",
 
     // Official Public Releases Repository
     releasesRepoName: "SA-GE-Releases",
@@ -41,19 +41,19 @@ const SAGE_CONFIG = {
     websiteRepoUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Website",
 
     // Issues & Feedback Hub
-    issuesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/issues",
+    issuesUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/issues",
 
     // Direct Bug Report Issue Template URL (used on bugs.html and global CTAs)
-    bugReportUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/issues/new?template=bug_report.md&labels=bug",
+    bugReportUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/issues/new?template=bug_report.md&labels=bug",
 
     // Direct Feature Suggestion Issue Template URL (used on suggestions.html)
-    suggestionUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/issues/new?template=feature_request.md&labels=enhancement",
+    suggestionUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/issues/new?template=feature_request.md&labels=enhancement",
 
     // Public GitHub API base
     apiBase: "https://api.github.com",
 
-    // Repository for main project / stargazers
-    apiRepo: "SAGE-DevelopmentTeam/SA-GE",
+    // Repository for main project / issues / stargazers
+    apiRepo: "SAGE-DevelopmentTeam/SA-GE-Releases",
 
     // Public releases repository for asset download counts
     releasesApiRepo: "SAGE-DevelopmentTeam/SA-GE-Releases",
@@ -76,8 +76,8 @@ const SAGE_CONFIG = {
       releaseDate: "September 3, 2026",
       title: "SA:GE V2.0.0",
       summary: "SA:GE V2 introduces a complete visual workflow for creating and managing Stardew Valley mod content without requiring users to manually edit raw files.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v2.0.0/SA-GE-2.0.0-win-x64.zip",
-      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v2.0.0",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v2.0.0/SA-GE-2.0.0-win-x64.zip",
+      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v2.0.0",
       installerUrl: null,
       fileSizeBytes: 70207527,
       formattedSize: "67.0 MB",
@@ -139,8 +139,8 @@ const SAGE_CONFIG = {
             "Fixed stale patch cleanup in Content Patcher synchronization on entity deletion"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v2.0.0/SA-GE-2.0.0-win-x64.zip",
-        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v2.0.0",
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v2.0.0/SA-GE-2.0.0-win-x64.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v2.0.0",
         sha256: "d40500bda97b897ae1fbdc2d1141bf7a31ec01ed74187f8775aa7d4e709da49f"
       },
       {
@@ -169,8 +169,8 @@ const SAGE_CONFIG = {
           ],
           fixes: []
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
-        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/tag/v1.1.0",
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v1.1.0",
         sha256: null
       },
       {
@@ -203,7 +203,8 @@ const SAGE_CONFIG = {
             "Official v1.0.0 release"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v1.0.0",
         sha256: "7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930"
       }
     ]
