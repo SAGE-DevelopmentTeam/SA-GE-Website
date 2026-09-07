@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "2.0.0",
-  "name": "SA:GE V2.0.0",
-  "pubDate": "2026-09-03T18:42:53Z",
-  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v2.0.0/SA-GE-2.0.0-win-x64.zip",
-  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v2.0.0",
-  "size": 70207527,
-  "sha256": "d40500bda97b897ae1fbdc2d1141bf7a31ec01ed74187f8775aa7d4e709da49f",
+  "version": "3.0.0",
+  "name": "SA:GE V3.0.0",
+  "pubDate": "2026-09-07T12:02:24Z",
+  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.0.0/SA-GE-3.0.0-win-x64.zip",
+  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.0.0",
+  "size": 70446860,
+  "sha256": "53ea1099e05f27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe24d7b",
   "isMandatory": false,
-  "releaseNotes": "### SA:GE V2.0.0\n\nSA:GE V2 introduces a complete visual workflow for creating and managing Stardew Valley mod content without requiring users to manually edit raw files.\n\n#### What's New\n* **Complete Item Workflow**: Create and edit custom items, properties, edibility, prices, context tags, and custom sprite textures.\n* **Complete Character Workflow**: Visual NPC authoring including identity, portraits, sprites, dialogues, schedules, and gift preferences.\n* **Complete Map Workflow**: Map authoring, multi-directory map discovery, warps, object properties, NPC spawns, and Smart Tiles.\n* **Asset Management**: Centralized asset catalog with automatic path resolution and live previews.\n* **Project Workflow & Safety**: Create, open, and save projects with unsaved-change protection and dirty state tracking.\n* **Project Validation Engine**: Pre-deployment validation checking texture paths, map files, and entity IDs.\n* **Direct Mod Deployment**: Deploy mods directly to the Stardew Valley Mods folder with automatic Content Patcher synchronization.\n* **Integrated Guide & Settings**: Built-in documentation and customizable preferences.\n* **Automatic Update System**: Offline-first startup and semantic version checking.\n* **Self-Contained Portable Release**: Ready to run on 64-bit Windows."
+  "releaseNotes": "### SA:GE V3.0.0\n\nSA:GE V3 unifies mod authoring into an end-to-end mod development workspace and pipeline.\n\n#### What's New\n* **Event Studio**: Visual cutscene authoring, character dialogue scripting, timeline events, branch conditions, and automatic Content Patcher generation.\n* **Advanced Map Editor & Action Engineering**: Visual dialogs for Stardew Object Actions and TouchActions with strict schema validation (Warp, MagicWarp, OpenShop, Emote, etc.), Replace Tile tools, and Layer/Tile Property Catalogs.\n* **Localization (i18n) Engine**: Built-in multi-language string editor and Content Patcher tokenized translation management.\n* **Global Deep Search**: Instant multi-category search (Ctrl+Shift+F) across maps, tiles, characters, items, events, actions, and raw JSON.\n* **Multi-File Safe Refactoring**: Safe rename service updates NPC names, item IDs, and asset paths across all project files with collision detection.\n* **Semantic Project Diagnostics & SMAPI Test Runner**: Real-time project validator detecting broken references, orphan textures, and syntax mistakes before launch, paired with integrated SMAPI test session orchestration.\n* **Self-Contained Portable Release**: Ready to run on 64-bit Windows."
 }
