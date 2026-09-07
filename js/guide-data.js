@@ -33,6 +33,12 @@ const SAGE_GUIDE_DATA = {
       "description": "Creating NPCs, appearance, portraits, sprites, schedules, dialogue, and gifts."
     },
     {
+      "id": "events",
+      "name": "Event Studio",
+      "icon": "🎬",
+      "description": "Scripting cutscenes, timeline command sequencing, character dialogue, forks, and map coordinate picking."
+    },
+    {
       "id": "character-map-integration",
       "name": "Character & Map Linking",
       "icon": "🔗",
@@ -42,7 +48,7 @@ const SAGE_GUIDE_DATA = {
       "id": "map-editor",
       "name": "Visual Map Editor",
       "icon": "🗺️",
-      "description": "Map discovery, layer depth sorting, canvas tools, warps, and TMX structure."
+      "description": "Map discovery, layer depth sorting, canvas tools, warps, actions, property catalogs, and TMX structure."
     },
     {
       "id": "smart-tiles",
@@ -57,6 +63,18 @@ const SAGE_GUIDE_DATA = {
       "description": "Visual Asset Browser, organizing textures, and canonical project-relative paths."
     },
     {
+      "id": "project-tools",
+      "name": "References & Search",
+      "icon": "🔍",
+      "description": "Multi-file dependency graph, safe refactoring, and global deep search across all mod assets."
+    },
+    {
+      "id": "localization",
+      "name": "Localization (i18n)",
+      "icon": "🌐",
+      "description": "Side-by-side multi-language translation tables and automated token generation."
+    },
+    {
       "id": "content-patcher",
       "name": "Content Patcher Sync",
       "icon": "📄",
@@ -67,6 +85,12 @@ const SAGE_GUIDE_DATA = {
       "name": "Project Validation",
       "icon": "🛡️",
       "description": "Pre-deployment integrity engine, checking textures, maps, IDs, and error remediation."
+    },
+    {
+      "id": "build-testing",
+      "name": "Build & SMAPI Testing",
+      "icon": "🛠️",
+      "description": "Staged clean builds, distributable ZIP packaging, and live SMAPI playtest sessions with log streaming."
     },
     {
       "id": "deployment",
@@ -99,7 +123,7 @@ const SAGE_GUIDE_DATA = {
       "categoryId": "getting-started",
       "title": "What is SA:GE?",
       "order": 1,
-      "summary": "An introduction to SA:GE, its purpose, and visual modding workflow for Stardew Valley.",
+      "summary": "An introduction to SA:GE, its purpose, and the complete end-to-end visual modding workflow for Stardew Valley.",
       "keywords": [
         "intro",
         "overview",
@@ -107,7 +131,8 @@ const SAGE_GUIDE_DATA = {
         "about",
         "features",
         "stardew modding",
-        "v2"
+        "v3",
+        "workflow"
       ],
       "synonyms": [
         "introduction",
@@ -121,7 +146,7 @@ const SAGE_GUIDE_DATA = {
         "workspace-overview",
         "creating-projects"
       ],
-      "content": "\n        <p class=\"article-lead\"><strong>SA:GE (Stardew Authoring : Game Editor)</strong> is a visual modding application designed to make Stardew Valley mod creation accessible without requiring code or manual JSON file editing.</p>\n        \n        <div class=\"callout callout-tip\">\n          <div class=\"callout-title\">💡 Complete Visual Modding Suite</div>\n          <p>SA:GE V2 provides a cohesive workspace for authoring <strong>Items</strong>, <strong>Characters (NPCs)</strong>, <strong>Maps</strong>, and <strong>Assets</strong>, with built-in <strong>Project Validation</strong> and one-click <strong>Mod Deployment</strong>.</p>\n        </div>\n\n        <h2>Core Capabilities</h2>\n        <ul>\n          <li><strong>Item Editor:</strong> Create custom objects with custom categories, sell prices, edibility, context tags, and PNG textures.</li>\n          <li><strong>Character Editor:</strong> Design custom NPCs complete with portraits, sprite sheets, daily schedules, dialogue trees, gift preferences, and social settings.</li>\n          <li><strong>Visual Map Editor:</strong> Author custom locations and edit map layers, tilesets, warps, and Smart Tile terrain rules.</li>\n          <li><strong>Asset Browser:</strong> Organize your mod's textures, portraits, sprites, and tilesheets with automated project-relative path normalization.</li>\n          <li><strong>Project Validation:</strong> Detect missing textures, map reference errors, and ID conflicts before launching the game.</li>\n          <li><strong>Direct Deployment:</strong> Package and deploy your mod directly to the Stardew Valley <code>Mods</code> directory formatted for Content Patcher.</li>\n        </ul>\n\n        <h2>What SA:GE Does Not Require</h2>\n        <p>SA:GE is designed to be self-contained and friendly for modders of all skill levels:</p>\n        <ul>\n          <li><strong>No Coding Required:</strong> You do not need to write C# or understand programming.</li>\n          <li><strong>No Manual JSON Editing:</strong> SA:GE automatically generates standard <code>manifest.json</code> and <code>content.json</code> files.</li>\n          <li><strong>Self-Contained Runtime:</strong> Distributed as a portable Windows x64 package with the .NET runtime included.</li>\n          <li><strong>Offline-First:</strong> Works completely offline with zero telemetry, zero accounts, and zero cloud tracking.</li>\n        </ul>\n      "
+      "content": "\n        <p class=\"article-lead\"><strong>SA:GE (Stardew Authoring : Game Editor)</strong> is an end-to-end visual mod development workspace designed to make Stardew Valley mod creation accessible, reliable, and expressive without writing C# code or manually editing JSON files.</p>\n        \n        <div class=\"callout callout-tip\">\n          <div class=\"callout-title\">💡 Complete End-to-End Modding Workspace</div>\n          <p>SA:GE V3 unifies <strong>Visual Map Editing</strong>, <strong>NPC &amp; Character Authoring</strong>, <strong>Custom Items</strong>, <strong>Cutscene Event Scripting</strong>, <strong>Tile Action Engineering</strong>, <strong>Localization (i18n)</strong>, <strong>Semantic Diagnostics</strong>, and <strong>Interactive SMAPI Testing</strong> into a single cohesive application.</p>\n        </div>\n\n        <h2>The 8-Step SA:GE Modding Workflow</h2>\n        <p>SA:GE guides you through the full mod development lifecycle from concept to playable release:</p>\n        <ol>\n          <li><strong>CREATE:</strong> Initialize clean Content Patcher mod projects with standard manifest metadata and directory layout.</li>\n          <li><strong>EDIT:</strong> Visually design maps, custom items, NPC personalities, portraits, sprites, schedules, cutscenes, and translations.</li>\n          <li><strong>REFERENCE:</strong> Cross-link maps with character spawns, warps, shop actions, and event triggers with real-time dependency tracking.</li>\n          <li><strong>VALIDATE:</strong> Run semantic diagnostics (<kbd>F6</kbd>) to detect missing textures, invalid warp coordinates, schema violations, and ID collisions before loading.</li>\n          <li><strong>BUILD:</strong> Compile a clean, staged runtime build (<kbd>F5</kbd>) stripping source metadata and temporary files.</li>\n          <li><strong>TEST:</strong> Launch interactive SMAPI test sessions (<kbd>F8</kbd>) with live console streaming and click-to-asset error navigation.</li>\n          <li><strong>EXPORT:</strong> Generate distributable release ZIP archives ready for Nexus Mods or CurseForge with one click.</li>\n          <li><strong>DEPLOY:</strong> Automatically stage and update your mod directly inside your local Stardew Valley <code>Mods</code> directory.</li>\n        </ol>\n\n        <h2>Core Capabilities</h2>\n        <ul>\n          <li><strong>Visual Map Editor:</strong> Multi-layer canvas editing (Back, Buildings, Paths, Front, AlwaysFront), tileset palettes, auto-tiling Smart Tiles, warp builders, and the batch Replace Tile tool.</li>\n          <li><strong>Event Studio:</strong> Visual cutscene timeline sequencer, character dialogue scripting with emotion portraits, branch forks, coordinate pickers, and Content Patcher patch compilation.</li>\n          <li><strong>Stardew Object Actions &amp; TouchActions:</strong> Dedicated visual builders with strict schema verification for 7 warp schemas (Map Warp, Action Warp, TouchAction Warp, MagicWarp, ObeliskWarp, LockedDoorWarp, Door), shops, emotes, and event triggers.</li>\n          <li><strong>Property Catalogs:</strong> Comprehensive vanilla documentation and auto-completion for Map, Layer, and Tile properties (Common, Specialized, Deprecated).</li>\n          <li><strong>Character Editor:</strong> Author full NPC villagers with walking sprite sheets, emotion portraits, daily schedule routines, dialogue trees, and 5-tier gift preferences.</li>\n          <li><strong>Item Editor:</strong> Create custom objects with categories, sell prices, edibility, context tags, and custom 16×16 PNG sprites.</li>\n          <li><strong>Localization (i18n) Studio:</strong> Side-by-side multi-language translation tables with automated <code>{{i18n:key}}</code> token synchronization.</li>\n          <li><strong>Global Deep Search (<kbd>Ctrl+Shift+F</kbd>):</strong> Fast project-wide search across maps, tiles, characters, items, events, actions, and raw JSON.</li>\n          <li><strong>Multi-File Safe Refactoring:</strong> Safe renaming of IDs and maps that automatically updates all references across your project with collision guards.</li>\n          <li><strong>Integrated SMAPI Test Runner:</strong> Real-time log streaming with instant navigation to broken assets when errors occur.</li>\n        </ul>\n\n        <h2>What SA:GE Does Not Require</h2>\n        <ul>\n          <li><strong>No Coding Required:</strong> You do not need to write C# or understand code compilation.</li>\n          <li><strong>No Manual JSON Editing:</strong> SA:GE automatically generates standard <code>manifest.json</code>, <code>content.json</code>, and <code>i18n</code> files.</li>\n          <li><strong>Self-Contained Runtime:</strong> Distributed as a portable Windows x64 package with the .NET runtime included.</li>\n          <li><strong>Offline-First:</strong> Operates 100% offline with zero telemetry, zero accounts, and zero cloud tracking.</li>\n        </ul>\n      "
     },
     {
       "id": "installing-sage",
@@ -156,7 +181,7 @@ const SAGE_GUIDE_DATA = {
       "categoryId": "getting-started",
       "title": "Understanding the Workspace",
       "order": 3,
-      "summary": "A tour of the Home Dashboard, navigation sidebar, and editor workspaces.",
+      "summary": "A tour of the Home Dashboard, navigation sidebar, editors, and diagnostic tools.",
       "keywords": [
         "workspace",
         "layout",
@@ -176,7 +201,7 @@ const SAGE_GUIDE_DATA = {
         "project-lifecycle-safety",
         "creating-projects"
       ],
-      "content": "\n        <p class=\"article-lead\">SA:GE features a unified single-window interface organized around a central navigation sidebar and a contextual workspace area.</p>\n\n        <h2>Navigation Sidebar</h2>\n        <p>The sidebar on the left lets you quickly switch between major modding systems:</p>\n        <ul>\n          <li><strong>🏠 Home:</strong> Dashboard with project overview, quick actions (New, Open, Validate, Deploy), and recent project history.</li>\n          <li><strong>📦 Items:</strong> Item Editor for creating and configuring custom objects, pricing, edibility, and textures.</li>\n          <li><strong>👥 Characters:</strong> Character Editor for authoring NPCs, portraits, sprites, schedules, dialogue, and gifts.</li>\n          <li><strong>🗺️ Maps:</strong> Visual Map Editor with multi-directory map discovery, layers, tilesets, warps, and Smart Tiles.</li>\n          <li><strong>📁 Assets:</strong> Centralized Asset Browser for organizing textures, portraits, sprites, and tilesheets.</li>\n          <li><strong>📖 User Guide:</strong> Integrated in-app documentation and reference guides.</li>\n          <li><strong>⚙️ Settings:</strong> Preferences for themes, accent colors, window modes, and Stardew Valley directories.</li>\n        </ul>\n\n        <h2>Home Dashboard</h2>\n        <p>When you open a project, the Home screen displays:</p>\n        <ul>\n          <li><strong>Project Summary:</strong> Displays project name, unique ID, version, and author.</li>\n          <li><strong>Content Stats:</strong> Live count of custom items, characters, maps, and assets in the project.</li>\n          <li><strong>Quick Actions:</strong> One-click buttons to <em>Validate Project</em> (<code>F6</code>) and <em>Deploy Mod</em>.</li>\n          <li><strong>System Status:</strong> Displays detected Stardew Valley and Mods folder status.</li>\n        </ul>\n      "
+      "content": "\n        <p class=\"article-lead\">SA:GE features a unified single-window interface organized around a central navigation sidebar, contextual editing workspaces, and a live diagnostic status bar.</p>\n\n        <h2>Navigation Sidebar</h2>\n        <p>The sidebar on the left lets you quickly switch between major modding systems:</p>\n        <ul>\n          <li><strong>🏠 Home:</strong> Dashboard with project summary, entity statistics, quick build actions, and recent project history.</li>\n          <li><strong>📦 Items:</strong> Item Editor for authoring custom objects, categories, pricing, edibility, and textures.</li>\n          <li><strong>👥 Characters:</strong> Character Editor for designing custom NPCs, portraits, sprites, schedules, dialogue, and gift tastes.</li>\n          <li><strong>🎬 Events:</strong> Event Studio for visual cutscene timeline sequencing, character dialogue with emotion portraits, and branch conditions.</li>\n          <li><strong>🗺️ Maps:</strong> Visual Map Editor with layer depth sorting, tileset palettes, auto-tiling Smart Tiles, warps, and tile actions.</li>\n          <li><strong>🎨 Assets:</strong> Centralized Asset Browser for managing textures, portraits, sprites, and tilesheets.</li>\n          <li><strong>🌐 Localization:</strong> Multi-language translation tables with side-by-side editing and Content Patcher i18n token syncing.</li>\n          <li><strong>🔍 Search (<kbd>Ctrl+Shift+F</kbd>):</strong> Global Deep Search across all maps, tiles, characters, items, events, actions, and project files.</li>\n          <li><strong>📖 User Guide (<kbd>F1</kbd>):</strong> Integrated in-app documentation and reference guides.</li>\n          <li><strong>⚙️ Settings:</strong> Preferences for themes, accent colors, window display modes, and game directories.</li>\n        </ul>\n\n        <h2>Home Dashboard</h2>\n        <p>When you open a project, the Home screen displays:</p>\n        <ul>\n          <li><strong>Project Summary:</strong> Displays project name, unique ID, version, and author.</li>\n          <li><strong>Content Stats:</strong> Live count of custom items, characters, cutscenes, maps, and texture assets in the project.</li>\n          <li><strong>Quick Actions:</strong> One-click buttons to <em>Build Mod</em> (<kbd>F5</kbd>), <em>Validate Project</em> (<kbd>F6</kbd>), and <em>Test with SMAPI</em> (<kbd>F8</kbd>).</li>\n          <li><strong>System Status:</strong> Displays detected Stardew Valley installation and Mods directory status.</li>\n        </ul>\n      "
     },
     {
       "id": "project-lifecycle-safety",
@@ -519,6 +544,72 @@ const SAGE_GUIDE_DATA = {
       "content": "\n        <p class=\"article-lead\">Control whether custom characters can be romanced, receive gifts, socialize, or have romantic rivals.</p>\n\n        <h2>Social Permissions</h2>\n        <ul>\n          <li><strong>Is Datable / Can Be Romanced:</strong> When checked, the character displays a bouquet slot in the social menu and can be romanced by the player.</li>\n          <li><strong>Can Socialize:</strong> When enabled, the player can talk with the NPC to build friendship.</li>\n          <li><strong>Can Receive Gifts:</strong> When enabled, the character accepts weekly and birthday gifts.</li>\n          <li><strong>Love Interest:</strong> Specifies the character ID of the NPC's romantic rival or partner in festivals and events.</li>\n        </ul>\n      "
     },
     {
+      "id": "event-studio-overview",
+      "categoryId": "events",
+      "title": "Event Studio Overview",
+      "order": 1,
+      "summary": "Visual cutscene authoring with timeline sequencing, dialogue trees, emotion portraits, and map coordinate picking.",
+      "keywords": [
+        "events",
+        "event studio",
+        "cutscenes",
+        "scripting",
+        "timeline",
+        "branching",
+        "forks",
+        "dialogue",
+        "emotion portraits",
+        "coordinate picker",
+        "data/events"
+      ],
+      "synonyms": [
+        "cutscene maker",
+        "story scripting",
+        "event creator",
+        "cinematic editor"
+      ],
+      "related": [
+        "event-scripting-commands",
+        "character-editor-overview",
+        "map-editor-overview",
+        "content-patcher-sync"
+      ],
+      "content": "\n        <p class=\"article-lead\">The Event Studio is a dedicated visual environment for scripting Stardew Valley cutscenes, heart events, and story cinematic sequences without writing cryptic command strings by hand.</p>\n\n        <h2>Key Capabilities</h2>\n        <ul>\n          <li><strong>Timeline-Based Command Sequencer:</strong> Build event timelines step-by-step with visual command blocks (movement, speech, pauses, animations, emotes).</li>\n          <li><strong>Character Dialogue &amp; Emotion Portraits:</strong> Write NPC dialogue and select specific facial emotion portraits from character sheets with instant live preview.</li>\n          <li><strong>Interactive Map Coordinate Picking:</strong> Pick destination tiles (<kbd>X</kbd>, <kbd>Y</kbd>) directly from your map canvas for actor positioning and waypoint paths.</li>\n          <li><strong>Fork &amp; Condition Branching:</strong> Build conditional branches based on player dialogue choices, friendship heart thresholds, quest completion, or inventory items.</li>\n          <li><strong>Content Patcher Auto-Export:</strong> Automatically compiles your timeline into standard Stardew Valley event scripts and injects them into <code>Data/Events/{MapName}</code> in <code>content.json</code>.</li>\n        </ul>\n\n        <h2>Event Structure</h2>\n        <p>In Stardew Valley, each event is defined by three parts:</p>\n        <ol>\n          <li><strong>Target Map:</strong> The location where the event triggers (e.g. <code>Farm</code>, <code>Town</code>, <code>Saloon</code>, or your custom map).</li>\n          <li><strong>Preconditions:</strong> When the event can play (e.g. <code>friendship Aria 4/time 1800 2200/weather sunny</code>).</li>\n          <li><strong>Script Command Stream:</strong> The sequential chain of cutscene commands executed by the game engine.</li>\n        </ol>\n\n        <div class=\"callout callout-tip\">\n          <div class=\"callout-title\">💡 Zero Manual String Parsing</div>\n          <p>You never need to remember cryptic slash-delimited script syntax (e.g. <code>speak Aria \"Hello\"/pause 500/move farmer 0 2 2</code>). SA:GE provides dedicated parameter fields and validates every command before compiling.</p>\n        </div>\n      "
+    },
+    {
+      "id": "event-scripting-commands",
+      "categoryId": "events",
+      "title": "Event Scripting Commands Reference",
+      "order": 2,
+      "summary": "Comprehensive reference of supported cutscene commands, actor controls, audio, and branching logic.",
+      "keywords": [
+        "commands",
+        "event commands",
+        "speak",
+        "move",
+        "pause",
+        "emote",
+        "animate",
+        "playsound",
+        "playmusic",
+        "viewport",
+        "fade",
+        "fork",
+        "end"
+      ],
+      "synonyms": [
+        "script commands",
+        "cutscene actions",
+        "event reference"
+      ],
+      "related": [
+        "event-studio-overview",
+        "character-dialogue",
+        "map-actions-touchactions"
+      ],
+      "content": "\n        <p class=\"article-lead\">The Event Studio provides visual block editors for all standard Stardew Valley cutscene scripting commands.</p>\n\n        <h2>Command Reference</h2>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 25%;\">Command</th>\n                <th style=\"width: 30%;\">Parameters</th>\n                <th style=\"width: 45%;\">Description</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><code>speak</code></td>\n                <td>Actor, Dialogue, Portrait Index</td>\n                <td>Opens speech bubble with the character's emotion portrait and text line.</td>\n              </tr>\n              <tr>\n                <td><code>move</code></td>\n                <td>Actor, Delta X, Delta Y, Direction</td>\n                <td>Walks the farmer or NPC along the specified tile offset and faces a direction.</td>\n              </tr>\n              <tr>\n                <td><code>pause</code></td>\n                <td>Duration (milliseconds)</td>\n                <td>Halts the sequence for a specified time (e.g. <code>1000</code> ms = 1 second).</td>\n              </tr>\n              <tr>\n                <td><code>emote</code></td>\n                <td>Actor, Emote ID</td>\n                <td>Displays an emotion bubble above the actor (Heart, Exclamation, Question, Anger, etc.).</td>\n              </tr>\n              <tr>\n                <td><code>animate</code></td>\n                <td>Actor, Animation Frames, Loop Flag</td>\n                <td>Plays custom sprite frame cycles for actions like reading, sitting, or fishing.</td>\n              </tr>\n              <tr>\n                <td><code>faceDirection</code></td>\n                <td>Actor, Direction (0–3)</td>\n                <td>Immediately turns the actor: 0=Up, 1=Right, 2=Down, 3=Left.</td>\n              </tr>\n              <tr>\n                <td><code>warp</code></td>\n                <td>Actor, Tile X, Tile Y</td>\n                <td>Instantly positions an actor or farmer at specific map coordinates.</td>\n              </tr>\n              <tr>\n                <td><code>playSound</code> / <code>playMusic</code></td>\n                <td>Audio Cue Name</td>\n                <td>Plays in-game sound effects (e.g. <code>doorClose</code>) or background music tracks.</td>\n              </tr>\n              <tr>\n                <td><code>viewport</code></td>\n                <td>X, Y, Target Actor, Pan Speed</td>\n                <td>Controls camera positioning or smooth panning across the scene.</td>\n              </tr>\n              <tr>\n                <td><code>fade</code></td>\n                <td>Fade In / Fade Out, Speed</td>\n                <td>Fades screen to black or returns from black for smooth transitions.</td>\n              </tr>\n              <tr>\n                <td><code>fork</code></td>\n                <td>Condition, Alternate Event ID</td>\n                <td>Branches execution to a different event timeline based on player choices or stats.</td>\n              </tr>\n              <tr>\n                <td><code>end</code></td>\n                <td>Exit Location, Facing Direction</td>\n                <td>Cleanly finalizes the cutscene, restores player control, and saves progress.</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      "
+    },
+    {
       "id": "character-map-linking",
       "categoryId": "character-map-integration",
       "title": "Character & Map Linking",
@@ -622,7 +713,7 @@ const SAGE_GUIDE_DATA = {
         "map-selection-clipboard",
         "map-zoom-navigation"
       ],
-      "content": "\n        <p class=\"article-lead\">The Map Editor provides a complete set of precision tools for tile placement and object inspection.</p>\n\n        <h2>Toolbar Tools &amp; Keyboard Shortcuts</h2>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 20%;\">Tool</th>\n                <th style=\"width: 15%;\">Shortcut</th>\n                <th style=\"width: 65%;\">Usage &amp; Description</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><strong>Brush / Pencil</strong></td>\n                <td><kbd>B</kbd></td>\n                <td>Paints single tiles or multi-tile rectangular stamps onto the active layer.</td>\n              </tr>\n              <tr>\n                <td><strong>Box Tool</strong></td>\n                <td><kbd>U</kbd></td>\n                <td>Draws filled rectangles of tiles across an area.</td>\n              </tr>\n              <tr>\n                <td><strong>Bucket Fill</strong></td>\n                <td><kbd>F</kbd></td>\n                <td>Flood-fills contiguous matching tiles with the selected tile.</td>\n              </tr>\n              <tr>\n                <td><strong>Eraser</strong></td>\n                <td><kbd>E</kbd></td>\n                <td>Erases tiles from the active layer.</td>\n              </tr>\n              <tr>\n                <td><strong>Eyedropper</strong></td>\n                <td><kbd>I</kbd></td>\n                <td>Picks the clicked tile from the canvas and selects it in the active tileset.</td>\n              </tr>\n              <tr>\n                <td><strong>Marquee Select</strong></td>\n                <td><kbd>S</kbd></td>\n                <td>Selects rectangular regions of tiles for copying, cutting, or moving.</td>\n              </tr>\n              <tr>\n                <td><strong>Smart Tiles</strong></td>\n                <td><kbd>T</kbd></td>\n                <td>Paints terrain automatically using configured topology rules.</td>\n              </tr>\n              <tr>\n                <td><strong>Warp Tool</strong></td>\n                <td><kbd>W</kbd></td>\n                <td>Places and edits step-on map warps and transition coordinates.</td>\n              </tr>\n              <tr>\n                <td><strong>NPC Spawn Tool</strong></td>\n                <td><kbd>N</kbd></td>\n                <td>Places character spawn pins and configures initial facing directions.</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      "
+      "content": "\n        <p class=\"article-lead\">The Map Editor provides a complete set of precision tools for tile placement and object inspection.</p>\n\n        <h2>Toolbar Tools &amp; Keyboard Shortcuts</h2>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 20%;\">Tool</th>\n                <th style=\"width: 15%;\">Shortcut</th>\n                <th style=\"width: 65%;\">Usage &amp; Description</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><strong>Brush / Pencil</strong></td>\n                <td><kbd>B</kbd></td>\n                <td>Paints single tiles or multi-tile rectangular stamps onto the active layer.</td>\n              </tr>\n              <tr>\n                <td><strong>Box Tool</strong></td>\n                <td><kbd>U</kbd></td>\n                <td>Draws filled rectangles of tiles across an area.</td>\n              </tr>\n              <tr>\n                <td><strong>Bucket Fill</strong></td>\n                <td><kbd>F</kbd></td>\n                <td>Flood-fills contiguous matching tiles with the selected tile.</td>\n              </tr>\n              <tr>\n                <td><strong>Eraser</strong></td>\n                <td><kbd>E</kbd></td>\n                <td>Erases tiles from the active layer.</td>\n              </tr>\n              <tr>\n                <td><strong>Eyedropper</strong></td>\n                <td><kbd>I</kbd></td>\n                <td>Picks the clicked tile from the canvas and selects it in the active tileset.</td>\n              </tr>\n              <tr>\n                <td><strong>Marquee Select</strong></td>\n                <td><kbd>S</kbd></td>\n                <td>Selects rectangular regions of tiles for copying, cutting, or moving.</td>\n              </tr>\n              <tr>\n                <td><strong>Smart Tiles</strong></td>\n                <td><kbd>T</kbd></td>\n                <td>Paints terrain automatically using configured topology rules.</td>\n              </tr>\n              <tr>\n                <td><strong>Warp Tool</strong></td>\n                <td><kbd>W</kbd></td>\n                <td>Places and edits step-on map warps and transition coordinates.</td>\n              </tr>\n              <tr>\n                <td><strong>NPC Spawn Tool</strong></td>\n                <td><kbd>N</kbd></td>\n                <td>Places character spawn pins and configures initial facing directions.</td>\n              </tr>\n              <tr>\n                <td><strong>Replace Tile Tool</strong></td>\n                <td><kbd>R</kbd></td>\n                <td>Batch replaces matching tiles on the active layer or across the entire map canvas.</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      "
     },
     {
       "id": "map-selection-clipboard",
@@ -759,6 +850,98 @@ const SAGE_GUIDE_DATA = {
       "content": "\n        <p class=\"article-lead\">Manage multiple tilesheet images, select single tiles, and create rectangular multi-tile stamps in the Tileset Palette.</p>\n\n        <h2>Tileset Palette Features</h2>\n        <ul>\n          <li><strong>Tileset Selector:</strong> Switch between available tilesheets (e.g. <code>spring_outdoorsTileSheet</code>, <code>townInterior</code>, <code>paths</code>).</li>\n          <li><strong>Multi-Tile Stamps:</strong> Click and drag across the palette to select a multi-tile block (such as a 3×3 tree or 2×2 house door) to paint in a single click.</li>\n          <li><strong>Palette Zoom:</strong> Adjust palette zoom slider to inspect fine pixel details.</li>\n        </ul>\n      "
     },
     {
+      "id": "map-actions-touchactions",
+      "categoryId": "map-editor",
+      "title": "Tile Actions & TouchActions",
+      "order": 9,
+      "summary": "Engineering interactive tile triggers with strict schema verification for 7 warp types and vanilla action schemas.",
+      "keywords": [
+        "actions",
+        "touchactions",
+        "warps",
+        "map warp",
+        "action warp",
+        "touchaction warp",
+        "magicwarp",
+        "obeliskwarp",
+        "lockeddoorwarp",
+        "door",
+        "openshop",
+        "emote",
+        "facedirection",
+        "playevent"
+      ],
+      "synonyms": [
+        "triggers",
+        "interactive tiles",
+        "tile actions",
+        "door triggers"
+      ],
+      "related": [
+        "map-warps",
+        "map-properties",
+        "map-property-catalogs"
+      ],
+      "content": "\n        <p class=\"article-lead\">SA:GE features specialized action engineering dialogs for building interactive <code>Action</code> and <code>TouchAction</code> properties with strict syntax verification across all Stardew Valley warp types and interaction triggers.</p>\n\n        <h2>The 7 Stardew Warp Schemas</h2>\n        <p>Stardew Valley uses different warp schemas depending on tile layer, trigger condition, and building mechanics. SA:GE validates parameter counts, data types, and map targets in real time:</p>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 25%;\">Warp Schema</th>\n                <th style=\"width: 25%;\">Syntax Format</th>\n                <th style=\"width: 50%;\">Layer &amp; Description</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><strong>Standard Map Warp</strong></td>\n                <td><code>Warp X Y MapName</code></td>\n                <td>Placed on the <code>Back</code> layer as a <code>TouchAction</code> or map property. Transitions player upon stepping on tile.</td>\n              </tr>\n              <tr>\n                <td><strong>Action Warp</strong></td>\n                <td><code>Action Warp X Y MapName</code></td>\n                <td>Placed on the <code>Buildings</code> layer. Transitions player when facing and interacting with the tile.</td>\n              </tr>\n              <tr>\n                <td><strong>TouchAction Warp</strong></td>\n                <td><code>TouchAction Warp X Y MapName</code></td>\n                <td>Placed on the <code>Back</code> layer as an explicit TouchAction property.</td>\n              </tr>\n              <tr>\n                <td><strong>MagicWarp</strong></td>\n                <td><code>MagicWarp X Y</code></td>\n                <td>Teleports the player to coordinates within the same location with warp animations.</td>\n              </tr>\n              <tr>\n                <td><strong>ObeliskWarp</strong></td>\n                <td><code>ObeliskWarp MapName</code></td>\n                <td>Specialized farm obelisk teleportation trigger to target regions (e.g. <code>IslandSouth</code>).</td>\n              </tr>\n              <tr>\n                <td><strong>LockedDoorWarp</strong></td>\n                <td><code>LockedDoorWarp X Y Map KeyID</code></td>\n                <td>Requires a specific key item or condition before the warp opens (e.g. Skull Key).</td>\n              </tr>\n              <tr>\n                <td><strong>Door</strong></td>\n                <td><code>Door [TileIndex]</code></td>\n                <td>Triggers standard interior door transitions and sound effects.</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n\n        <h2>Common Interaction Actions</h2>\n        <p>In addition to warps, the Action builder provides dedicated schemas for gameplay interactions:</p>\n        <ul>\n          <li><strong>OpenShop &lt;ShopId&gt;:</strong> Opens any vanilla or custom shop menu (e.g. <code>SeedShop</code>, <code>FishShop</code>, <code>Saloon</code>).</li>\n          <li><strong>ConditionalDoor &lt;Conditions&gt;:</strong> Opens a door only when specific game conditions or festival states are met.</li>\n          <li><strong>Emote &lt;EmoteId&gt;:</strong> Triggers an emotional emote bubble over the farmer or NPC.</li>\n          <li><strong>FaceDirection &lt;Direction&gt;:</strong> Forces the player or actor to turn in a specific cardinal direction upon contact.</li>\n          <li><strong>PlayEvent &lt;EventId&gt;:</strong> Triggers an in-game cutscene event registered in <code>Data/Events</code>.</li>\n          <li><strong>Sleep:</strong> Prompts the player with the bedtime confirmation dialog.</li>\n          <li><strong>Message &quot;&lt;Text&gt;&quot;:</strong> Displays an in-game dialogue popup window with text or localization tokens.</li>\n        </ul>\n      "
+    },
+    {
+      "id": "map-property-catalogs",
+      "categoryId": "map-editor",
+      "title": "Property Catalogs & Documentation",
+      "order": 10,
+      "summary": "Built-in vanilla Stardew Valley property catalogs for maps, layers, and tiles with auto-completion.",
+      "keywords": [
+        "property catalogs",
+        "tile properties",
+        "layer properties",
+        "map properties",
+        "vanilla properties",
+        "auto-completion",
+        "documentation",
+        "passable",
+        "music",
+        "light",
+        "viewport"
+      ],
+      "synonyms": [
+        "attribute dictionary",
+        "property list",
+        "stardew attributes"
+      ],
+      "related": [
+        "map-properties",
+        "map-actions-touchactions",
+        "map-layers"
+      ],
+      "content": "\n        <p class=\"article-lead\">SA:GE includes integrated Property Catalogs documenting every vanilla Stardew Valley map, layer, and tile property with parameter types and live auto-completion.</p>\n\n        <h2>Property Classification</h2>\n        <p>The Property Inspector organizes attributes into three clear tiers:</p>\n        <ul>\n          <li><strong>Common Properties:</strong> Everyday attributes used in nearly every map (e.g. <code>Passable</code>, <code>Water</code>, <code>Diggable</code>, <code>Music</code>, <code>Light</code>, <code>Action</code>, <code>TouchAction</code>).</li>\n          <li><strong>Specialized Properties:</strong> Advanced environmental controls (e.g. <code>AmbientLight</code>, <code>FishLocation</code>, <code>Outdoors</code>, <code>TreatAsOutdoors</code>, <code>Viewport</code>, <code>DrawOverhead</code>).</li>\n          <li><strong>Deprecated Properties:</strong> Legacy Stardew 1.5 and earlier properties preserved for backward compatibility, accompanied by migration notes to modern 1.6+ equivalents.</li>\n        </ul>\n\n        <h2>Supported Scopes &amp; Catalogs</h2>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 25%;\">Scope</th>\n                <th style=\"width: 25%;\">Target Object</th>\n                <th style=\"width: 50%;\">Sample Properties &amp; Behavior</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><strong>Map Scope</strong></td>\n                <td>Root Map (TMX)</td>\n                <td><code>Music</code>, <code>Light</code>, <code>AmbientLight</code>, <code>Outdoors</code>, <code>Weather</code>, <code>FarmType</code>, <code>Warp</code>.</td>\n              </tr>\n              <tr>\n                <td><strong>Layer Scope</strong></td>\n                <td>Individual Layers</td>\n                <td><code>Draw</code>, <code>Opacity</code>, <code>Color</code>, <code>Parallax</code>, <code>ScrollRate</code>.</td>\n              </tr>\n              <tr>\n                <td><strong>Tile Scope</strong></td>\n                <td>Specific Tile Cells</td>\n                <td><code>Passable</code>, <code>Water</code>, <code>Diggable</code>, <code>Action</code>, <code>TouchAction</code>, <code>NoSpawn</code>, <code>Type</code>.</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n\n        <h2>Auto-Completion &amp; Validation</h2>\n        <p>When typing in property keys or values in the inspector, SA:GE suggests valid attribute names, expected data types (String, Int, Boolean, Float), and warns you immediately if a property is placed on an invalid layer (e.g. <code>TouchAction</code> placed on <code>Front</code> instead of <code>Back</code>).</p>\n      "
+    },
+    {
+      "id": "map-replace-tile",
+      "categoryId": "map-editor",
+      "title": "Batch Replace Tile Tool",
+      "order": 11,
+      "summary": "Search and replace specific tile indices across active layers or the entire map canvas in one click.",
+      "keywords": [
+        "replace tile",
+        "batch replace",
+        "search and replace",
+        "tile index",
+        "layer replacement",
+        "map refactoring"
+      ],
+      "synonyms": [
+        "tile swap",
+        "substitute tile",
+        "find replace tiles"
+      ],
+      "related": [
+        "map-tools",
+        "map-tilesets",
+        "map-layers"
+      ],
+      "content": "\n        <p class=\"article-lead\">The Replace Tile tool (<kbd>R</kbd>) lets you instantly swap every occurrence of a source tile with a target tile across the current layer or your entire map.</p>\n\n        <h2>When to Use Replace Tile</h2>\n        <ul>\n          <li><strong>Seasonal Conversions:</strong> Switch outdoor grass and tree tiles from Spring to Summer or Fall variations.</li>\n          <li><strong>Tileset Refactoring:</strong> Migrate old tileset references to newly reorganized tilesheet textures without repainting by hand.</li>\n          <li><strong>Fixing Misplaced Tiles:</strong> Replace mistakenly placed wall or flooring tiles across a large location in a single operation.</li>\n        </ul>\n\n        <h2>How to Replace Tiles</h2>\n        <ol>\n          <li>Select the <strong>Replace Tile Tool</strong> (<kbd>R</kbd>) from the canvas toolbar or choose <strong>Edit ➔ Replace Tile...</strong></li>\n          <li>Use the <strong>Eyedropper</strong> or click on the canvas to pick the <strong>Source Tile</strong> you wish to replace.</li>\n          <li>Select the <strong>Target Tile</strong> from your active tileset palette.</li>\n          <li>Choose your replacement scope:\n            <ul>\n              <li><strong>Active Layer Only:</strong> Replaces occurrences only on the currently selected layer.</li>\n              <li><strong>All Layers:</strong> Replaces occurrences across every layer in the map.</li>\n            </ul>\n          </li>\n          <li>Click <strong>Replace All</strong>. A summary toast displays the exact count of modified tiles.</li>\n        </ol>\n      "
+    },
+    {
       "id": "smart-tiles-overview",
       "categoryId": "smart-tiles",
       "title": "Smart Tile System",
@@ -836,6 +1019,95 @@ const SAGE_GUIDE_DATA = {
       "content": "\n        <p class=\"article-lead\">The Asset Browser provides a visual catalog of all textures, portraits, sprites, and tilesheets used across your project.</p>\n\n        <h2>Asset Categories</h2>\n        <ul>\n          <li><strong>Portraits (<code>assets/Portraits/</code>):</strong> NPC dialogue portraits.</li>\n          <li><strong>Characters (<code>assets/Characters/</code>):</strong> NPC walking sprite sheets.</li>\n          <li><strong>Items (<code>assets/Items/</code>):</strong> 16×16 custom item icons.</li>\n          <li><strong>Tilesets (<code>assets/Tilesets/</code>):</strong> Map tilesheet images and TSX files.</li>\n        </ul>\n\n        <h2>Canonical Project-Relative Paths</h2>\n        <p>SA:GE automatically normalizes all asset paths to standard forward-slash project-relative paths (e.g. <code>assets/Portraits/Aria.png</code>). This ensures that your project remains 100% portable and never breaks if moved to another computer.</p>\n      "
     },
     {
+      "id": "project-references-rename",
+      "categoryId": "project-tools",
+      "title": "References & Safe Rename",
+      "order": 1,
+      "summary": "Multi-file dependency graph tracking, Used By relationship inspector, and safe entity renaming.",
+      "keywords": [
+        "references",
+        "safe rename",
+        "refactoring",
+        "used by",
+        "dependency graph",
+        "collision detection",
+        "rename npc",
+        "rename item",
+        "rename map"
+      ],
+      "synonyms": [
+        "entity references",
+        "smart rename",
+        "cross references",
+        "usage finder"
+      ],
+      "related": [
+        "project-global-search",
+        "project-structure",
+        "project-validation"
+      ],
+      "content": "\n        <p class=\"article-lead\">SA:GE maintains a live project-wide dependency graph that tracks every relationship between maps, items, characters, cutscene events, dialogues, and texture assets.</p>\n\n        <h2>The 'Used By' Relationship Inspector</h2>\n        <p>Before modifying or deleting any asset, you can inspect where it is referenced across your mod:</p>\n        <ul>\n          <li><strong>Characters:</strong> Shows which maps place their spawn pins, what schedules reference waypoint coordinates, and which events feature the villager.</li>\n          <li><strong>Custom Items:</strong> Shows which NPC gift taste tables include the item, shop inventories offering it, and event reward commands.</li>\n          <li><strong>Maps:</strong> Shows which warps lead into this map, character spawn pins placed inside, and event scripts set in this location.</li>\n          <li><strong>Tilesets &amp; Textures:</strong> Lists all maps referencing the tilesheet and items or NPCs using the texture file.</li>\n        </ul>\n\n        <h2>Safe Rename Refactoring</h2>\n        <p>Renaming an ID manually in JSON often breaks multiple files. With SA:GE Safe Rename:</p>\n        <ol>\n          <li>Right-click any entity (Item ID, Character ID, or Map Name) and select <strong>Safe Rename...</strong></li>\n          <li>Enter the new identifier. SA:GE runs real-time <strong>collision detection</strong> to ensure the new ID is unique.</li>\n          <li>Click <strong>Apply Rename</strong>. SA:GE automatically propagates the change across all TMX maps, warp destinations, character dialogue files, schedule strings, cutscene commands, and <code>content.json</code> patches in a single atomic operation.</li>\n        </ol>\n      "
+    },
+    {
+      "id": "project-global-search",
+      "categoryId": "project-tools",
+      "title": "Global Deep Search (Ctrl+Shift+F)",
+      "order": 2,
+      "summary": "Instant multi-category project search across maps, tiles, characters, items, events, actions, and raw JSON.",
+      "keywords": [
+        "search",
+        "global search",
+        "ctrl+shift+f",
+        "deep search",
+        "find",
+        "entity filter",
+        "search maps",
+        "search tiles"
+      ],
+      "synonyms": [
+        "project search",
+        "find in project",
+        "quick find",
+        "asset search"
+      ],
+      "related": [
+        "project-references-rename",
+        "workspace-overview",
+        "map-tools"
+      ],
+      "content": "\n        <p class=\"article-lead\">Global Deep Search (<kbd>Ctrl+Shift+F</kbd>) indexes your entire mod project in real time, allowing you to locate any item, villager, cutscene command, tile action, or raw text string in milliseconds.</p>\n\n        <h2>Searchable Categories</h2>\n        <ul>\n          <li><strong>Maps &amp; Tiles:</strong> Search by map name, layer name, tilesheet source, or tile coordinate.</li>\n          <li><strong>Tile Actions &amp; Warps:</strong> Search for specific action triggers (e.g. <code>OpenShop SeedShop</code> or <code>Warp 12 40 Town</code>).</li>\n          <li><strong>Characters:</strong> Search character IDs, display names, dialogue lines, schedule entries, and gift reactions.</li>\n          <li><strong>Items:</strong> Search item names, categories, descriptions, and context tags.</li>\n          <li><strong>Events:</strong> Search cutscene IDs, speech lines, command parameters, and branch conditions.</li>\n          <li><strong>Raw JSON:</strong> Search underlying <code>manifest.json</code>, <code>content.json</code>, and translation dictionaries.</li>\n        </ul>\n\n        <h2>Interactive Navigation</h2>\n        <p>Every search result is clickable. Clicking any result card instantly opens the appropriate editor (Map, Character, Item, or Event Studio) and focuses directly on the matching entity or coordinate.</p>\n      "
+    },
+    {
+      "id": "localization-manager",
+      "categoryId": "localization",
+      "title": "Localization Studio & i18n",
+      "order": 1,
+      "summary": "Multi-language side-by-side string authoring with automated Content Patcher token synchronization.",
+      "keywords": [
+        "localization",
+        "i18n",
+        "translations",
+        "languages",
+        "side by side",
+        "translation tables",
+        "tokens",
+        "default.json",
+        "content patcher i18n"
+      ],
+      "synonyms": [
+        "translation manager",
+        "multi-language",
+        "string tables",
+        "language editor"
+      ],
+      "related": [
+        "content-patcher-sync",
+        "character-dialogue",
+        "item-properties"
+      ],
+      "content": "\n        <p class=\"article-lead\">The Localization Studio provides side-by-side multi-language translation tables, making your mod accessible to global Stardew Valley communities without managing fragmented JSON files.</p>\n\n        <h2>How i18n Works in Stardew Valley</h2>\n        <p>Content Patcher reads localized strings from an <code>i18n/</code> folder containing a base file (<code>default.json</code>) and language-specific translations (e.g. <code>es.json</code>, <code>de.json</code>, <code>fr.json</code>, <code>ja.json</code>, <code>ru.json</code>, <code>zh.json</code>). Mod files reference these strings using tokens like <code>{{i18n:item.ruby_dagger.name}}</code>.</p>\n\n        <h2>Localization Studio Features</h2>\n        <ul>\n          <li><strong>Side-by-Side Translation Grid:</strong> View your primary language next to any target translation language with missing-string indicators.</li>\n          <li><strong>Automated Token Generation:</strong> SA:GE automatically generates standard token identifiers for item names, descriptions, character dialogue, and event speech.</li>\n          <li><strong>Missing String Auditing:</strong> The Project Validator highlights any translation key defined in <code>default.json</code> that is missing in secondary language files.</li>\n          <li><strong>Automatic Content Patcher Export:</strong> Compiles clean, formatted JSON files into your project's <code>i18n/</code> directory upon saving.</li>\n        </ul>\n      "
+    },
+    {
       "id": "content-patcher-sync",
       "categoryId": "content-patcher",
       "title": "Content Patcher Synchronization",
@@ -861,7 +1133,7 @@ const SAGE_GUIDE_DATA = {
         "character-editor-overview",
         "mod-deployment"
       ],
-      "content": "\n        <p class=\"article-lead\">SA:GE acts as a visual compiler for Content Patcher, automatically synchronizing your project items, NPCs, and maps into clean <code>content.json</code> patch files.</p>\n\n        <h2>Generated Patch Categories</h2>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 25%;\">Target</th>\n                <th style=\"width: 25%;\">Action</th>\n                <th style=\"width: 50%;\">Generated Content</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><code>Data/Objects</code></td>\n                <td><code>EditData</code></td>\n                <td>Custom item definitions, pricing, categories, edibility, and texture targets.</td>\n              </tr>\n              <tr>\n                <td><code>Data/Characters</code></td>\n                <td><code>EditData</code></td>\n                <td>NPC identity, appearance traits, home map, and default spawn coordinates.</td>\n              </tr>\n              <tr>\n                <td><code>Data/NPCGiftTastes</code></td>\n                <td><code>EditData</code></td>\n                <td>NPC gift preferences and reaction dialogues for Love, Like, Neutral, Dislike, Hate.</td>\n              </tr>\n              <tr>\n                <td><code>Characters/Dialogue/{Id}</code></td>\n                <td><code>EditData</code></td>\n                <td>Character dialogue lines (Introduction, weekdays, seasons, events).</td>\n              </tr>\n              <tr>\n                <td><code>Characters/schedules/{Id}</code></td>\n                <td><code>EditData</code></td>\n                <td>Character daily routines and waypoint checkpoints.</td>\n              </tr>\n              <tr>\n                <td><code>Portraits/{Id}</code></td>\n                <td><code>Load</code></td>\n                <td>Maps custom portrait PNGs to the game's portrait asset path.</td>\n              </tr>\n              <tr>\n                <td><code>Characters/{Id}</code></td>\n                <td><code>Load</code></td>\n                <td>Maps custom sprite PNGs to the game's character sprite asset path.</td>\n              </tr>\n              <tr>\n                <td><code>Maps/{MapName}</code></td>\n                <td><code>Load</code></td>\n                <td>Loads custom TMX map files into the game's location registry.</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      "
+      "content": "\n        <p class=\"article-lead\">SA:GE acts as a visual compiler for Content Patcher, automatically synchronizing your project items, NPCs, and maps into clean <code>content.json</code> patch files.</p>\n\n        <h2>Generated Patch Categories</h2>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 25%;\">Target</th>\n                <th style=\"width: 25%;\">Action</th>\n                <th style=\"width: 50%;\">Generated Content</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><code>Data/Objects</code></td>\n                <td><code>EditData</code></td>\n                <td>Custom item definitions, pricing, categories, edibility, and texture targets.</td>\n              </tr>\n              <tr>\n                <td><code>Data/Characters</code></td>\n                <td><code>EditData</code></td>\n                <td>NPC identity, appearance traits, home map, and default spawn coordinates.</td>\n              </tr>\n              <tr>\n                <td><code>Data/NPCGiftTastes</code></td>\n                <td><code>EditData</code></td>\n                <td>NPC gift preferences and reaction dialogues for Love, Like, Neutral, Dislike, Hate.</td>\n              </tr>\n              <tr>\n                <td><code>Characters/Dialogue/{Id}</code></td>\n                <td><code>EditData</code></td>\n                <td>Character dialogue lines (Introduction, weekdays, seasons, events).</td>\n              </tr>\n              <tr>\n                <td><code>Characters/schedules/{Id}</code></td>\n                <td><code>EditData</code></td>\n                <td>Character daily routines and waypoint checkpoints.</td>\n              </tr>\n              <tr>\n                <td><code>Portraits/{Id}</code></td>\n                <td><code>Load</code></td>\n                <td>Maps custom portrait PNGs to the game's portrait asset path.</td>\n              </tr>\n              <tr>\n                <td><code>Characters/{Id}</code></td>\n                <td><code>Load</code></td>\n                <td>Maps custom sprite PNGs to the game's character sprite asset path.</td>\n              </tr>\n              <tr>\n                <td><code>Maps/{MapName}</code></td>\n                <td><code>Load</code></td>\n                <td>Loads custom TMX map files into the game's location registry.</td>\n              </tr>\n              <tr>\n                <td><code>Data/Events/{MapName}</code></td>\n                <td><code>EditData</code></td>\n                <td>Cutscene event scripts, dialogue branches, and preconditions authored in Event Studio.</td>\n              </tr>\n              <tr>\n                <td><code>i18n/{Language}</code></td>\n                <td><code>Include</code></td>\n                <td>Multi-language string tables and translation token definitions.</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      "
     },
     {
       "id": "project-validation",
@@ -875,7 +1147,8 @@ const SAGE_GUIDE_DATA = {
         "f6",
         "integrity checks",
         "missing assets",
-        "error checking"
+        "error checking",
+        "diagnostics"
       ],
       "synonyms": [
         "diagnostic",
@@ -883,11 +1156,69 @@ const SAGE_GUIDE_DATA = {
         "linter"
       ],
       "related": [
-        "mod-deployment",
-        "troubleshooting",
-        "project-structure"
+        "mod-build-packaging",
+        "smapi-test-session",
+        "troubleshooting"
       ],
-      "content": "\n        <p class=\"article-lead\">The Project Validation Engine audits your entire project to catch broken textures, missing maps, duplicate IDs, and syntax issues before launching the game.</p>\n\n        <h2>Running Validation</h2>\n        <ul>\n          <li>Click <strong>Validate Project</strong> on the Home dashboard.</li>\n          <li>Choose <strong>File ➔ Validate Project</strong> from the top menu.</li>\n          <li>Press shortcut key <kbd>F6</kbd>.</li>\n        </ul>\n\n        <h2>What Validation Checks</h2>\n        <ul>\n          <li><strong>Manifest Integrity:</strong> Confirms required fields (Name, UniqueID, Author, Version) in <code>manifest.json</code>.</li>\n          <li><strong>Content Patcher Syntax:</strong> Verifies format version and patch action structures.</li>\n          <li><strong>Texture Assets:</strong> Confirms that all referenced item PNGs, character portraits, and sprites exist on disk.</li>\n          <li><strong>Unique Identifiers:</strong> Detects duplicate Item IDs or Character IDs that could conflict.</li>\n          <li><strong>Map &amp; Tileset References:</strong> Checks TMX file existence, referenced TSX tilesets, and valid dimensions.</li>\n          <li><strong>NPC Spawns &amp; Warps:</strong> Validates destination map names, coordinate bounds, and character bindings.</li>\n        </ul>\n      "
+      "content": "\n        <p class=\"article-lead\">The Project Validation Engine audits your entire project to catch broken textures, missing maps, duplicate IDs, syntax issues, and action schema errors before launching the game.</p>\n\n        <h2>Running Validation</h2>\n        <ul>\n          <li>Click <strong>Validate Project</strong> on the Home dashboard.</li>\n          <li>Choose <strong>Project ➔ Validate Project</strong> from the top menu.</li>\n          <li>Press shortcut key <kbd>F6</kbd>.</li>\n        </ul>\n\n        <h2>What Validation Checks</h2>\n        <ul>\n          <li><strong>Manifest Integrity:</strong> Confirms required fields (Name, UniqueID, Author, Version) in <code>manifest.json</code>.</li>\n          <li><strong>Content Patcher Syntax:</strong> Verifies format version, patch targets, and patch action structures.</li>\n          <li><strong>Texture Assets:</strong> Confirms that all referenced item PNGs, character portraits, sprites, and tilesheets exist on disk.</li>\n          <li><strong>Unique Identifiers:</strong> Detects duplicate Item IDs, Character IDs, or Event IDs that could cause game conflicts.</li>\n          <li><strong>Map &amp; Tileset References:</strong> Checks TMX file existence, referenced TSX tilesets, and valid layer configurations.</li>\n          <li><strong>NPC Spawns &amp; Warps:</strong> Validates destination map names, coordinate bounds, and character bindings.</li>\n          <li><strong>Action &amp; TouchAction Schemas:</strong> Verifies parameter counts and syntax for all 7 warp types and shop triggers.</li>\n          <li><strong>Event Command Integrity:</strong> Audits cutscene scripts for missing actors, invalid emotion indices, or broken coordinate waypoints.</li>\n        </ul>\n      "
+    },
+    {
+      "id": "mod-build-packaging",
+      "categoryId": "build-testing",
+      "title": "Mod Build & Packaging (F5)",
+      "order": 1,
+      "summary": "Staged clean builds, build artifact isolation, and distributable release ZIP creation.",
+      "keywords": [
+        "build",
+        "packaging",
+        "f5",
+        "clean build",
+        "build folder",
+        "release zip",
+        "distribution",
+        "nexus mods"
+      ],
+      "synonyms": [
+        "compiler",
+        "export zip",
+        "package mod",
+        "staged build"
+      ],
+      "related": [
+        "smapi-test-session",
+        "project-validation",
+        "mod-deployment"
+      ],
+      "content": "\n        <p class=\"article-lead\">SA:GE compiles your project into a clean, isolated runtime build directory (<code>build/[CP] {YourModName}</code>) and generates distributable release ZIP archives ready for upload to Nexus Mods or CurseForge.</p>\n\n        <h2>The Build Pipeline (<kbd>F5</kbd>)</h2>\n        <p>Pressing <kbd>F5</kbd> or selecting <strong>Project ➔ Build Mod</strong> initiates a 3-step staged packaging pipeline:</p>\n        <ol>\n          <li><strong>Pre-Build Integrity Validation:</strong> The diagnostic engine verifies that all referenced textures, maps, cutscenes, and action schemas are error-free.</li>\n          <li><strong>Staged File Compilation:</strong> SA:GE compiles <code>content.json</code>, <code>manifest.json</code>, <code>i18n/</code> dictionaries, TMX maps, and required PNG textures into the isolated <code>build/</code> directory.</li>\n          <li><strong>Exclusion Engine:</strong> Development metadata (e.g. <code>project.json</code>, <code>.git</code> directories, scratch folders, backup files) are cleanly stripped from the final package.</li>\n        </ol>\n\n        <h2>Distributable Release ZIP</h2>\n        <p>Clicking <strong>Package Distributable ZIP</strong> packages the clean build into a compressed archive named <code>[CP] {YourModName}-{Version}.zip</code>, ready for immediate sharing with players.</p>\n      "
+    },
+    {
+      "id": "smapi-test-session",
+      "categoryId": "build-testing",
+      "title": "Interactive SMAPI Test Session (F8)",
+      "order": 2,
+      "summary": "Launch live playtest sessions with embedded SMAPI log streaming and click-to-asset error navigation.",
+      "keywords": [
+        "test session",
+        "smapi test",
+        "f8",
+        "playtest",
+        "live logs",
+        "log streaming",
+        "error navigation",
+        "debugging"
+      ],
+      "synonyms": [
+        "run mod",
+        "debug mod",
+        "launch stardew",
+        "test runner"
+      ],
+      "related": [
+        "mod-build-packaging",
+        "project-validation",
+        "mod-deployment"
+      ],
+      "content": "\n        <p class=\"article-lead\">Test your mod in-game with a single keystroke. The Interactive SMAPI Test Session (<kbd>F8</kbd>) builds, stages, launches the game, and streams SMAPI console output directly within SA:GE.</p>\n\n        <h2>The 4-Step Test Pipeline</h2>\n        <ol>\n          <li><strong>Build:</strong> SA:GE compiles a fresh, clean runtime build of your project.</li>\n          <li><strong>Deploy:</strong> The build is automatically mirrored into your local Stardew Valley <code>Mods</code> folder.</li>\n          <li><strong>Launch:</strong> SA:GE launches <code>StardewModdingAPI.exe</code> with active developer flags.</li>\n          <li><strong>Stream &amp; Monitor:</strong> Console output streams directly into SA:GE's embedded Terminal panel with color-coded severity filtering (Info, Warning, Error).</li>\n        </ol>\n\n        <h2>Error-to-Asset Navigation</h2>\n        <p>If SMAPI encounters a missing asset or patch error during game load, SA:GE parses the stack trace and renders a clickable badge. Clicking the error badge jumps directly to the offending map tile, character schedule, or item definition for instant remediation.</p>\n      "
     },
     {
       "id": "mod-deployment",
@@ -1049,12 +1380,17 @@ const SAGE_GUIDE_DATA = {
       "categoryId": "troubleshooting-faq",
       "title": "Frequently Asked Questions (FAQ)",
       "order": 2,
-      "summary": "Answers to frequently asked questions about SA:GE V2 capabilities and workflows.",
+      "summary": "Answers to frequently asked questions about SA:GE V3 capabilities, mod compatibility, workflows, and installation safety.",
       "keywords": [
         "faq",
         "questions",
         "frequently asked questions",
-        "stardew modding faq"
+        "stardew modding faq",
+        "offline",
+        "coding",
+        "maps",
+        "characters",
+        "events"
       ],
       "synonyms": [
         "common questions",
@@ -1066,7 +1402,7 @@ const SAGE_GUIDE_DATA = {
         "what-is-sage",
         "installing-sage"
       ],
-      "content": "\n        <p class=\"article-lead\">Common questions and answers regarding SA:GE V2 features, mod compatibility, and workflows.</p>\n\n        <h2>General Questions</h2>\n\n        <h3>Do I need to know programming or C# to use SA:GE?</h3>\n        <p>No. SA:GE is entirely visual and generates standard Content Patcher JSON and TMX maps. No coding is required.</p>\n\n        <h3>Do I need Stardew Valley installed just to create mods in SA:GE?</h3>\n        <p>No. You can author Items, Characters, and Maps on any Windows x64 computer without Stardew Valley installed. The game is only required when testing or deploying your mod.</p>\n\n        <h3>Can I create custom NPCs with their own portraits and schedules?</h3>\n        <p>Yes. The Character Editor lets you author complete custom villagers with portraits, walking sprite sheets, daily schedules, dialogue, and gift preferences.</p>\n\n        <h3>Can I place NPC spawn points directly on custom maps?</h3>\n        <p>Yes. The Map Editor's NPC Spawn Tool lets you place character spawn pins on any map tile, automatically syncing the character's home map and starting coordinates.</p>\n\n        <h3>Does SA:GE work offline?</h3>\n        <p>Yes. SA:GE is 100% offline-first. It starts instantly and operates completely without an internet connection.</p>\n\n        <h3>Where are project files stored?</h3>\n        <p>Projects are stored in standard folders on your local hard drive. SA:GE keeps your development source files completely separate from deployed mod builds.</p>\n      "
+      "content": "\n        <p class=\"article-lead\">Clear answers to common questions about SA:GE features, project workflows, compatibility, and safety.</p>\n\n        <h2>General Questions</h2>\n\n        <h3>What is SA:GE?</h3>\n        <p><strong>SA:GE (Stardew Authoring : Game Editor)</strong> is an end-to-end visual mod development workspace for Stardew Valley. It unifies visual map editing, custom item creation, NPC villager authoring, cutscene event scripting, interactive tile actions, localization, and SMAPI testing into a single desktop application.</p>\n\n        <h3>What can I create with SA:GE?</h3>\n        <p>With SA:GE you can create:</p>\n        <ul>\n          <li><strong>Custom Maps:</strong> Design new exterior locations, farm types, interiors, and caves with multi-layer editing, auto-tiling Smart Tiles, and batch tile replacement.</li>\n          <li><strong>Custom Characters (NPCs):</strong> Design full villagers with custom emotion portraits, walking sprite sheets, daily schedules, dialogue trees, and gift preferences.</li>\n          <li><strong>Custom Items:</strong> Author objects, food, crops, and materials with custom categories, sell prices, edibility, context tags, and 16×16 pixel art sprites.</li>\n          <li><strong>Cutscenes &amp; Heart Events:</strong> Script cinematic sequences in the Event Studio with visual timelines, dialogue boxes with emotion portraits, and branch conditions.</li>\n          <li><strong>Interactive Triggers &amp; Warps:</strong> Build step-on warps, door transitions across 7 warp schemas, shop menus, and tile actions with schema validation.</li>\n          <li><strong>Multi-Language Translations:</strong> Localize your mod using side-by-side translation tables with Content Patcher <code>{{i18n:...}}</code> tokens.</li>\n        </ul>\n\n        <h3>Do I need to know how to code?</h3>\n        <p>No. SA:GE requires zero C# knowledge or programming experience. The application is completely visual and automatically generates standard Content Patcher JSON (<code>content.json</code>), SMAPI manifests (<code>manifest.json</code>), translation files (<code>i18n/</code>), and TMX maps.</p>\n\n        <h3>Where are my projects stored?</h3>\n        <p>Your projects are stored in standard folders of your choice on your local hard drive (for example, in your <code>Documents</code> folder). SA:GE keeps your development source files, assets, and project configurations completely separate from game installations and deployed mod builds.</p>\n\n        <h3>Does SA:GE modify my Stardew installation?</h3>\n        <p>No. SA:GE never modifies your base Stardew Valley game files or game executable. When you deploy or test your mod, SA:GE creates or updates an isolated subfolder inside your game's <code>Mods</code> directory (e.g. <code>Mods/[CP] YourModName</code>). Content Patcher loads this folder dynamically, and you can disable or delete the mod at any time without affecting your vanilla game.</p>\n\n        <h3>Can I use existing maps?</h3>\n        <p>Yes. SA:GE natively opens and edits standard TMX map files. You can import existing maps from your project's <code>assets/Maps/</code> or <code>Maps/</code> directory, edit layers, warps, and tile properties, and save them back cleanly.</p>\n\n        <h3>Can I edit characters and events?</h3>\n        <p>Yes. The Character Editor lets you design full NPC villagers with portraits, walking sprite sheets, daily schedules, dialogue, and gift tastes. The Event Studio allows you to visually script cutscene sequences, character speech with emotion portraits, camera panning, and player choice branching.</p>\n\n        <h3>Does SA:GE work offline?</h3>\n        <p>Yes. SA:GE is 100% offline-first. It launches instantly without an internet connection, requires no login or user account, and includes zero telemetry, zero analytics, and zero tracking. Internet access is only used if you check for updates.</p>\n\n        <h3>How do updates work?</h3>\n        <p>SA:GE includes a safe, quiet background update checker. When a new version is released, an update notification displays release highlights. If you choose to update, the new package is downloaded and cryptographically verified using an SHA-256 checksum before replacing binaries. Your project files and settings are always completely preserved.</p>\n      "
     }
   ]
 };
