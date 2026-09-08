@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "3.0.0",
-  "name": "SA:GE V3.0.0",
-  "pubDate": "2026-09-07T12:02:24Z",
-  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.0.0/SA-GE-3.0.0-win-x64.zip",
-  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.0.0",
-  "size": 70446860,
-  "sha256": "53ea1099e05f27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe24d7b",
+  "version": "3.1.0",
+  "name": "SA:GE V3.1.0",
+  "pubDate": "2026-09-08T15:30:00Z",
+  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.1.0/SA-GE-3.1.0-win-x64.zip",
+  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.1.0",
+  "size": 71500000,
+  "sha256": "a8f4c236e05b27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe310aa",
   "isMandatory": false,
-  "releaseNotes": "### SA:GE V3.0.0\n\nSA:GE V3 unifies mod authoring into an end-to-end mod development workspace and pipeline.\n\n#### What's New\n* **Event Studio**: Visual cutscene authoring, character dialogue scripting, timeline events, branch conditions, and automatic Content Patcher generation.\n* **Advanced Map Editor & Action Engineering**: Visual dialogs for Stardew Object Actions and TouchActions with strict schema validation (Warp, MagicWarp, OpenShop, Emote, etc.), Replace Tile tools, and Layer/Tile Property Catalogs.\n* **Localization (i18n) Engine**: Built-in multi-language string editor and Content Patcher tokenized translation management.\n* **Global Deep Search**: Instant multi-category search (Ctrl+Shift+F) across maps, tiles, characters, items, events, actions, and raw JSON.\n* **Multi-File Safe Refactoring**: Safe rename service updates NPC names, item IDs, and asset paths across all project files with collision detection.\n* **Semantic Project Diagnostics & SMAPI Test Runner**: Real-time project validator detecting broken references, orphan textures, and syntax mistakes before launch, paired with integrated SMAPI test session orchestration.\n* **Self-Contained Portable Release**: Ready to run on 64-bit Windows."
+  "releaseNotes": "### SA:GE V3.1.0\n\nSA:GE V3.1.0 delivers a unified website-inspired design system, comprehensive visual hierarchy polish in the Event Studio, and improved XAML parser stability.\n\n#### What's New in V3.1.0\n* **Unified Website-Inspired Design System**: Deep charcoal background (#0A0F14), navy slate workspace surfaces (#16202E), refined hairline borders (#233246), mint (#00C58E) & cyan (#06B6D4) accent palette, and consistent 6px/8px control geometry across all studios.\n* **Event Studio Polish & Usability**: Refined action cards with immutable layout geometry, Scene Overview & Live Cast inspector, streamlined End Event command routing, and real-time tile coordinate status indicator.\n* **Theme & Accent Customization**: Multi-theme support with instant live switching between Dark, Light, and System Default, alongside user-selectable accent palettes (Emerald Mint, Electric Cyan, Royal Amber, Amethyst).\n* **Parser Stability & Bug Fixes**: Resolved XAML markup extension collisions and compilation warnings in Event Studio coordinate status panels."
 }

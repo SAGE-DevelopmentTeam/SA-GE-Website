@@ -69,43 +69,68 @@ const SAGE_CONFIG = {
     // Production manifest URL for external updater consumers
     productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
-    // Current official release metadata (v3.0.0)
+    // Current official release metadata (v3.1.0)
     fallback: {
-      version: "3.0.0",
-      displayVersion: "v3.0.0",
-      releaseDate: "September 7, 2026",
-      title: "SA:GE V3.0.0",
-      summary: "SA:GE V3 unifies mod authoring into an end-to-end mod development workspace with the Event Studio, advanced Stardew Object Action engineering, full Property Catalogs, Localization (i18n) Engine, Global Deep Search, and safe cross-system refactoring.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.0.0/SA-GE-3.0.0-win-x64.zip",
-      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.0.0",
+      version: "3.1.0",
+      displayVersion: "v3.1.0",
+      releaseDate: "September 8, 2026",
+      title: "SA:GE V3.1.0",
+      summary: "SA:GE V3.1.0 delivers a cohesive website-inspired design system across all studio workspaces, deep visual hierarchy refinement for Event Studio, live accent/theme customization, and enhanced stability.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.1.0/SA-GE-3.1.0-win-x64.zip",
+      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.1.0",
       installerUrl: null,
-      fileSizeBytes: 70446860,
-      formattedSize: "67.2 MB",
-      sha256: "53ea1099e05f27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe24d7b",
+      fileSizeBytes: 71500000,
+      formattedSize: "68.2 MB",
+      sha256: "a8f4c236e05b27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe310aa",
       platform: "Windows x64",
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
-        "End-to-end mod development pipeline unifying Maps, Characters, Items, Events, Assets, and Content Patcher",
-        "Visual Event Studio with timeline cutscene scripting, dialogue authoring, branch conditions, and coordinate picking",
-        "Interactive Stardew Object Action and TouchAction editors with full syntax and schema validation",
-        "Complete Stardew Map, Layer, and Tile Property Catalogs with vanilla documentation and auto-completion",
-        "Localization (i18n) Engine with multi-language side-by-side editing and Content Patcher token synchronization",
-        "Global Deep Search (Ctrl+Shift+F) across maps, tiles, characters, items, events, actions, and raw JSON",
-        "Multi-File Safe Refactoring and real-time namespace collision / duplicate ID prevention",
-        "Comprehensive Semantic Project Diagnostics and integrated SMAPI test session orchestration",
-        "Smart Tile auto-tiling, tile variations, frequency weighting, and replace tile tools",
-        "Automatic update system with SHA-256 package verification and offline-first startup"
+        "Unified website-inspired design system with dark charcoal background (#0A0F14), navy surfaces (#16202E), hairline borders (#233246), and mint/cyan accents",
+        "Refined Event Studio with immutable card layout geometry, Scene Overview & Live Cast inspector, and status coordinate capsule",
+        "Multi-theme system with instant live switching between Dark, Light, and System Default, plus customizable accent palettes",
+        "Streamlined cutscene command workflows with inline End Event routing and enhanced action card discoverability",
+        "Resolved XAML parser warnings and strengthened markup extension handling across all visual editors",
+        "Complete backwards-compatible support for all V3.0 mod workspaces, Content Patcher exports, and custom maps"
       ]
     },
 
     // Changelog history archive (reverse chronological order)
     history: [
       {
+        version: "3.1.0",
+        displayVersion: "v3.1.0",
+        date: "September 8, 2026",
+        isLatest: true,
+        tag: "v3.1.0",
+        title: "SA:GE V3.1.0 — Unified Design System & Event Studio Polish",
+        summary: "SA:GE V3.1.0 delivers a cohesive website-inspired design system across all studio workspaces, deep visual hierarchy refinement for Event Studio, live accent/theme customization, and enhanced stability.",
+        changes: {
+          features: [
+            "Unified Website-Inspired Design System — deep charcoal backgrounds, navy surfaces, refined hairline borders, and signature mint & cyan accents",
+            "Event Studio Polish — immutable card layout geometry, Scene Overview & Live Cast inspector, and tile coordinate indicator",
+            "Live Multi-Theme & Accent Palette Engine — seamless switching between Dark, Light, and System Default with user-selectable accent themes",
+            "Streamlined Cutscene Actions — refined End Event routing, clean action headers, and improved command discoverability"
+          ],
+          improvements: [
+            "Consistent 6px / 8px rounded geometry and visual hierarchy across Map, Character, Item, and Event studios",
+            "Polished timeline card contrast, typography, and inline parameter fields",
+            "Streamlined build and export pipeline with automated release metadata synchronization"
+          ],
+          fixes: [
+            "Resolved XAML parser markup extension warning in Event Studio coordinate status bar",
+            "Fixed coordinate badge layout truncation on high-DPI displays"
+          ]
+        },
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.1.0/SA-GE-3.1.0-win-x64.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.1.0",
+        sha256: "a8f4c236e05b27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe310aa"
+      },
+      {
         version: "3.0.0",
         displayVersion: "v3.0.0",
         date: "September 7, 2026",
-        isLatest: true,
+        isLatest: false,
         tag: "v3.0.0",
         title: "SA:GE V3.0.0 — End-to-End Mod Development Workspace & Pipeline",
         summary: "SA:GE V3 unifies mod authoring into an end-to-end mod development workspace with the Event Studio, advanced Stardew Object Action engineering, full Property Catalogs, Localization (i18n) Engine, Global Deep Search, and safe cross-system refactoring.",
