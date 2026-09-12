@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "3.1.0",
-  "name": "SA:GE V3.1.0",
-  "pubDate": "2026-09-08T15:30:00Z",
-  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.1.0/SA-GE-3.1.0-win-x64.zip",
-  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.1.0",
-  "size": 71500000,
-  "sha256": "a8f4c236e05b27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe310aa",
+  "version": "4.0.0",
+  "name": "SA:GE V4.0.0",
+  "pubDate": "2026-09-12T14:48:00Z",
+  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip",
+  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v4.0.0",
+  "size": 66712190,
+  "sha256": "58ae33014f0fcd1342e9087764cf8fd197a4400f33986f3bda1d6ecee1a64217",
   "isMandatory": false,
-  "releaseNotes": "### SA:GE V3.1.0\n\nSA:GE V3.1.0 delivers a unified website-inspired design system, comprehensive visual hierarchy polish in the Event Studio, and improved XAML parser stability.\n\n#### What's New in V3.1.0\n* **Unified Website-Inspired Design System**: Deep charcoal background (#0A0F14), navy slate workspace surfaces (#16202E), refined hairline borders (#233246), mint (#00C58E) & cyan (#06B6D4) accent palette, and consistent 6px/8px control geometry across all studios.\n* **Event Studio Polish & Usability**: Refined action cards with immutable layout geometry, Scene Overview & Live Cast inspector, streamlined End Event command routing, and real-time tile coordinate status indicator.\n* **Theme & Accent Customization**: Multi-theme support with instant live switching between Dark, Light, and System Default, alongside user-selectable accent palettes (Emerald Mint, Electric Cyan, Royal Amber, Amethyst).\n* **Parser Stability & Bug Fixes**: Resolved XAML markup extension collisions and compilation warnings in Event Studio coordinate status panels."
+  "releaseNotes": "### SA:GE V4.0.0\n\nSA:GE V4.0.0 is a milestone release delivering real-time collaborative mod authoring (Co-op), peer-to-peer project synchronization, granular resource locking, automated session teardown with solo restoration, and refined visual workflows.\n\n#### What's New in V4.0.0\n* **Real-Time Co-op & Live Collaboration**: Author Stardew Valley mods collaboratively with friends across local LAN or Internet connections. Instant session invites with zero-configuration UPnP/NAT-PMP mapping.\n* **Resource-Level Locking & Conflict Prevention**: Granular item, character, map, and event locking ensures multi-user editing without collisions or accidental overwrites.\n* **Live Delta Synchronization**: Edits and saves stream across connected peers in real-time, keeping workspaces and Content Patcher definitions synchronized.\n* **Session Lifecycle & Clean Solo Restoration**: Graceful session termination ensures zero dirty work is lost, collaborative workspaces are safely closed, and prior solo projects are restored with zero stale state bleed.\n* **Comprehensive Studio Polish**: Refined action cards, interactive scene viewports, live log diagnostics, and built-in user guides updated for collaborative workflows.\n* **Rock-Solid Security Matrix**: Ephemeral TLS certificate generation, 256-bit token entropy, path traversal guards, and IP address redaction."
 }

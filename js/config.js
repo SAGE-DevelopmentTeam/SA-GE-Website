@@ -69,39 +69,69 @@ const SAGE_CONFIG = {
     // Production manifest URL for external updater consumers
     productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
-    // Current official release metadata (v3.1.0)
+    // Current official release metadata (v4.0.0)
     fallback: {
-      version: "3.1.0",
-      displayVersion: "v3.1.0",
-      releaseDate: "September 8, 2026",
-      title: "SA:GE V3.1.0",
-      summary: "SA:GE V3.1.0 delivers a cohesive website-inspired design system across all studio workspaces, deep visual hierarchy refinement for Event Studio, live accent/theme customization, and enhanced stability.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.1.0/SA-GE-3.1.0-win-x64.zip",
-      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.1.0",
+      version: "4.0.0",
+      displayVersion: "v4.0.0",
+      releaseDate: "September 12, 2026",
+      title: "SA:GE V4.0.0",
+      summary: "SA:GE V4.0.0 introduces real-time collaborative co-op modding, peer-to-peer project synchronization, exclusive resource locking, solo-mode restoration, and comprehensive studio workflow polish.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip",
+      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v4.0.0",
       installerUrl: null,
-      fileSizeBytes: 71500000,
-      formattedSize: "68.2 MB",
-      sha256: "a8f4c236e05b27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe310aa",
+      fileSizeBytes: 66712190,
+      formattedSize: "63.6 MB",
+      sha256: "58ae33014f0fcd1342e9087764cf8fd197a4400f33986f3bda1d6ecee1a64217",
       platform: "Windows x64",
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
-        "Unified website-inspired design system with dark charcoal background (#0A0F14), navy surfaces (#16202E), hairline borders (#233246), and mint/cyan accents",
-        "Refined Event Studio with immutable card layout geometry, Scene Overview & Live Cast inspector, and status coordinate capsule",
-        "Multi-theme system with instant live switching between Dark, Light, and System Default, plus customizable accent palettes",
-        "Streamlined cutscene command workflows with inline End Event routing and enhanced action card discoverability",
-        "Resolved XAML parser warnings and strengthened markup extension handling across all visual editors",
-        "Complete backwards-compatible support for all V3.0 mod workspaces, Content Patcher exports, and custom maps"
+        "Real-time co-op modding over LAN and Internet with zero-config UPnP/NAT-PMP port mapping",
+        "Resource-level exclusive locking prevents concurrent edit collisions across items, characters, maps, and events",
+        "Instant live delta synchronization keeps all collaborator workspaces and Content Patcher manifests in lockstep",
+        "Clean collaboration lifecycle handling with solo-mode restoration and zero dirty data loss",
+        "Streamlined cutscene directing, action cards, and live log diagnostics in Event Studio",
+        "Automated packaging with zero warnings, zero errors, and zero unneeded source or symbol files"
       ]
     },
 
     // Changelog history archive (reverse chronological order)
     history: [
       {
+        version: "4.0.0",
+        displayVersion: "v4.0.0",
+        date: "September 12, 2026",
+        isLatest: true,
+        tag: "v4.0.0",
+        title: "SA:GE V4.0.0 — Real-Time Co-op Modding & Live Collaboration",
+        summary: "SA:GE V4.0.0 introduces real-time collaborative co-op modding, peer-to-peer project synchronization, exclusive resource locking, solo-mode restoration, and comprehensive studio workflow polish.",
+        changes: {
+          features: [
+            "Real-Time Co-op Modding — create, edit, and direct Stardew Valley mods with friends in real-time over LAN or Internet",
+            "Peer-to-Peer Synchronization — full project snapshot exchange and high-performance delta synchronization",
+            "Resource-Level Locking — granular exclusive edit locks on items, characters, maps, and events to prevent collisions",
+            "Session Lifecycle & Solo Restoration — clean teardown closes shared workspaces and restores original local projects without stale state bleed",
+            "Zero-Configuration Networking — automatic UPnP and NAT-PMP port mapping alongside short Base64Url invite codes"
+          ],
+          improvements: [
+            "In-App Collaboration Guides — comprehensive walk-throughs for hosting, joining, resource locking, and solo restoration",
+            "Clean Single-File Runtime — packaged distribution with companion SMARuntime and zero compiler/PDB bloat",
+            "Strengthened Security Matrix — ephemeral TLS handshake, 256-bit token entropy, path traversal guards, and IP address redaction"
+          ],
+          fixes: [
+            "Resolved stale collaboration workspace retention when ending sessions",
+            "Fixed editor dirty state prompts during unexpected session disconnects"
+          ]
+        },
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v4.0.0",
+        sha256: "58ae33014f0fcd1342e9087764cf8fd197a4400f33986f3bda1d6ecee1a64217"
+      },
+      {
         version: "3.1.0",
         displayVersion: "v3.1.0",
         date: "September 8, 2026",
-        isLatest: true,
+        isLatest: false,
         tag: "v3.1.0",
         title: "SA:GE V3.1.0 — Unified Design System & Event Studio Polish",
         summary: "SA:GE V3.1.0 delivers a cohesive website-inspired design system across all studio workspaces, deep visual hierarchy refinement for Event Studio, live accent/theme customization, and enhanced stability.",

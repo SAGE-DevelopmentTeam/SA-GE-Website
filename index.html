@@ -59,10 +59,10 @@
         "alternateName": "Stardew Authoring : Game Editor",
         "operatingSystem": "Windows 10, Windows 11 (64-bit)",
         "applicationCategory": "DeveloperApplication",
-        "softwareVersion": "3.1.0",
+        "softwareVersion": "4.0.0",
         "url": "https://sage-developmentteam.github.io/SA-GE-Website/",
         "image": "https://sage-developmentteam.github.io/SA-GE-Website/assets/images/sage-social-preview.png",
-        "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.1.0/SA-GE-3.1.0-win-x64.zip",
+        "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip",
         "author": {
           "@type": "Organization",
           "name": "SA:GE Development Team",
@@ -119,7 +119,7 @@
     <section class="hero">
       <div class="container">
         <div class="hero-badge-container">
-          <span class="badge badge-emerald">Latest Release — V3.1.0 · Unified Visual Design System &amp; Event Studio Polish</span>
+          <span class="badge badge-emerald">Latest Release — V4.0.0 · Real-Time Co-op Modding &amp; Live Collaboration</span>
         </div>
 
         <div class="hero-title-group">
@@ -138,7 +138,9 @@
 
         <!-- UI Workspace Screenshot Preview -->
         <div class="hero-preview-container">
-          <img src="assets/images/map-editor-preview.png" alt="SA:GE Map Editor Interface Screenshot" class="hero-preview-img" loading="eager" width="1920" height="1080">
+          <div class="hero-preview-wrapper">
+            <img src="assets/images/sage-preview-1.png" alt="SA:GE Visual Workspace Preview" class="hero-preview-img" width="1200" height="675" loading="eager">
+          </div>
         </div>
 
         <!-- Statistics Bar — live data from GitHub API -->
@@ -217,12 +219,18 @@
     <section class="section section-alt" id="features">
       <div class="container">
         <div class="section-header">
-          <span class="badge badge-blue">Complete Modding Studio · V3.1.0</span>
+          <span class="badge badge-blue">Complete Modding Studio · V4.0.0</span>
           <h2>Visual Mod Creation for Stardew Valley</h2>
           <p>Comprehensive visual tools for creating, editing, validating, and deploying Stardew Valley mods.</p>
         </div>
 
         <div class="features-grid">
+          <div class="feature-card" style="border-color: var(--color-primary-light);">
+            <div class="feature-icon-box">👥</div>
+            <h3>Real-Time Co-op &amp; Collaboration</h3>
+            <p>Author mods together in real-time over LAN or Internet. Features instant invite codes, exclusive resource locking, live delta synchronization, and clean solo restoration.</p>
+          </div>
+
           <div class="feature-card">
             <div class="feature-icon-box">🗺️</div>
             <h3>Visual Map Editor</h3>
@@ -300,8 +308,8 @@
         <div class="roadmap-notice-card">
           <div style="font-size: 1.75rem;">🌟</div>
           <div>
-            <h4>Milestone Release · SA:GE V3.0.0</h4>
-            <p>V3 unifies mod authoring into an end-to-end development workspace with the Event Studio, Action Engineering, Property Catalogs, Localization, Global Search, and live SMAPI playtesting. Modding Stardew Valley has never been easier or more powerful.</p>
+            <h4>Milestone Release · SA:GE V4.0.0</h4>
+            <p>V4 introduces real-time collaborative mod authoring alongside comprehensive studio polish. Create, edit, and direct Stardew Valley mods with friends, sync changes live, and prevent conflicts with granular resource locking.</p>
           </div>
         </div>
       </div>
@@ -407,34 +415,31 @@
             <header class="release-header">
               <div class="release-title-area">
                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
-                  <h3 id="home-release-title">SA:GE V3.0.0</h3>
+                  <h3 id="home-release-title">SA:GE V4.0.0</h3>
                   <span class="badge badge-emerald">★ Latest Release</span>
-                  <span class="badge badge-blue" id="home-release-version">v3.0.0</span>
+                  <span class="badge badge-blue" id="home-release-version">v4.0.0</span>
                 </div>
-                <div class="release-date">Published: <span id="home-release-date">September 7, 2026</span> &bull; Windows x64 &bull; Portable ZIP</div>
+                <div class="release-date">Published: <span id="home-release-date">September 12, 2026</span> &bull; Windows x64 &bull; Portable ZIP</div>
               </div>
             </header>
 
             <p class="release-summary" id="home-release-summary">
-              SA:GE V3 unifies mod authoring into an end-to-end mod development workspace with the Event Studio, advanced Stardew Object Action engineering, full Property Catalogs, Localization (i18n) Engine, Global Deep Search, and safe cross-system refactoring.
+              SA:GE V4.0.0 introduces real-time collaborative co-op modding, peer-to-peer project synchronization, exclusive resource locking, solo-mode restoration, and comprehensive studio workflow polish.
             </p>
 
             <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #34D399;">Key Highlights:</h4>
             <ul class="release-highlights" id="home-release-highlights">
-              <li>End-to-end mod development pipeline unifying Maps, Characters, Items, Events, Assets, and Content Patcher</li>
-              <li>Visual Event Studio with timeline cutscene scripting, dialogue authoring, and branch conditions</li>
-              <li>Interactive Stardew Object Action and TouchAction editors with full syntax and schema validation</li>
-              <li>Complete Stardew Map, Layer, and Tile Property Catalogs with vanilla documentation</li>
-              <li>Localization (i18n) Engine with multi-language side-by-side editing and Content Patcher token synchronization</li>
-              <li>Global Deep Search (Ctrl+Shift+F) across maps, tiles, characters, items, events, actions, and raw JSON</li>
-              <li>Multi-File Safe Refactoring and real-time namespace collision / duplicate ID prevention</li>
-              <li>Semantic Project Diagnostics and integrated SMAPI test session orchestration</li>
-              <li>Self-contained portable distribution — no separate .NET installation required</li>
+              <li>Real-time co-op modding over LAN and Internet with zero-config UPnP/NAT-PMP port mapping</li>
+              <li>Resource-level exclusive locking prevents concurrent edit collisions across items, characters, maps, and events</li>
+              <li>Instant live delta synchronization keeps all collaborator workspaces and Content Patcher manifests in lockstep</li>
+              <li>Clean collaboration lifecycle handling with solo-mode restoration and zero dirty data loss</li>
+              <li>Streamlined cutscene directing, action cards, and live log diagnostics in Event Studio</li>
+              <li>Single-file self-contained portable distribution with companion SMARuntime included</li>
             </ul>
 
             <footer class="release-actions">
-              <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.0.0/SA-GE-3.0.0-win-x64.zip" id="home-release-dl-btn" class="btn btn-primary">
-                ⬇ Download SA:GE v3.0.0
+              <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip" id="home-release-dl-btn" class="btn btn-primary">
+                ⬇ Download SA:GE v4.0.0
               </a>
               <a href="releases.html" class="btn btn-outline">
                 Full Release Notes →
