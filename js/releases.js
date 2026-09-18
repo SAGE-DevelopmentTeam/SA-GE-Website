@@ -28,12 +28,12 @@ async function initReleasesData() {
   let allReleases   = config.releases.history || [];
 
   // Optional: check the hosted update manifest for a newer version signal.
-  // Only accepts it if it declares a version strictly newer than config.
+  // Only accepts it if it declares a version strictly newer than config or missing from history.
   try {
-    const manifestResponse = await fetch(config.releases.manifestUrl, { cache: "no-cache" });
+    const manifestResponse = await fetch(config.releases.manifestUrl + "?t=" + Date.now(), { cache: "no-cache" });
     if (manifestResponse.ok) {
       const manifest = await manifestResponse.json();
-      if (manifest.version && isVersionNewer(manifest.version, config.releases.fallback.version)) {
+      if (manifest.version && (isVersionNewer(manifest.version, config.releases.fallback.version) || !allReleases.some(r => r.version === manifest.version))) {
         latestRelease = {
           version:        manifest.version,
           displayVersion: `v${manifest.version}`,
@@ -49,6 +49,25 @@ async function initReleasesData() {
           isPreRelease:   /preview|beta/.test(manifest.version),
           highlights:     config.releases.fallback.highlights
         };
+
+        if (!allReleases.some(r => r.version === manifest.version)) {
+          allReleases = [
+            {
+              version: manifest.version,
+              displayVersion: `v${manifest.version}`,
+              date: manifest.pubDate ? formatDate(manifest.pubDate) : config.releases.fallback.releaseDate,
+              isLatest: true,
+              tag: `v${manifest.version}`,
+              title: manifest.name || `SA:GE V${manifest.version} — Character AI Dialogue Studio & Authoring Suite`,
+              summary: config.releases.fallback.summary,
+              changes: config.releases.history?.[0]?.changes || null,
+              downloadUrl: manifest.downloadUrl || config.releases.fallback.downloadUrl,
+              releasePageUrl: manifest.releasePageUrl || config.releases.fallback.releasePageUrl,
+              sha256: manifest.sha256 || null
+            },
+            ...allReleases.map(r => ({ ...r, isLatest: false }))
+          ];
+        }
       }
     }
   } catch (_) {

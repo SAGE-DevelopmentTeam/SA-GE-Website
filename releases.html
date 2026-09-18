@@ -87,9 +87,53 @@
 
         <!-- Release Timeline Container (Populated by js/releases.js) -->
         <div id="releases-timeline">
-          <div style="text-align: center; color: var(--text-muted); padding: 3rem 0;">
-            Loading release notes...
-          </div>
+          <article class="release-card latest-release">
+            <header class="release-header">
+              <div class="release-title-area">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+                  <h3>SA:GE V5.0.0 — Character AI Dialogue Studio &amp; Authoring Suite</h3>
+                  <span class="badge badge-emerald">★ Latest Release</span>
+                  <span class="badge badge-blue">v5.0.0</span>
+                </div>
+                <div class="release-date">Published on September 18, 2026 &bull; Windows x64 &bull; Portable ZIP</div>
+              </div>
+            </header>
+
+            <p class="release-summary">
+              SA:GE V5.0.0 delivers the Character AI Dialogue Studio: an intelligent, privacy-first workflow that compiles rich Stardew Valley 1.6 character context into structured prompts for external AI models, safely validating and previewing dialogue with undo/redo.
+            </p>
+
+            <div class="release-changelog">
+              <h4 style="margin: 1rem 0 0.5rem; color: #34D399;">✨ Features &amp; Capabilities</h4>
+              <ul class="release-highlights">
+                <li>Character AI Dialogue Studio — rich context compiler synthesizing lore, voice traits, catchphrases, schedule routines, and gift tastes into structured Stardew 1.6 prompts</li>
+                <li>Authoritative 5-Tier Precedence — guarantees engine facts and author canon always take precedence over AI hallucinations</li>
+                <li>Romance &amp; Marriage Dialogue Coverage — accurate distinction between dating milestones, farm spouse routines, and platonic friendship</li>
+                <li>Portrait Expression Token Validation — maps sprite sheet cells ($0–$N) and vanilla aliases ($h, $s, $u, $l, $a) with unknown token warnings</li>
+                <li>Authentic Speech Box Preview — live in-game speech preview with portrait rendering, speaker badges, and full undo/redo mutation</li>
+                <li>Privacy-First External AI Workflow — zero subscriptions, zero cloud costs, works with ChatGPT, Claude, Gemini, or local models</li>
+              </ul>
+
+              <h4 style="margin: 1.25rem 0 0.5rem; color: #60A5FA;">⚡ Improvements &amp; Architecture</h4>
+              <ul class="release-highlights">
+                <li>10-Heart Relationship Milestone Accuracy — distinguishes romance candidates from platonic non-dating caps</li>
+                <li>Schedule Activity Grounding — enforces strict separation between known schedule locations and unconfirmed occupations</li>
+                <li>Streamlined Character AI UI — clear visual workflow pipeline and improved button labels</li>
+              </ul>
+            </div>
+
+            <footer class="release-actions">
+              <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip" class="btn btn-primary btn-sm">
+                ⬇ Download v5.0.0 (Portable ZIP)
+              </a>
+              <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.0.0" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
+                View Release on GitHub ↗
+              </a>
+              <a href="./guide.html" class="btn btn-secondary btn-sm">
+                Getting Started Guide →
+              </a>
+            </footer>
+          </article>
         </div>
       </div>
     </section>
@@ -145,8 +189,8 @@
     </div>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/releases.js"></script>
+  <script src="js/config.js?v=5.0.0"></script>
+  <script src="js/main.js?v=5.0.0"></script>
+  <script src="js/releases.js?v=5.0.0"></script>
 </body>
 </html>
