@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "4.0.0",
-  "name": "SA:GE V4.0.0",
-  "pubDate": "2026-09-12T14:48:00Z",
-  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip",
-  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v4.0.0",
-  "size": 66712190,
-  "sha256": "58ae33014f0fcd1342e9087764cf8fd197a4400f33986f3bda1d6ecee1a64217",
+  "version": "5.0.0",
+  "name": "SA:GE V5.0.0",
+  "pubDate": "2026-09-18T19:30:00Z",
+  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip",
+  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.0.0",
+  "size": 67108864,
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "isMandatory": false,
-  "releaseNotes": "### SA:GE V4.0.0\n\nSA:GE V4.0.0 is a milestone release delivering real-time collaborative mod authoring (Co-op), peer-to-peer project synchronization, granular resource locking, automated session teardown with solo restoration, and refined visual workflows.\n\n#### What's New in V4.0.0\n* **Real-Time Co-op & Live Collaboration**: Author Stardew Valley mods collaboratively with friends across local LAN or Internet connections. Instant session invites with zero-configuration UPnP/NAT-PMP mapping.\n* **Resource-Level Locking & Conflict Prevention**: Granular item, character, map, and event locking ensures multi-user editing without collisions or accidental overwrites.\n* **Live Delta Synchronization**: Edits and saves stream across connected peers in real-time, keeping workspaces and Content Patcher definitions synchronized.\n* **Session Lifecycle & Clean Solo Restoration**: Graceful session termination ensures zero dirty work is lost, collaborative workspaces are safely closed, and prior solo projects are restored with zero stale state bleed.\n* **Comprehensive Studio Polish**: Refined action cards, interactive scene viewports, live log diagnostics, and built-in user guides updated for collaborative workflows.\n* **Rock-Solid Security Matrix**: Ephemeral TLS certificate generation, 256-bit token entropy, path traversal guards, and IP address redaction."
+  "releaseNotes": "### SA:GE V5.0.0\n\nSA:GE V5.0.0 delivers a major expansion with the **Character AI Dialogue Studio**: an intelligent, privacy-first workflow compiling rich Stardew Valley 1.6 character context into structured prompts for external AI models, safely validating and previewing dialogue with undo/redo.\n\n#### What's New in V5.0.0\n* **Character AI Dialogue Studio**: Rich context compiler synthesizing character lore, voice traits, catchphrases, schedule routines, and gift tastes into structured Stardew 1.6 prompts.\n* **Authoritative 5-Tier Precedence**: Guarantees engine facts and author canon always take precedence over AI hallucinations.\n* **Romance & Marriage Dialogue Coverage**: Accurately distinguishes between dating milestones, farm spouse routines (`Characters/Dialogue/MarriageDialogue`), and platonic friendship progression.\n* **Portrait Expression Token Validation**: Maps sprite sheet frames ($0–$N) and vanilla aliases with unknown token warnings.\n* **Authentic Speech Box Preview**: Live in-game speech preview with portrait rendering, speaker badges, and full undo/redo mutation.\n* **100% Privacy & Zero Subscription**: Completely offline prompt generation with zero cloud lock-in. No user mod data is ever uploaded to external servers."
 }

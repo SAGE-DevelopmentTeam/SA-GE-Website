@@ -32,6 +32,11 @@
   <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/apple-touch-icon.png">
 
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
@@ -100,12 +105,12 @@
 
           <h2>2. Desktop Application Privacy</h2>
           <p>
-            The SA:GE desktop application runs entirely on your local machine:
+            The SA:GE desktop application is built on strict local-first and privacy-respecting principles:
           </p>
           <ul>
-            <li><strong>Local-First Storage:</strong> All map files, project manifests, and user preferences are stored strictly on your local disk (under your chosen project directory and your user AppData folder).</li>
-            <li><strong>No Telemetry:</strong> SA:GE does not send your projects, file paths, or usage telemetry to remote servers.</li>
-            <li><strong>Auto-Updater:</strong> When checking for updates, the application makes a single anonymous HTTP GET request to download the official <code>update/manifest.json</code> metadata file. No personally identifiable information or system identifiers are transmitted.</li>
+            <li><strong>Local-First Storage:</strong> All map files, project manifests, and user preferences are stored strictly on your local disk (under your chosen project directory and your user AppData folder). We never upload or inspect your modding projects.</li>
+            <li><strong>Anonymous Active Installation Heartbeat:</strong> To display an aggregate active user count on the homepage, SA:GE periodically sends an anonymous ping containing only an opaque, randomly generated installation UUID and application version number (e.g. <code>4.1.0</code>). Zero personal data, machine names, IP addresses, or file paths are collected or stored. You can disable this heartbeat at any time in <em>Settings &rarr; Updates &rarr; Anonymous Active Installation Statistics</em>.</li>
+            <li><strong>Auto-Updater:</strong> When checking for updates, the application makes an anonymous HTTP GET request to download the official <code>update/manifest.json</code> metadata file. No personally identifiable information or system identifiers are transmitted.</li>
           </ul>
 
           <h2>3. External Links & Services</h2>

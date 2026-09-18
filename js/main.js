@@ -90,28 +90,32 @@ function getNestedConfigValue(obj, path) {
  * 3. Dynamic Statistics Loader
  * - Downloads: real total download count across all SA-GE-Releases assets (GitHub API)
  * - GitHub Stars: star count on the SA-GE repository (with SA-GE-Releases fallback if private)
- * - Releases: total number of published SA:GE releases (GitHub API)
+ * - Active Users: 30-day active anonymous installations from backend stats endpoint
  *
  * Uses localStorage caching + dynamic config fallbacks to guarantee smooth,
  * instant rendering without rate-limit issues on GitHub Pages.
  */
 function initStatsLoader() {
-  const downloadsEl = document.getElementById("stat-downloads");
-  const starsEl     = document.getElementById("stat-stars");
-  const releasesEl  = document.getElementById("stat-releases");
+  const downloadsEl   = document.getElementById("stat-downloads");
+  const starsEl       = document.getElementById("stat-stars");
+  const activeUsersEl = document.getElementById("stat-active-users");
+  const releasesEl    = document.getElementById("stat-releases");
 
-  if (!downloadsEl && !starsEl && !releasesEl) return;
+  if (!downloadsEl && !starsEl && !activeUsersEl && !releasesEl) return;
 
   const config       = (typeof SAGE_CONFIG !== "undefined") ? SAGE_CONFIG : null;
   const CACHE_KEY    = "sage_github_stats_cache";
   const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes cache window
 
-  function updateDOM(downloadsVal, starsVal, releasesVal) {
+  function updateDOM(downloadsVal, starsVal, activeUsersVal, releasesVal) {
     if (downloadsEl && downloadsVal !== undefined && downloadsVal !== null) {
       downloadsEl.textContent = formatNumber(downloadsVal);
     }
     if (starsEl && starsVal !== undefined && starsVal !== null) {
       starsEl.textContent = formatNumber(starsVal);
+    }
+    if (activeUsersEl && activeUsersVal !== undefined && activeUsersVal !== null) {
+      activeUsersEl.textContent = typeof activeUsersVal === "number" ? formatNumber(activeUsersVal) : String(activeUsersVal);
     }
     if (releasesEl && releasesVal !== undefined && releasesVal !== null) {
       releasesEl.textContent = formatNumber(releasesVal);
@@ -128,7 +132,7 @@ function initStatsLoader() {
   } catch (_) {}
 
   if (cachedData && typeof cachedData === "object") {
-    updateDOM(cachedData.downloads, cachedData.stars, cachedData.releases);
+    updateDOM(cachedData.downloads, cachedData.stars, cachedData.activeUsers, cachedData.releases);
 
     // If cache is fresh, skip network call to conserve rate-limit quota
     if (Date.now() - (cachedData.timestamp || 0) < CACHE_TTL_MS) {
@@ -144,6 +148,7 @@ function initStatsLoader() {
   const apiBase      = config?.github?.apiBase        || "https://api.github.com";
   const mainRepo     = config?.github?.apiRepo        || "SAGE-DevelopmentTeam/SA-GE";
   const releasesRepo = config?.github?.releasesApiRepo || "SAGE-DevelopmentTeam/SA-GE-Releases";
+  const statsEndpoint = config?.statistics?.endpointUrl || null;
 
   async function fetchStats() {
     const releasesUrl = `${apiBase}/repos/${releasesRepo}/releases?per_page=100`;
@@ -153,17 +158,27 @@ function initStatsLoader() {
     const controller = new AbortController();
     const timeoutId  = setTimeout(() => controller.abort(), 6000);
 
-    let freshDownloads = cachedData?.downloads ?? null;
-    let freshReleases  = cachedData?.releases ?? (config?.releases?.history?.length || 2);
-    let freshStars     = cachedData?.stars ?? 0;
-    let updated        = false;
+    let freshDownloads   = cachedData?.downloads ?? null;
+    let freshReleases    = cachedData?.releases ?? (config?.releases?.history?.length || 2);
+    let freshStars       = cachedData?.stars ?? 0;
+    let freshActiveUsers = cachedData?.activeUsers ?? "—";
+    let updated          = false;
 
     try {
-      // Use standard fetch without custom Accept headers to avoid CORS preflight issues
-      const [releasesRes, mainRepoRes] = await Promise.all([
+      // Build fetch array including optional statistics endpoint
+      const fetchPromises = [
         fetch(releasesUrl, { signal: controller.signal }).catch(() => null),
-        fetch(mainRepoUrl, { signal: controller.signal }).catch(() => null),
-      ]);
+        fetch(mainRepoUrl, { signal: controller.signal }).catch(() => null)
+      ];
+
+      if (statsEndpoint) {
+        fetchPromises.push(fetch(statsEndpoint, { signal: controller.signal }).catch(() => null));
+      }
+
+      const results = await Promise.all(fetchPromises);
+      const releasesRes = results[0];
+      const mainRepoRes = results[1];
+      const statsRes    = statsEndpoint ? results[2] : null;
 
       clearTimeout(timeoutId);
 
@@ -206,14 +221,29 @@ function initStatsLoader() {
         } catch (_) {}
       }
 
+      // Active Users from custom backend stats endpoint
+      if (statsRes && statsRes.ok) {
+        try {
+          const statsData = await statsRes.json();
+          if (typeof statsData.activeUsers === "number") {
+            freshActiveUsers = statsData.activeUsers;
+            updated = true;
+          } else if (typeof statsData.activeInstallations === "number") {
+            freshActiveUsers = statsData.activeInstallations;
+            updated = true;
+          }
+        } catch (_) {}
+      }
+
       // Apply updated values and store in localStorage
       if (updated || freshDownloads !== null) {
-        updateDOM(freshDownloads ?? 0, freshStars, freshReleases);
+        updateDOM(freshDownloads ?? 0, freshStars, freshActiveUsers, freshReleases);
 
         try {
           localStorage.setItem(CACHE_KEY, JSON.stringify({
             downloads: freshDownloads ?? 0,
             stars: freshStars,
+            activeUsers: freshActiveUsers,
             releases: freshReleases,
             timestamp: Date.now()
           }));

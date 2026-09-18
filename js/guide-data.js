@@ -174,7 +174,7 @@ const SAGE_GUIDE_DATA = {
         "workspace-overview",
         "creating-projects"
       ],
-      "content": "\n        <p class=\"article-lead\">SA:GE is distributed as a self-contained portable application for 64-bit Windows. No installer or administrative setup is required.</p>\n\n        <h2>System Requirements</h2>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 30%;\">Component</th>\n                <th style=\"width: 40%;\">Specification</th>\n                <th style=\"width: 30%;\">Notes</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><strong>Operating System</strong></td>\n                <td>Windows 10 or Windows 11 (64-bit)</td>\n                <td>x64 architecture required</td>\n              </tr>\n              <tr>\n                <td><strong>Runtime</strong></td>\n                <td>Self-Contained (Included in ZIP)</td>\n                <td>No separate .NET installation needed</td>\n              </tr>\n              <tr>\n                <td><strong>Stardew Valley</strong></td>\n                <td>Version 1.6+ (Steam or GOG)</td>\n                <td>Required when testing and deploying mods</td>\n              </tr>\n              <tr>\n                <td><strong>Mod Loader</strong></td>\n                <td>SMAPI 4.0+ &amp; Content Patcher</td>\n                <td>Required for in-game mod execution</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n\n        <h2>Installation Steps</h2>\n        <ol>\n          <li>Download the official <code>SA-GE-3.0.0-win-x64.zip</code> from the <a href=\"download.html\">Download Page</a>.</li>\n          <li>Extract the archive into a folder of your choice (for example: <code>C:\\Tools\\SAGE</code> or <code>D:\\Modding\\SAGE</code>).</li>\n          <li>Double-click <code>SA:GE.exe</code> (or <code>SAGE.exe</code>) to launch the application.</li>\n        </ol>\n\n        <div class=\"callout callout-note\">\n          <div class=\"callout-title\">ℹ️ Game Folder Detection</div>\n          <p>On first launch, SA:GE automatically detects standard Steam and GOG Stardew Valley installations. If your game is installed in a custom location, you can set your path in <strong>Settings ➔ Projects</strong>.</p>\n        </div>\n      "
+      "content": "\n        <p class=\"article-lead\">SA:GE is distributed as a self-contained portable application for 64-bit Windows. No installer or administrative setup is required.</p>\n\n        <h2>System Requirements</h2>\n        <div class=\"data-table-container\">\n          <table class=\"data-table\">\n            <thead>\n              <tr>\n                <th style=\"width: 30%;\">Component</th>\n                <th style=\"width: 40%;\">Specification</th>\n                <th style=\"width: 30%;\">Notes</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td><strong>Operating System</strong></td>\n                <td>Windows 10 or Windows 11 (64-bit)</td>\n                <td>x64 architecture required</td>\n              </tr>\n              <tr>\n                <td><strong>Runtime</strong></td>\n                <td>Self-Contained (Included in ZIP)</td>\n                <td>No separate .NET installation needed</td>\n              </tr>\n              <tr>\n                <td><strong>Stardew Valley</strong></td>\n                <td>Version 1.6+ (Steam or GOG)</td>\n                <td>Required when testing and deploying mods</td>\n              </tr>\n              <tr>\n                <td><strong>Mod Loader</strong></td>\n                <td>SMAPI 4.0+ &amp; Content Patcher</td>\n                <td>Required for in-game mod execution</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n\n        <h2>Installation Steps</h2>\n        <ol>\n          <li>Download the official <code>SA-GE-5.0.0-win-x64.zip</code> from the <a href=\"download.html\">Download Page</a>.</li>\n          <li>Extract the archive into a folder of your choice (for example: <code>C:\\Tools\\SAGE</code> or <code>D:\\Modding\\SAGE</code>).</li>\n          <li>Double-click <code>SA:GE.exe</code> (or <code>SAGE.exe</code>) to launch the application.</li>\n        </ol>\n\n        <div class=\"callout callout-note\">\n          <div class=\"callout-title\">ℹ️ Game Folder Detection</div>\n          <p>On first launch, SA:GE automatically detects standard Steam and GOG Stardew Valley installations. If your game is installed in a custom location, you can set your path in <strong>Settings ➔ Projects</strong>.</p>\n        </div>\n      "
     },
     {
       "id": "workspace-overview",
@@ -522,11 +522,15 @@ const SAGE_GUIDE_DATA = {
       "categoryId": "characters",
       "title": "Social Settings & Relationships",
       "order": 6,
-      "summary": "Configuring marriage eligibility, socialization permissions, and love interests.",
+      "summary": "Configuring romance, marriage eligibility, socialization permissions, and relationship milestones.",
       "keywords": [
         "romance",
         "dating",
+        "marriage",
+        "spouse",
         "isdatable",
+        "canberomanced",
+        "canbemarried",
         "cansocialize",
         "canreceivegifts",
         "loveinterest"
@@ -534,14 +538,48 @@ const SAGE_GUIDE_DATA = {
       "synonyms": [
         "relationships",
         "social settings",
-        "marriage"
+        "dating and marriage",
+        "heart events"
       ],
       "related": [
         "character-editor-overview",
         "character-gift-tastes",
+        "character-ai-dialogue-studio",
         "content-patcher-sync"
       ],
-      "content": "\n        <p class=\"article-lead\">Control whether custom characters can be romanced, receive gifts, socialize, or have romantic rivals.</p>\n\n        <h2>Social Permissions</h2>\n        <ul>\n          <li><strong>Is Datable / Can Be Romanced:</strong> When checked, the character displays a bouquet slot in the social menu and can be romanced by the player.</li>\n          <li><strong>Can Socialize:</strong> When enabled, the player can talk with the NPC to build friendship.</li>\n          <li><strong>Can Receive Gifts:</strong> When enabled, the character accepts weekly and birthday gifts.</li>\n          <li><strong>Love Interest:</strong> Specifies the character ID of the NPC's romantic rival or partner in festivals and events.</li>\n        </ul>\n      "
+      "content": "\n        <p class=\"article-lead\">Control whether custom characters can be romanced, married, receive gifts, socialize, or have romantic rivals.</p>\n\n        <h2>Romance &amp; Marriage Configuration</h2>\n        <ul>\n          <li><strong>Romance and Dating (CanBeRomanced):</strong> When checked, the character is recognized as a dating candidate. They can receive a bouquet at 8 hearts and progress to 10 hearts of romantic dating.</li>\n          <li><strong>Marriage and Spouse (CanBeMarried):</strong> When checked, the character accepts the Mermaid's Pendant and moves onto the farm as a spouse, enabling marriage dialogue routines (<code>Characters/Dialogue/MarriageDialogue</code>).</li>\n          <li><strong>Can Socialize:</strong> When enabled, the player can talk with the NPC to build friendship.</li>\n          <li><strong>Can Receive Gifts:</strong> When enabled, the character accepts weekly and birthday gifts.</li>\n          <li><strong>Love Interest:</strong> Specifies the character ID of the NPC's romantic rival or partner in festivals and events.</li>\n        </ul>\n      "
+    },
+    {
+      "id": "character-ai-dialogue-studio",
+      "categoryId": "characters",
+      "title": "Character AI Dialogue Studio",
+      "order": 7,
+      "summary": "Compiling rich character context for external AI models, validating expression tokens, and previewing dialogue.",
+      "keywords": [
+        "character ai",
+        "dialogue studio",
+        "ai dialogue",
+        "prompt compiler",
+        "chatgpt",
+        "claude",
+        "gemini",
+        "local llm",
+        "expression tokens",
+        "dialogue preview"
+      ],
+      "synonyms": [
+        "ai assistant",
+        "dialogue generator",
+        "prompt generator",
+        "speech preview"
+      ],
+      "related": [
+        "character-editor-overview",
+        "character-dialogue",
+        "character-social-relationships",
+        "character-identity-appearance"
+      ],
+      "content": "\n        <p class=\"article-lead\">The Character AI Dialogue Studio is a privacy-first workflow that compiles authoritative Stardew Valley 1.6 character context into structured prompts for external AI models (ChatGPT, Claude, Gemini, or Local LLMs), and safely imports the results with expression token validation and authentic speech box preview.</p>\n\n        <h2>Privacy-First 5-Step Workflow</h2>\n        <ol>\n          <li><strong>Author Voice &amp; Lore:</strong> Define character biography, voice traits, speaking pace, vocabulary, catchphrases, and lore boundaries in the Character Editor.</li>\n          <li><strong>Map Portrait Tokens:</strong> Assign expression tokens ($0–$N or vanilla aliases $h, $s, $u, $l, $a) to portrait sprite sheet frames.</li>\n          <li><strong>Copy Compiled Prompt:</strong> Click <em>📋 Copy Compiled Prompt</em>. SA:GE compiles all lore, schedules, gift reactions, relationship milestones, and Stardew 1.6 syntax rules into a single structured prompt.</li>\n          <li><strong>Run in External AI:</strong> Paste the prompt into your preferred AI model (ChatGPT, Claude, Gemini, or local models). Zero cloud uploads or subscriptions required.</li>\n          <li><strong>Paste, Validate &amp; Apply:</strong> Paste the AI response into SA:GE, click <em>🔍 Parse &amp; Validate Response</em> to verify syntax and portrait tokens, preview dialogue in the speech box, and click <em>✅ Accept &amp; Apply All</em> with full undo/redo support.</li>\n        </ol>\n\n        <h2>Authoritative 5-Tier Precedence</h2>\n        <p>SA:GE enforces a strict priority hierarchy in compiled prompts to prevent AI hallucinations:</p>\n        <ol>\n          <li><strong>Tier 1 — Engine &amp; Syntax Constraints:</strong> Stardew Valley 1.6 line breaks, portrait token formats, and valid dialogue keys.</li>\n          <li><strong>Tier 2 — Author-Defined Canon:</strong> Explicit character background, relationships, and lore.</li>\n          <li><strong>Tier 3 — Schedule &amp; Location Grounding:</strong> Schedule entries establish WHERE an NPC is, not unconfirmed professions.</li>\n          <li><strong>Tier 4 — Social &amp; Dating State:</strong> Clear separation between platonic friends, dating partners, and farm spouses.</li>\n          <li><strong>Tier 5 — Creative AI Elaboration:</strong> Dialogue color and flavor within the strict bounds of Tiers 1–4.</li>\n        </ol>\n      "
     },
     {
       "id": "event-studio-overview",

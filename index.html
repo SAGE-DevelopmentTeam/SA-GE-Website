@@ -59,10 +59,10 @@
         "alternateName": "Stardew Authoring : Game Editor",
         "operatingSystem": "Windows 10, Windows 11 (64-bit)",
         "applicationCategory": "DeveloperApplication",
-        "softwareVersion": "4.0.0",
+        "softwareVersion": "5.0.0",
         "url": "https://sage-developmentteam.github.io/SA-GE-Website/",
         "image": "https://sage-developmentteam.github.io/SA-GE-Website/assets/images/sage-social-preview.png",
-        "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip",
+        "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip",
         "author": {
           "@type": "Organization",
           "name": "SA:GE Development Team",
@@ -72,6 +72,11 @@
     ]
   }
   </script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
 
   <!-- Core Stylesheets -->
   <link rel="stylesheet" href="css/main.css">
@@ -87,7 +92,7 @@
       </a>
 
       <nav class="nav-desktop" aria-label="Primary Navigation">
-        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link active">Home</a>
         <a href="download.html" class="nav-link">Download</a>
         <a href="guide.html" class="nav-link">Guide</a>
         <a href="releases.html" class="nav-link">Releases</a>
@@ -104,7 +109,7 @@
 
     <!-- Mobile Drawer Menu -->
     <div class="mobile-drawer" aria-label="Mobile Navigation">
-      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link active">Home</a>
       <a href="download.html" class="nav-link">Download</a>
       <a href="guide.html" class="nav-link">Guide</a>
       <a href="releases.html" class="nav-link">Releases</a>
@@ -119,7 +124,7 @@
     <section class="hero">
       <div class="container">
         <div class="hero-badge-container">
-          <span class="badge badge-emerald">Latest Release — V4.0.0 · Real-Time Co-op Modding &amp; Live Collaboration</span>
+          <span class="badge badge-emerald">Latest Release — V5.0.0 · Character AI Dialogue Studio &amp; Authoring Suite</span>
         </div>
 
         <div class="hero-title-group">
@@ -143,7 +148,7 @@
           </div>
         </div>
 
-        <!-- Statistics Bar — live data from GitHub API -->
+        <!-- Statistics Bar — live data from GitHub API & Active Heartbeat -->
         <div class="stats-bar">
           <div class="stat-item">
             <div class="stat-value" id="stat-downloads">—</div>
@@ -154,8 +159,8 @@
             <div class="stat-label">GitHub Stars</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value" id="stat-releases">—</div>
-            <div class="stat-label">Releases</div>
+            <div class="stat-value" id="stat-active-users">—</div>
+            <div class="stat-label">Active Users</div>
           </div>
         </div>
       </div>
@@ -219,13 +224,19 @@
     <section class="section section-alt" id="features">
       <div class="container">
         <div class="section-header">
-          <span class="badge badge-blue">Complete Modding Studio · V4.0.0</span>
+          <span class="badge badge-blue">Complete Modding Studio · V5.0.0</span>
           <h2>Visual Mod Creation for Stardew Valley</h2>
           <p>Comprehensive visual tools for creating, editing, validating, and deploying Stardew Valley mods.</p>
         </div>
 
         <div class="features-grid">
           <div class="feature-card" style="border-color: var(--color-primary-light);">
+            <div class="feature-icon-box">✨</div>
+            <h3>Character AI Dialogue Studio</h3>
+            <p>Intelligent Stardew 1.6 prompt compiler that synthesizes NPC lore, voice profiles, schedules, romance/marriage states, and portrait mappings for your preferred external AI (ChatGPT, Claude, Gemini, Local LLMs). Zero subscriptions, complete local privacy.</p>
+          </div>
+
+          <div class="feature-card">
             <div class="feature-icon-box">👥</div>
             <h3>Real-Time Co-op &amp; Collaboration</h3>
             <p>Author mods together in real-time over LAN or Internet. Features instant invite codes, exclusive resource locking, live delta synchronization, and clean solo restoration.</p>
@@ -308,8 +319,8 @@
         <div class="roadmap-notice-card">
           <div style="font-size: 1.75rem;">🌟</div>
           <div>
-            <h4>Milestone Release · SA:GE V4.0.0</h4>
-            <p>V4 introduces real-time collaborative mod authoring alongside comprehensive studio polish. Create, edit, and direct Stardew Valley mods with friends, sync changes live, and prevent conflicts with granular resource locking.</p>
+            <h4>Milestone Release · SA:GE V5.0.0</h4>
+            <p>V5.0.0 introduces the Character AI Dialogue Studio alongside comprehensive studio polish. Author rich character lore, compile structured Stardew 1.6 prompts for your preferred external AI model (ChatGPT, Claude, Gemini, Local LLMs), and safely import dialogue with validation and preview.</p>
           </div>
         </div>
       </div>
@@ -415,31 +426,31 @@
             <header class="release-header">
               <div class="release-title-area">
                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
-                  <h3 id="home-release-title">SA:GE V4.0.0</h3>
+                  <h3 id="home-release-title">SA:GE V5.0.0</h3>
                   <span class="badge badge-emerald">★ Latest Release</span>
-                  <span class="badge badge-blue" id="home-release-version">v4.0.0</span>
+                  <span class="badge badge-blue" id="home-release-version">v5.0.0</span>
                 </div>
-                <div class="release-date">Published: <span id="home-release-date">September 12, 2026</span> &bull; Windows x64 &bull; Portable ZIP</div>
+                <div class="release-date">Published: <span id="home-release-date">September 18, 2026</span> &bull; Windows x64 &bull; Portable ZIP</div>
               </div>
             </header>
 
             <p class="release-summary" id="home-release-summary">
-              SA:GE V4.0.0 introduces real-time collaborative co-op modding, peer-to-peer project synchronization, exclusive resource locking, solo-mode restoration, and comprehensive studio workflow polish.
+              SA:GE V5.0.0 delivers the Character AI Dialogue Studio: an intelligent, privacy-first workflow compiling rich Stardew Valley 1.6 character context into structured prompts for external AI models, safely validating and previewing dialogue with undo/redo.
             </p>
 
             <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #34D399;">Key Highlights:</h4>
             <ul class="release-highlights" id="home-release-highlights">
-              <li>Real-time co-op modding over LAN and Internet with zero-config UPnP/NAT-PMP port mapping</li>
-              <li>Resource-level exclusive locking prevents concurrent edit collisions across items, characters, maps, and events</li>
-              <li>Instant live delta synchronization keeps all collaborator workspaces and Content Patcher manifests in lockstep</li>
-              <li>Clean collaboration lifecycle handling with solo-mode restoration and zero dirty data loss</li>
-              <li>Streamlined cutscene directing, action cards, and live log diagnostics in Event Studio</li>
-              <li>Single-file self-contained portable distribution with companion SMARuntime included</li>
+              <li>Character AI Dialogue Studio — compiles authoritative Stardew 1.6 context for external AI models (ChatGPT, Claude, Gemini, Local LLMs)</li>
+              <li>Zero-Subscription Privacy — 100% offline prompt generation with zero cloud lock-in and zero mod data uploads</li>
+              <li>Romance &amp; Marriage Dialogue Coverage — authentic separation between dating milestones and farm spouse routines</li>
+              <li>Portrait Token Validation — automatically maps sprite sheet frames ($0–$N) and vanilla aliases with unknown token guards</li>
+              <li>Authentic Speech Box Preview — live in-game dialogue preview with portrait rendering, speaker badges, and full undo/redo</li>
+              <li>10-Heart Milestones &amp; Schedule Grounding — accurate friendship progression and strict separation of locations from assumed activities</li>
             </ul>
 
             <footer class="release-actions">
-              <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip" id="home-release-dl-btn" class="btn btn-primary">
-                ⬇ Download SA:GE v4.0.0
+              <a href="https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip" id="home-release-dl-btn" class="btn btn-primary">
+                ⬇ Download SA:GE v5.0.0
               </a>
               <a href="releases.html" class="btn btn-outline">
                 Full Release Notes →

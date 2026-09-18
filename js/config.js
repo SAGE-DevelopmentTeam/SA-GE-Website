@@ -69,39 +69,70 @@ const SAGE_CONFIG = {
     // Production manifest URL for external updater consumers
     productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
-    // Current official release metadata (v4.0.0)
+    // Current official release metadata (v5.0.0)
     fallback: {
-      version: "4.0.0",
-      displayVersion: "v4.0.0",
-      releaseDate: "September 12, 2026",
-      title: "SA:GE V4.0.0",
-      summary: "SA:GE V4.0.0 introduces real-time collaborative co-op modding, peer-to-peer project synchronization, exclusive resource locking, solo-mode restoration, and comprehensive studio workflow polish.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip",
-      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v4.0.0",
+      version: "5.0.0",
+      displayVersion: "v5.0.0",
+      releaseDate: "September 18, 2026",
+      title: "SA:GE V5.0.0",
+      summary: "SA:GE V5.0.0 introduces the Character AI Dialogue Studio: context-rich Stardew 1.6 prompt synthesis for external AI models, romance and marriage dialogue separation, portrait token validation, authentic speech box preview, and studio polish.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip",
+      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.0.0",
       installerUrl: null,
-      fileSizeBytes: 66712190,
-      formattedSize: "63.6 MB",
-      sha256: "58ae33014f0fcd1342e9087764cf8fd197a4400f33986f3bda1d6ecee1a64217",
+      fileSizeBytes: 67108864,
+      formattedSize: "64.0 MB",
+      sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       platform: "Windows x64",
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
-        "Real-time co-op modding over LAN and Internet with zero-config UPnP/NAT-PMP port mapping",
-        "Resource-level exclusive locking prevents concurrent edit collisions across items, characters, maps, and events",
-        "Instant live delta synchronization keeps all collaborator workspaces and Content Patcher manifests in lockstep",
-        "Clean collaboration lifecycle handling with solo-mode restoration and zero dirty data loss",
-        "Streamlined cutscene directing, action cards, and live log diagnostics in Event Studio",
-        "Automated packaging with zero warnings, zero errors, and zero unneeded source or symbol files"
+        "Character AI Dialogue Studio — compiles authoritative Stardew 1.6 context for external AI models (ChatGPT, Claude, Gemini, Local LLMs)",
+        "Zero-Subscription Privacy — 100% offline prompt generation with zero cloud lock-in and zero mod data uploads",
+        "Romance & Marriage Dialogue Coverage — authentic separation between dating milestones and farm spouse routines",
+        "Portrait Token Validation — automatically maps sprite sheet frames ($0–$N) and vanilla aliases with unknown token guards",
+        "Authentic Speech Box Preview — live in-game dialogue preview with portrait rendering, speaker badges, and full undo/redo",
+        "10-Heart Milestones & Schedule Grounding — accurate friendship progression and strict separation of locations from assumed activities"
       ]
     },
 
     // Changelog history archive (reverse chronological order)
     history: [
       {
+        version: "5.0.0",
+        displayVersion: "v5.0.0",
+        date: "September 18, 2026",
+        isLatest: true,
+        tag: "v5.0.0",
+        title: "SA:GE V5.0.0 — Character AI Dialogue Studio & Authoring Suite",
+        summary: "SA:GE V5.0.0 delivers the Character AI Dialogue Studio: an intelligent, privacy-first workflow that compiles rich Stardew Valley 1.6 character context into structured prompts for external AI models, safely validating and previewing dialogue with undo/redo.",
+        changes: {
+          features: [
+            "Character AI Dialogue Studio — rich context compiler synthesizing lore, voice traits, catchphrases, schedule routines, and gift tastes into structured Stardew 1.6 prompts",
+            "Authoritative 5-Tier Precedence — guarantees engine facts and author canon always take precedence over AI hallucinations",
+            "Romance & Marriage Dialogue Coverage — accurate distinction between dating milestones, farm spouse routines, and platonic friendship",
+            "Portrait Expression Token Validation — maps sprite sheet cells ($0–$N) and vanilla aliases ($h, $s, $u, $l, $a) with unknown token warnings",
+            "Authentic Speech Box Preview — live in-game speech preview with portrait rendering, speaker badges, and full undo/redo mutation",
+            "Privacy-First External AI Workflow — zero subscriptions, zero cloud costs, works with ChatGPT, Claude, Gemini, or local models"
+          ],
+          improvements: [
+            "10-Heart Relationship Milestone Accuracy — distinguishes romance candidates from platonic non-dating caps",
+            "Schedule Activity Grounding — enforces strict separation between known schedule locations and unconfirmed occupations",
+            "Streamlined Character AI UI — clear visual workflow pipeline and improved button labels"
+          ],
+          fixes: [
+            "Fixed single-pass prompt compiler output format tail",
+            "Fixed romance and marriage configuration checkbox flow and persistence"
+          ]
+        },
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.0.0",
+        sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
         version: "4.0.0",
         displayVersion: "v4.0.0",
         date: "September 12, 2026",
-        isLatest: true,
+        isLatest: false,
         tag: "v4.0.0",
         title: "SA:GE V4.0.0 — Real-Time Co-op Modding & Live Collaboration",
         summary: "SA:GE V4.0.0 introduces real-time collaborative co-op modding, peer-to-peer project synchronization, exclusive resource locking, solo-mode restoration, and comprehensive studio workflow polish.",
@@ -315,9 +346,10 @@ const SAGE_CONFIG = {
   // 5. Dynamic Statistics Endpoint Configuration
   // --------------------------------------------------------------------------
   statistics: {
-    // URL to future statistics backend (Set to null or valid URL when live)
+    // URL to statistics backend endpoint (aggregates rolling 30-day active anonymous installations)
     // When null or unreachable, the UI displays the clean "—" placeholder state.
-    endpointUrl: null,
+    endpointUrl: "http://localhost:3000/api/stats",
+    heartbeatUrl: "http://localhost:3000/api/heartbeat",
 
     // How often to poll the statistics endpoint in milliseconds (60 seconds = 60000ms)
     pollIntervalMs: 60000,
@@ -325,8 +357,8 @@ const SAGE_CONFIG = {
     // Initial placeholder values (Display "—" to ensure NO fabricated data is shown)
     initial: {
       downloads: "—",
-      users: "—",
-      modsCreated: "—"
+      stars: "—",
+      activeUsers: "—"
     }
   },
 
