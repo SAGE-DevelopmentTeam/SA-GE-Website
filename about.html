@@ -117,21 +117,18 @@
 
           <h2>Current Release &amp; Evolution</h2>
           <p>
-            <strong>SA:GE V5.1.0</strong> delivers complete Stardew Valley 1.6 modernization and unified studio cohesion:
+            <strong>SA:GE V5.1.0</strong> delivers complete Stardew Valley 1.6 modernization and studio cohesion:
           </p>
           <ul>
             <li><strong>Qualified Item Routing:</strong> Modern Content Patcher routing across <code>Data/Objects</code>, <code>Data/BigCraftables</code>, and <code>Data/Weapons</code> with backward compatibility.</li>
-            <li><strong>Recipe Studio:</strong> Dedicated Crafting and Cooking recipe authoring with authoritative 6-token Stardew 1.6 serialization syncing to <code>Data/CraftingRecipes</code> and <code>Data/CookingRecipes</code>.</li>
-            <li><strong>Manifest Disk Authority:</strong> <code>manifest.json</code> serves as the pure source of truth for mod identity, metadata, and dependencies on disk.</li>
-            <li><strong>Mail Studio Attachments:</strong> Visual authoring of complex multi-token attachment strings (<code>%item</code>, <code>%money</code>, <code>%recipe</code>, <code>%quest</code>) with live synchronization.</li>
+            <li><strong>Recipe Studio &amp; 1.6 String Serialization:</strong> Dedicated Crafting and Cooking recipe authoring with authoritative 6-token Stardew 1.6 serialization syncing to <code>Data/CraftingRecipes</code> and <code>Data/CookingRecipes</code>.</li>
+            <li><strong>Manifest Disk Authority:</strong> <code>manifest.json</code> serves as the pure source of truth for mod identity, metadata, and dependencies on disk, eliminating project metadata drift.</li>
+            <li><strong>Mail Studio Multi-Token Attachments:</strong> Visual authoring of complex multi-token attachment strings (<code>%item</code>, <code>%money</code>, <code>%recipe</code>, <code>%quest</code>) with live synchronization.</li>
             <li><strong>Trigger Actions Studio:</strong> Canonical Stardew 1.6 Trigger Actions schema validation and Content Patcher sync.</li>
-            <li><strong>Character AI Dialogue Studio:</strong> Intelligent context compiler synthesizing character lore, voice traits, catchphrases, schedule routines, and gift tastes into structured Stardew 1.6 prompts for external AI models (ChatGPT, Claude, Gemini, Local LLMs) with zero subscriptions and zero data uploads.</li>
-            <li><strong>Romance &amp; Marriage Dialogue Separation:</strong> Full distinction between dating milestones, farm spouse routines (<code>Characters/Dialogue/MarriageDialogue</code>), and platonic friendship progression.</li>
-            <li><strong>Portrait Token Validation &amp; Speech Preview:</strong> Sprite sheet token mapping ($0–$N) and live speech box preview with authentic Stardew dialogue rendering and full undo/redo.</li>
-            <li><strong>Real-Time Co-op Modding:</strong> Author Stardew Valley mods collaboratively with friends over LAN or Internet with instant invite codes and automatic UPnP/NAT-PMP port mapping.</li>
-            <li><strong>Multi-File Safe Refactoring:</strong> Safe rename service and live dependency reference validation protecting tilesheets, maps, items, quests, and recipes.</li>
-            <li><strong>Hardened Auto-Updater:</strong> Staging directory resolution, atomic backup &amp; replace, and automatic rollback on failure.</li>
-            <li><strong>Integrated SMAPI Test Pipeline:</strong> One-click mod building, clean ZIP export, and live game test sessions.</li>
+            <li><strong>Cross-System Cohesion &amp; Reference Safety:</strong> Live dependency validation across Quests, Recipes, Items, Mail, Maps, Characters, and Tilesheets.</li>
+            <li><strong>Unused Assets Cleaner:</strong> Live pre-deletion verification prevents tilesheet and texture removal if referenced anywhere in maps or studios.</li>
+            <li><strong>Hardened Auto-Updater:</strong> Multi-format staging directory resolution, atomic backup &amp; replace, and automatic rollback on failure.</li>
+            <li><strong>Build &amp; Package Hygiene:</strong> Authoring metadata (.sage, .bak, .tmp) cleanly excluded while runtime companion files are preserved.</li>
           </ul>
           <p>
             <em>Historical milestones:</em> <strong>SA:GE V5.0</strong> delivered the Character AI Dialogue Studio. <strong>SA:GE V4.0</strong> introduced real-time collaborative modding. <strong>SA:GE V3.x</strong> unified the end-to-end mod development workspace with the Event Studio, Property Catalogs, and Deep Search. <strong>SA:GE V2.0</strong> expanded the platform into a full visual modding suite. <strong>SA:GE V1.x</strong> established the core Visual Map Editor foundation.

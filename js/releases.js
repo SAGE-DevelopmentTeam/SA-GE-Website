@@ -58,7 +58,7 @@ async function initReleasesData() {
               date: manifest.pubDate ? formatDate(manifest.pubDate) : config.releases.fallback.releaseDate,
               isLatest: true,
               tag: `v${manifest.version}`,
-              title: manifest.name || `SA:GE V${manifest.version} — Character AI Dialogue Studio & Authoring Suite`,
+              title: manifest.name || `SA:GE V${manifest.version}`,
               summary: config.releases.fallback.summary,
               changes: config.releases.history?.[0]?.changes || null,
               downloadUrl: manifest.downloadUrl || config.releases.fallback.downloadUrl,
