@@ -69,39 +69,70 @@ const SAGE_CONFIG = {
     // Production manifest URL for external updater consumers
     productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
-    // Current official release metadata (v5.0.0)
+    // Current official release metadata (v5.1.0)
     fallback: {
-      version: "5.0.0",
-      displayVersion: "v5.0.0",
-      releaseDate: "September 18, 2026",
-      title: "SA:GE V5.0.0",
-      summary: "SA:GE V5.0.0 introduces the Character AI Dialogue Studio: context-rich Stardew 1.6 prompt synthesis for external AI models, romance and marriage dialogue separation, portrait token validation, authentic speech box preview, and studio polish.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip",
-      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.0.0",
+      version: "5.1.0",
+      displayVersion: "v5.1.0",
+      releaseDate: "September 20, 2026",
+      title: "SA:GE V5.1.0",
+      summary: "SA:GE V5.1.0 delivers complete modernization for Stardew Valley 1.6, unifying item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety across all studios.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.1.0/SA-GE-5.1.0-win-x64.zip",
+      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.1.0",
       installerUrl: null,
-      fileSizeBytes: 67108864,
-      formattedSize: "64.0 MB",
-      sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      fileSizeBytes: 70657940,
+      formattedSize: "67.4 MB",
+      sha256: "20fd398354b9298a33df8dad97174c78005dee6c4ffbccb13405f5ddd84ded8b",
       platform: "Windows x64",
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
-        "Character AI Dialogue Studio — compiles authoritative Stardew 1.6 context for external AI models (ChatGPT, Claude, Gemini, Local LLMs)",
-        "Zero-Subscription Privacy — 100% offline prompt generation with zero cloud lock-in and zero mod data uploads",
-        "Romance & Marriage Dialogue Coverage — authentic separation between dating milestones and farm spouse routines",
-        "Portrait Token Validation — automatically maps sprite sheet frames ($0–$N) and vanilla aliases with unknown token guards",
-        "Authentic Speech Box Preview — live in-game dialogue preview with portrait rendering, speaker badges, and full undo/redo",
-        "10-Heart Milestones & Schedule Grounding — accurate friendship progression and strict separation of locations from assumed activities"
+        "Qualified Item Routing — full routing to modern Content Patcher targets (Data/Objects, Data/BigCraftables, Data/Weapons)",
+        "Recipe Studio — visual Crafting & Cooking Recipe Authoring with authoritative 6-token Stardew 1.6 serialization",
+        "Manifest Disk Authority — manifest.json as the sole source of truth on disk, eliminating project metadata drift",
+        "Mail Studio Attachments — visual Data/Mail authoring with complex multi-token attachment strings and live sync",
+        "Trigger Actions Studio — canonical Stardew 1.6 Trigger Actions schema validation and Content Patcher sync",
+        "Safety & Hygiene — live dependency reference safety, unused assets cleaner, and hardened auto-updater with rollback"
       ]
     },
 
     // Changelog history archive (reverse chronological order)
     history: [
       {
+        version: "5.1.0",
+        displayVersion: "v5.1.0",
+        date: "September 20, 2026",
+        isLatest: true,
+        tag: "v5.1.0",
+        title: "SA:GE V5.1.0 — Stardew Valley 1.6 Modernization & Studio Cohesion",
+        summary: "SA:GE V5.1.0 delivers complete modernization for Stardew Valley 1.6, unifying item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety across all studios.",
+        changes: {
+          features: [
+            "Qualified Item Routing — modern Content Patcher routing across Data/Objects, Data/BigCraftables, and Data/Weapons with pre-V5.1 backward compatibility",
+            "Recipe Studio & 1.6 String Serialization — visual authoring for Data/CraftingRecipes and Data/CookingRecipes with authoritative 6-token serialization",
+            "Project Properties & Manifest Disk Authority — manifest.json is the pure authority on disk for mod metadata and dependencies",
+            "Mail Studio Multi-Token Attachment Serialization — author and preview Data/Mail attachment strings (%item, %money, %recipe, %quest) with bidirectional parsing",
+            "Trigger Actions Studio — canonical Stardew 1.6 schema support (MarkActionApplied, Actions, Condition, SkipPermanentlyCondition, HostOnly) and sync"
+          ],
+          improvements: [
+            "Cross-System Dependency & Reference Safety — live validation across Quests, Recipes, Items, Mail, Maps, Characters, and Tilesheets",
+            "Unused Assets Cleaner — live pre-deletion verification prevents tilesheet and texture removal if referenced anywhere in maps or studios",
+            "Hardened Automatic Updater — multi-format staging directory resolution (direct & nested), atomic backup & replace, and automatic rollback on failure",
+            "Build & Package Hygiene — authoring metadata (.sage, .bak, .tmp) cleanly excluded while runtime companion files are preserved"
+          ],
+          fixes: [
+            "Fixed quest asset card file path display to reflect project folder structure accurately",
+            "Resolved legacy item JSON loading where ItemType property is omitted"
+          ]
+        },
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.1.0/SA-GE-5.1.0-win-x64.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.1.0",
+        sha256: "20fd398354b9298a33df8dad97174c78005dee6c4ffbccb13405f5ddd84ded8b"
+      },
+      {
         version: "5.0.0",
         displayVersion: "v5.0.0",
         date: "September 18, 2026",
-        isLatest: true,
+        isLatest: false,
         tag: "v5.0.0",
         title: "SA:GE V5.0.0 — Character AI Dialogue Studio & Authoring Suite",
         summary: "SA:GE V5.0.0 delivers the Character AI Dialogue Studio: an intelligent, privacy-first workflow that compiles rich Stardew Valley 1.6 character context into structured prompts for external AI models, safely validating and previewing dialogue with undo/redo.",

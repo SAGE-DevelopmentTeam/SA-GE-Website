@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "5.0.0",
-  "name": "SA:GE V5.0.0",
-  "pubDate": "2026-09-18T19:30:00Z",
-  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip",
-  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.0.0",
-  "size": 67108864,
-  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "version": "5.1.0",
+  "name": "SA:GE V5.1.0",
+  "pubDate": "2026-09-20T19:00:00Z",
+  "downloadUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.1.0/SA-GE-5.1.0-win-x64.zip",
+  "releasePageUrl": "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.1.0",
+  "size": 70657940,
+  "sha256": "20fd398354b9298a33df8dad97174c78005dee6c4ffbccb13405f5ddd84ded8b",
   "isMandatory": false,
-  "releaseNotes": "### SA:GE V5.0.0\n\nSA:GE V5.0.0 delivers a major expansion with the **Character AI Dialogue Studio**: an intelligent, privacy-first workflow compiling rich Stardew Valley 1.6 character context into structured prompts for external AI models, safely validating and previewing dialogue with undo/redo.\n\n#### What's New in V5.0.0\n* **Character AI Dialogue Studio**: Rich context compiler synthesizing character lore, voice traits, catchphrases, schedule routines, and gift tastes into structured Stardew 1.6 prompts.\n* **Authoritative 5-Tier Precedence**: Guarantees engine facts and author canon always take precedence over AI hallucinations.\n* **Romance & Marriage Dialogue Coverage**: Accurately distinguishes between dating milestones, farm spouse routines (`Characters/Dialogue/MarriageDialogue`), and platonic friendship progression.\n* **Portrait Expression Token Validation**: Maps sprite sheet frames ($0–$N) and vanilla aliases with unknown token warnings.\n* **Authentic Speech Box Preview**: Live in-game speech preview with portrait rendering, speaker badges, and full undo/redo mutation.\n* **100% Privacy & Zero Subscription**: Completely offline prompt generation with zero cloud lock-in. No user mod data is ever uploaded to external servers."
+  "releaseNotes": "### SA:GE V5.1.0\n\nSA:GE V5.1.0 delivers complete modernization for **Stardew Valley 1.6**, unifying item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety across all studios.\n\n#### What's New in V5.1.0\n* **Qualified Item Routing**: Full routing of authoring items to modern Content Patcher targets (`Data/Objects`, `Data/BigCraftables`, `Data/Weapons`) based on `ItemType`, with seamless backward compatibility for pre-V5.1 projects.\n* **Recipe Studio & 1.6 String Serialization**: Dedicated visual Crafting & Cooking Recipe Authoring with authoritative 6-token serialization (`Ingredients / Description / Yield / IsBigCraftable / Skill Unlock / Display Name`) syncing to `Data/CraftingRecipes` and `Data/CookingRecipes`.\n* **Project Properties & Manifest Disk Authority**: `manifest.json` is the sole source of truth on disk for mod metadata, eliminating redundant project metadata drift.\n* **Mail Studio Multi-Token Attachment Serialization**: Visual authoring for `Data/Mail` with complex multi-token attachment strings (`%item`, `%money`, `%recipe`, `%quest`), bidirectional parsing, and live synchronization.\n* **Trigger Actions Studio**: Canonical Stardew 1.6 Trigger Actions schema support (`Id`, `Trigger`, `Actions`, `Condition`, `SkipPermanentlyCondition`, `HostOnly`, `MarkActionApplied`), validation, and Content Patcher sync.\n* **Cross-System Dependency & Reference Safety**: Live dependency validation across Quests, Recipes, Items, Mail, Maps, Characters, and Tilesheets.\n* **Unused Assets Cleaner**: Safe cleanup workflow with live pre-deletion verification preventing tilesheet or asset removal if referenced anywhere in the project.\n* **Hardened Automatic Updater**: Resilient staging directory resolution, atomic backup & replace script generation, robust rollback on error, and semantic version comparison."
 }
