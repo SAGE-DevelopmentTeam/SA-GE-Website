@@ -73,25 +73,27 @@ const SAGE_CONFIG = {
     fallback: {
       version: "5.1.0",
       displayVersion: "v5.1.0",
-      releaseDate: "September 20, 2026",
+      releaseDate: "September 21, 2026",
       title: "SA:GE V5.1.0",
-      summary: "SA:GE V5.1.0 delivers complete modernization for Stardew Valley 1.6, unifying item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety across all studios.",
+      summary: "SA:GE V5.1.0 delivers Event Studio 2.0 and complete modernization for Stardew Valley 1.6, unifying cutscene authoring, item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety.",
       downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.1.0/SA-GE-5.1.0-win-x64.zip",
       releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.1.0",
       installerUrl: null,
-      fileSizeBytes: 70657940,
-      formattedSize: "67.4 MB",
-      sha256: "20fd398354b9298a33df8dad97174c78005dee6c4ffbccb13405f5ddd84ded8b",
+      fileSizeBytes: 71415431,
+      formattedSize: "68.1 MB",
+      sha256: "c67525eccc613eac39509b119640af868583a120f8f494a5293704f37fca699e",
       platform: "Windows x64",
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
+        "Event Studio 2.0 — Visual Scene Director, deterministic English action explanations, Act/Group & branch tagging, and command palette (Ctrl+K)",
+        "Event Conflict & Overlap Detector — real-time project-wide detection of overlapping event triggers, locations, and time intervals",
+        "Rich Event Creation Templates — instant narrative presets for Introductions, Conversations, Heart Events, Gifts, and Cinematic Cutscenes",
         "Qualified Item Routing — full routing to modern Content Patcher targets (Data/Objects, Data/BigCraftables, Data/Weapons)",
         "Recipe Studio — visual Crafting & Cooking Recipe Authoring with authoritative 6-token Stardew 1.6 serialization",
-        "Manifest Disk Authority — manifest.json as the sole source of truth on disk, eliminating project metadata drift",
+        "Manifest Disk Authority — manifest.json as the pure source of truth on disk, eliminating project metadata drift",
         "Mail Studio Attachments — visual Data/Mail authoring with complex multi-token attachment strings and live sync",
-        "Trigger Actions Studio — canonical Stardew 1.6 Trigger Actions schema validation and Content Patcher sync",
-        "Safety & Hygiene — live dependency reference safety, unused assets cleaner, and hardened auto-updater with rollback"
+        "Trigger Actions Studio — canonical Stardew 1.6 Trigger Actions schema validation and Content Patcher sync"
       ]
     },
 
@@ -100,23 +102,29 @@ const SAGE_CONFIG = {
       {
         version: "5.1.0",
         displayVersion: "v5.1.0",
-        date: "September 20, 2026",
+        date: "September 21, 2026",
         isLatest: true,
         tag: "v5.1.0",
-        title: "SA:GE V5.1.0 — Stardew Valley 1.6 Modernization & Studio Cohesion",
-        summary: "SA:GE V5.1.0 delivers complete modernization for Stardew Valley 1.6, unifying item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety across all studios.",
+        title: "SA:GE V5.1.0 — Event Studio 2.0, Stardew Valley 1.6 Modernization & Studio Cohesion",
+        summary: "SA:GE V5.1.0 delivers Event Studio 2.0 and complete modernization for Stardew Valley 1.6, unifying cutscene authoring, item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety.",
         changes: {
           features: [
-            "Qualified Item Routing — modern Content Patcher routing across Data/Objects, Data/BigCraftables, and Data/Weapons with pre-V5.1 backward compatibility",
+            "Event Studio 2.0 — Visual Scene Director with drag-to-direct trajectories, dialogue previews, and multi-leg actor paths",
+            "Natural-Language Action Explanation — instant deterministic English translation for every Stardew cutscene action",
+            "Act & Branch Organizer — visual editor grouping tags (ActGroup) and choice branch tags (BranchTag)",
+            "Command Palette (Ctrl+K) — instant fuzzy-search over the entire catalog of cutscene actions",
+            "Event Conflict & Overlap Detector — real-time project-wide detection of overlapping trigger locations, seasons, weather, and time intervals",
+            "Rich Event Creation Templates — narrative presets for Introductions, Conversations, Friendship Milestones, Gifts, and Cutscenes",
+            "Qualified Item Routing — modern Content Patcher routing across Data/Objects, Data/BigCraftables, and Data/Weapons",
             "Recipe Studio & 1.6 String Serialization — visual authoring for Data/CraftingRecipes and Data/CookingRecipes with authoritative 6-token serialization",
             "Project Properties & Manifest Disk Authority — manifest.json is the pure authority on disk for mod metadata and dependencies",
-            "Mail Studio Multi-Token Attachment Serialization — author and preview Data/Mail attachment strings (%item, %money, %recipe, %quest) with bidirectional parsing",
-            "Trigger Actions Studio — canonical Stardew 1.6 schema support (MarkActionApplied, Actions, Condition, SkipPermanentlyCondition, HostOnly) and sync"
+            "Mail Studio Multi-Token Attachment Serialization — author and preview Data/Mail attachment strings (%item, %money, %recipe, %quest)",
+            "Trigger Actions Studio — canonical Stardew 1.6 schema support and Content Patcher sync"
           ],
           improvements: [
             "Cross-System Dependency & Reference Safety — live validation across Quests, Recipes, Items, Mail, Maps, Characters, and Tilesheets",
             "Unused Assets Cleaner — live pre-deletion verification prevents tilesheet and texture removal if referenced anywhere in maps or studios",
-            "Hardened Automatic Updater — multi-format staging directory resolution (direct & nested), atomic backup & replace, and automatic rollback on failure",
+            "Hardened Automatic Updater — multi-format staging directory resolution, atomic backup & replace, and automatic rollback on failure",
             "Build & Package Hygiene — authoring metadata (.sage, .bak, .tmp) cleanly excluded while runtime companion files are preserved"
           ],
           fixes: [
@@ -126,7 +134,7 @@ const SAGE_CONFIG = {
         },
         downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.1.0/SA-GE-5.1.0-win-x64.zip",
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.1.0",
-        sha256: "20fd398354b9298a33df8dad97174c78005dee6c4ffbccb13405f5ddd84ded8b"
+        sha256: "c67525eccc613eac39509b119640af868583a120f8f494a5293704f37fca699e"
       },
       {
         version: "5.0.0",
