@@ -93,7 +93,7 @@ const SAGE_CONFIG = {
         "Recipe Studio — visual Crafting & Cooking Recipe Authoring with authoritative 6-token Stardew 1.6 serialization",
         "Manifest Disk Authority — manifest.json as the pure source of truth on disk, eliminating project metadata drift",
         "Mail Studio Attachments — visual Data/Mail authoring with complex multi-token attachment strings and live sync",
-        "Release Packaging Hygiene — complete suppression of debug symbols (.pdb) and automated post-archive verification"
+        "Release Packaging Hygiene — clean optimized distribution and automated post-archive verification"
       ]
     },
 
@@ -123,7 +123,7 @@ const SAGE_CONFIG = {
             "Trigger Actions Studio — canonical Stardew 1.6 schema support and Content Patcher sync"
           ],
           improvements: [
-            "Release Packaging Hygiene — zero debug symbols (.pdb) or compiler metadata in public releases",
+            "Release Packaging Hygiene — clean optimized distribution and post-archive validation in public releases",
             "Automated Package Verification Guard — strict post-archive validation rejecting development paths and unneeded artifacts",
             "Cross-System Dependency & Reference Safety — live validation across Quests, Recipes, Items, Mail, Maps, Characters, and Tilesheets",
             "Unused Assets Cleaner — live pre-deletion verification prevents tilesheet and texture removal if referenced anywhere in maps or studios"
@@ -224,7 +224,7 @@ const SAGE_CONFIG = {
           ],
           improvements: [
             "In-App Collaboration Guides — comprehensive walk-throughs for hosting, joining, resource locking, and solo restoration",
-            "Clean Single-File Runtime — packaged distribution with companion SMARuntime and zero compiler/PDB bloat",
+            "Clean Single-File Runtime — packaged distribution with companion SMARuntime and optimized binary size",
             "Strengthened Security Matrix — ephemeral TLS handshake, 256-bit token entropy, path traversal guards, and IP address redaction"
           ],
           fixes: [
