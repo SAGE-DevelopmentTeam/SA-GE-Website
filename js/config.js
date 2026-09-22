@@ -69,41 +69,80 @@ const SAGE_CONFIG = {
     // Production manifest URL for external updater consumers
     productionManifestUrl: "https://sage-editor.com/update/manifest.json",
 
-    // Current official release metadata (v5.1.0)
+    // Current official release metadata (v5.2.0)
     fallback: {
-      version: "5.1.0",
-      displayVersion: "v5.1.0",
-      releaseDate: "September 21, 2026",
-      title: "SA:GE V5.1.0",
-      summary: "SA:GE V5.1.0 delivers Event Studio 2.0 and complete modernization for Stardew Valley 1.6, unifying cutscene authoring, item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety.",
-      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.1.0/SA-GE-5.1.0-win-x64.zip",
-      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.1.0",
+      version: "5.2.0",
+      displayVersion: "v5.2.0",
+      releaseDate: "September 22, 2026",
+      title: "SA:GE V5.2.0",
+      summary: "SA:GE V5.2.0 delivers the all-new Event Studio 2.0, pixel-perfect visual rendering improvements, complete modernization for Stardew Valley 1.6, and hardened release packaging hygiene.",
+      downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.2.0/SA-GE-5.2.0-win-x64.zip",
+      releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.2.0",
       installerUrl: null,
-      fileSizeBytes: 71415431,
-      formattedSize: "68.1 MB",
-      sha256: "c67525eccc613eac39509b119640af868583a120f8f494a5293704f37fca699e",
+      fileSizeBytes: 70722988,
+      formattedSize: "67.5 MB",
+      sha256: "41576b43a6b09d8859405ae847621b77b675274a9f5c072e27904aa905dd3aa0",
       platform: "Windows x64",
       distribution: "Portable ZIP",
       isPreRelease: false,
       highlights: [
-        "Event Studio 2.0 — Visual Scene Director, deterministic English action explanations, Act/Group & branch tagging, and command palette (Ctrl+K)",
+        "Event Studio 2.0 — Visual Scene Director, crisp subpixel-aligned canvas overlays, natural-language action translations, Act/Group tagging, and command palette (Ctrl+K)",
         "Event Conflict & Overlap Detector — real-time project-wide detection of overlapping event triggers, locations, and time intervals",
         "Rich Event Creation Templates — instant narrative presets for Introductions, Conversations, Heart Events, Gifts, and Cinematic Cutscenes",
         "Qualified Item Routing — full routing to modern Content Patcher targets (Data/Objects, Data/BigCraftables, Data/Weapons)",
         "Recipe Studio — visual Crafting & Cooking Recipe Authoring with authoritative 6-token Stardew 1.6 serialization",
         "Manifest Disk Authority — manifest.json as the pure source of truth on disk, eliminating project metadata drift",
         "Mail Studio Attachments — visual Data/Mail authoring with complex multi-token attachment strings and live sync",
-        "Trigger Actions Studio — canonical Stardew 1.6 Trigger Actions schema validation and Content Patcher sync"
+        "Release Packaging Hygiene — complete suppression of debug symbols (.pdb) and automated post-archive verification"
       ]
     },
 
     // Changelog history archive (reverse chronological order)
     history: [
       {
+        version: "5.2.0",
+        displayVersion: "v5.2.0",
+        date: "September 22, 2026",
+        isLatest: true,
+        tag: "v5.2.0",
+        title: "SA:GE V5.2.0 — Event Studio 2.0, Visual Fidelity & Hardened Release Hygiene",
+        summary: "SA:GE V5.2.0 delivers the all-new Event Studio 2.0, pixel-perfect visual rendering improvements, complete modernization for Stardew Valley 1.6, and hardened release packaging hygiene.",
+        changes: {
+          features: [
+            "Event Studio 2.0 — Visual Scene Director with drag-to-direct trajectories, dialogue previews, and multi-leg actor paths",
+            "Crisp Overlay Rendering — high-DPI layout rounding and subpixel-aligned rendering across NPC markers, player markers, pause indicators, and movement trajectories at all zoom levels (100%–400%)",
+            "Natural-Language Action Explanation — instant deterministic English translation for every Stardew cutscene action",
+            "Act & Branch Organizer — visual editor grouping tags (ActGroup) and choice branch tags (BranchTag)",
+            "Command Palette (Ctrl+K) — instant fuzzy-search over the entire catalog of cutscene actions",
+            "Event Conflict & Overlap Detector — real-time project-wide detection of overlapping trigger locations, seasons, weather, and time intervals",
+            "Rich Event Creation Templates — narrative presets for Introductions, Conversations, Friendship Milestones, Gifts, and Cutscenes",
+            "Qualified Item Routing — modern Content Patcher routing across Data/Objects, Data/BigCraftables, and Data/Weapons",
+            "Recipe Studio & 1.6 String Serialization — visual authoring for Data/CraftingRecipes and Data/CookingRecipes with authoritative 6-token serialization",
+            "Project Properties & Manifest Disk Authority — manifest.json is the pure authority on disk for mod metadata and dependencies",
+            "Mail Studio Multi-Token Attachment Serialization — author and preview Data/Mail attachment strings (%item, %money, %recipe, %quest)",
+            "Trigger Actions Studio — canonical Stardew 1.6 schema support and Content Patcher sync"
+          ],
+          improvements: [
+            "Release Packaging Hygiene — zero debug symbols (.pdb) or compiler metadata in public releases",
+            "Automated Package Verification Guard — strict post-archive validation rejecting development paths and unneeded artifacts",
+            "Cross-System Dependency & Reference Safety — live validation across Quests, Recipes, Items, Mail, Maps, Characters, and Tilesheets",
+            "Unused Assets Cleaner — live pre-deletion verification prevents tilesheet and texture removal if referenced anywhere in maps or studios"
+          ],
+          fixes: [
+            "Fixed Event Studio checkered rectangle and subpixel blurriness at 200%+ zoom levels",
+            "Fixed quest asset card file path display to reflect project folder structure accurately",
+            "Resolved legacy item JSON loading where ItemType property is omitted"
+          ]
+        },
+        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.2.0/SA-GE-5.2.0-win-x64.zip",
+        releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.2.0",
+        sha256: "41576b43a6b09d8859405ae847621b77b675274a9f5c072e27904aa905dd3aa0"
+      },
+      {
         version: "5.1.0",
         displayVersion: "v5.1.0",
         date: "September 21, 2026",
-        isLatest: true,
+        isLatest: false,
         tag: "v5.1.0",
         title: "SA:GE V5.1.0 — Event Studio 2.0, Stardew Valley 1.6 Modernization & Studio Cohesion",
         summary: "SA:GE V5.1.0 delivers Event Studio 2.0 and complete modernization for Stardew Valley 1.6, unifying cutscene authoring, item routing, crafting & cooking recipes, mail attachments, trigger actions, manifest authority, and dependency safety.",
@@ -125,16 +164,16 @@ const SAGE_CONFIG = {
             "Cross-System Dependency & Reference Safety — live validation across Quests, Recipes, Items, Mail, Maps, Characters, and Tilesheets",
             "Unused Assets Cleaner — live pre-deletion verification prevents tilesheet and texture removal if referenced anywhere in maps or studios",
             "Hardened Automatic Updater — multi-format staging directory resolution, atomic backup & replace, and automatic rollback on failure",
-            "Build & Package Hygiene — authoring metadata (.sage, .bak, .tmp) cleanly excluded while runtime companion files are preserved"
+            "Build & Package Hygiene — authoring metadata cleanly excluded while runtime companion files are preserved"
           ],
           fixes: [
             "Fixed quest asset card file path display to reflect project folder structure accurately",
             "Resolved legacy item JSON loading where ItemType property is omitted"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.1.0/SA-GE-5.1.0-win-x64.zip",
+        downloadUrl: null,
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.1.0",
-        sha256: "c67525eccc613eac39509b119640af868583a120f8f494a5293704f37fca699e"
+        sha256: "cf185f30be171c4eb26cf64c11ae7822f0a795e7aa310e0ccb418e93a2d62deb"
       },
       {
         version: "5.0.0",
@@ -163,7 +202,7 @@ const SAGE_CONFIG = {
             "Fixed romance and marriage configuration checkbox flow and persistence"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v5.0.0/SA-GE-5.0.0-win-x64.zip",
+        downloadUrl: null,
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v5.0.0",
         sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
       },
@@ -193,7 +232,7 @@ const SAGE_CONFIG = {
             "Fixed editor dirty state prompts during unexpected session disconnects"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v4.0.0/SA-GE-4.0.0-win-x64.zip",
+        downloadUrl: null,
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v4.0.0",
         sha256: "58ae33014f0fcd1342e9087764cf8fd197a4400f33986f3bda1d6ecee1a64217"
       },
@@ -222,7 +261,7 @@ const SAGE_CONFIG = {
             "Fixed coordinate badge layout truncation on high-DPI displays"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.1.0/SA-GE-3.1.0-win-x64.zip",
+        downloadUrl: null,
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.1.0",
         sha256: "a8f4c236e05b27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe310aa"
       },
@@ -258,7 +297,7 @@ const SAGE_CONFIG = {
             "Resolved touch action serialization edge cases with custom parameters"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v3.0.0/SA-GE-3.0.0-win-x64.zip",
+        downloadUrl: null,
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v3.0.0",
         sha256: "53ea1099e05f27d259357cb24ebaff8aaf5e3a9c89b4a743a7e85cd11fe24d7b"
       },
@@ -298,7 +337,7 @@ const SAGE_CONFIG = {
             "Fixed stale patch cleanup in Content Patcher synchronization on entity deletion"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v2.0.0/SA-GE-2.0.0-win-x64.zip",
+        downloadUrl: null,
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v2.0.0",
         sha256: "d40500bda97b897ae1fbdc2d1141bf7a31ec01ed74187f8775aa7d4e709da49f"
       },
@@ -328,7 +367,7 @@ const SAGE_CONFIG = {
           ],
           fixes: []
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.1.0/SAGE-v1.1.0-Portable.zip",
+        downloadUrl: null,
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v1.1.0",
         sha256: null
       },
@@ -362,7 +401,7 @@ const SAGE_CONFIG = {
             "Official v1.0.0 release"
           ]
         },
-        downloadUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/download/v1.0.0/SAGE-v1.0.0-Portable.zip",
+        downloadUrl: null,
         releasePageUrl: "https://github.com/SAGE-DevelopmentTeam/SA-GE-Releases/releases/tag/v1.0.0",
         sha256: "7F9D938A743884FD4D98CE8A7F81E8B408FD0140D8258C68F482D055943CC930"
       }
