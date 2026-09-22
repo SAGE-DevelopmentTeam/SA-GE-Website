@@ -429,6 +429,9 @@ const SAGE_CONFIG = {
     endpointUrl: "http://localhost:3000/api/stats",
     heartbeatUrl: "http://localhost:3000/api/heartbeat",
 
+    // Historical downloads offset from retired release packages whose assets were purged on GitHub
+    historicalDownloads: 30,
+
     // How often to poll the statistics endpoint in milliseconds (60 seconds = 60000ms)
     pollIntervalMs: 60000,
 

@@ -149,6 +149,9 @@ function initStatsLoader() {
   const mainRepo     = config?.github?.apiRepo        || "SAGE-DevelopmentTeam/SA-GE";
   const releasesRepo = config?.github?.releasesApiRepo || "SAGE-DevelopmentTeam/SA-GE-Releases";
   const statsEndpoint = config?.statistics?.endpointUrl || null;
+  const historicalDownloads = typeof config?.statistics?.historicalDownloads === "number"
+    ? config.statistics.historicalDownloads
+    : 0;
 
   async function fetchStats() {
     const releasesUrl = `${apiBase}/repos/${releasesRepo}/releases?per_page=100`;
@@ -186,7 +189,7 @@ function initStatsLoader() {
       if (releasesRes && releasesRes.ok) {
         const releases = await releasesRes.json();
         if (Array.isArray(releases)) {
-          let total = 0;
+          let total = historicalDownloads;
           for (const release of releases) {
             if (Array.isArray(release.assets)) {
               for (const asset of release.assets) {
